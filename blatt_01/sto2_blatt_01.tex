@@ -1,0 +1,96 @@
+\documentclass[a4paper]{scrartcl}
+
+% font/encoding packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage[ngerman=ngerman-x-latest]{hyphsubst}
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{array}
+\usepackage{stmaryrd}
+\usepackage{marvosym}
+\allowdisplaybreaks
+\usepackage[output-decimal-marker={,}]{siunitx}
+\usepackage[shortlabels]{enumitem}
+\usepackage[section]{placeins}
+\usepackage{float}
+\usepackage{units}
+\usepackage{listings}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+
+\newtheorem*{behaupt}{Behauptung}
+\newcommand{\gdw}{\Leftrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\cov}{\operatorname{Cov}}
+\newcommand{\e}{\operatorname{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\corr}{\operatorname{Corr}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\def \blattnr {1 }
+
+\lhead{Stochastik 2 - Blatt \blattnr}
+\rhead{Florian Abt, Lennart Braun, TODO}
+\cfoot{\thepage}
+
+
+\title{Stochastik 2 für Informatiker}
+\subtitle{Blatt \blattnr Hausaufgaben}
+\author{
+    Florian Abt (TODO), \\
+    Lennart Braun (6523742), \\
+    TO DO (TODO)
+}
+\date{zum 7. Juni 2015}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}[label=\bfseries 1.\arabic*]
+    \item
+        \begin{enumerate}[label=\alph*)]
+            \item
+
+            \item
+
+        \end{enumerate}
+
+    \item
+        \begin{enumerate}[label=\alph*)]
+            \item
+
+            \item
+
+            \item
+
+        \end{enumerate}
+
+    \item
+        \begin{enumerate}[label=\alph*)]
+            \item
+
+            \item
+
+        \end{enumerate}
+
+    \item
+        Die Zufallsvariable $W$ habe Werte in $\mathbb{N}$ und erfülle
+        $\mathbb{P}(W = k \ |\  W > n) = \mathbb{P}(W = k-n)$ für alle
+        $n \in \mathbb{N}_0$ und für alle $k \in \{n+1, n+2, \dotsc\}$.
+
+        \begin{behaupt}
+            Es gilt $W \sim \text{Geom}_p$ mit $p \in (0,1]$.
+        \end{behaupt}
+        \begin{proof}
+            TODO
+        \end{proof}
+
+\end{enumerate}
+
+
+\end{document}
