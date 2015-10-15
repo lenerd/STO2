@@ -24,8 +24,9 @@
 \newtheorem*{behaupt}{Behauptung}
 \newcommand{\gdw}{\Leftrightarrow}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\prob}{\mathbb{P}}
 \newcommand{\cov}{\operatorname{Cov}}
-\newcommand{\e}{\operatorname{E}}
+\newcommand{\e}{\mathbb{E}}
 \newcommand{\var}{\operatorname{Var}}
 \newcommand{\corr}{\operatorname{Corr}}
 
@@ -53,24 +54,107 @@
 
 \begin{enumerate}[label=\bfseries 1.\arabic*]
     \item
+        Die alternative Definition für die geometrische Verteilung sei
+        \begin{equation*}
+            \text{Geom}_p^0(k) = p(1-p)^k \qquad k \in \mathbb{N}_0 \text{.}
+        \end{equation*}
+        Es sei $Z$ eine Zufallsvariable mit $Z \sim \text{Geom}_p^0$.
         \begin{enumerate}[label=\alph*)]
             \item
+                Die alternative Definition der geometrischen Verteilung
+                $\text{Geom}_p^0$ beschreibt die Anzahl der fehlgeschlagenen
+                Experimente vor dem ersten erfolgreichen Experiment in einer
+                Bernoullikette.
 
             \item
+                Es sei $Y$ eine Zufallsvariable mit $Y \sim \text{Geom}_p$.
+
+                TODO: Erklärung
+                \begin{equation*}
+                    \prob(Z=k) = p(1-p)^{k-1} = \prob(Y=k-1)
+                \end{equation*}
+                \begin{equation*}
+                    Z = Y + 1
+                \end{equation*}
 
         \end{enumerate}
 
     \item
+        Es sei $X \sim \text{Bin}_{n,p}$ eine binomialverteilte Zufallsvariable
+        mit den Parametern $n \in \mathbb{N}$ und $p \in [0,1]$.
         \begin{enumerate}[label=\alph*)]
             \item
+                Die Zufallsvariablen $X_i$ für $1 \leq i \leq n$, die den
+                Ausgang des $i$-ten Experiments anzeigen sind
+                bernoulliverteilt.  D.~h. $X_i$ bildet auf $\{0,1\}$ ab und es
+                gelten $\prob(X_i=1) = p$ sowie $\prob(X_i=0) = 1-p$
+                für alle $1 \leq i \leq n$.
 
             \item
+                Sei $W \sim \text{Bin}_{m,p}$.
+
+                \begin{behaupt}
+                    Die Summe zweier binomialverteilten Zufallsvariablen ist
+                    wieder binomialverteilt:
+                    Es gilt $X + W \sim \text{Bin}_{n+m,p}$.
+                \end{behaupt}
+                \begin{proof}
+                    Die Behauptung lässt sich einmal heuristisch herleiten: $X$
+                    bzw. $W$ zeigt die Anzahl der Erfolge in $n$ bzw. $m$
+                    unabhängigen Zufallsexperimenten mit der
+                    Erfolgswahrscheinlichkeit $p$ an. Daher beschreibt die
+                    Summe $X + W$ die Anzahl der Erfolge in $n+m$ unabhängigen
+                    Experimenten mit Erfolgswahrscheinlichkeit $p$.
+
+                    Eine andere Möglichkeit:
+                    \begin{equation*}
+                        \begin{split}
+                            \prob(X+W=k)
+                            &= \prob \left( \bigcup_{j=0}^k \{X=j \land W=k-j\}
+                            \right) \\
+                            &= \sum_{j=0}^k \prob (\{X=j \land W=k-j\}) \\
+                            &= \sum_{j=0}^k \prob (X=j) \cdot \prob(W=k-j) \\
+                            &= \sum_{j=0}^k
+                            \binom{n}{j} \cdot p^j \cdot (1-p)^{n-j}
+                            \binom{m}{k-j} \cdot p^{k-j} \cdot (1-p)^{m-k+j} \\
+                            &= p^k \cdot (1-p)^{n+m-k} \cdot
+                            \sum_{j=0}^k \binom{n}{j} \cdot \binom{m}{k-j} \\
+                            &= \binom{n+m}{k} \cdot p^k \cdot (1-p)^{n+m-k} \\
+                            &= \text{Bin}_{(n+m),p}
+                        \end{split}
+                    \end{equation*}
+                \end{proof}
 
             \item
+                \begin{behaupt}
+                    Der Erwartungswert einer binomialverteilten Zufallsvariable
+                    $X \sim \text{Bin}_{n,p}$ ist $\e[X] = n \cdot p$.
+                \end{behaupt}
+                \begin{proof}
+                    $X$ lässt sich als Summe von Indikatorzufallsvariablen
+                    schreiben, die jeweils den Ausgang eines Elements anzeigen:
+                    $X = \sum_{i=1}^n X_i$ mit $X_i \sim \text{Bin}_{1,p}$.
+                    Für die $X_i$ gilt jeweils
+                    \begin{equation*}
+                        \e[X_i] = 0 \cdot \prob(X_i=0) + 1 \cdot \prob(X_i=1)
+                        = p \text{ .}
+                    \end{equation*}
+                    Aus der Linearität des Erwartungswertes folgt:
+                    \begin{equation*}
+                        \begin{split}
+                            \e[X]
+                            &= \e\left[\sum_{i=0}^n X_i\right] \\
+                            &= \sum_{i=0}^n \e[X_i] \\
+                            &= \sum_{i=0}^n p \\
+                            &= n \cdot p
+                        \end{split}
+                    \end{equation*}
+                \end{proof}
 
         \end{enumerate}
 
     \item
+        TODO
         \begin{enumerate}[label=\alph*)]
             \item
 
@@ -80,7 +164,7 @@
 
     \item
         Die Zufallsvariable $W$ habe Werte in $\mathbb{N}$ und erfülle
-        $\mathbb{P}(W = k \ |\  W > n) = \mathbb{P}(W = k-n)$ für alle
+        $\prob(W = k \ |\  W > n) = \prob(W = k-n)$ für alle
         $n \in \mathbb{N}_0$ und für alle $k \in \{n+1, n+2, \dotsc\}$.
 
         \begin{behaupt}
