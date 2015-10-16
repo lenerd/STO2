@@ -154,11 +154,87 @@
         \end{enumerate}
 
     \item
-        TODO
+        Ein fairer Würfel wird wiederholt geworfen.
         \begin{enumerate}[label=\alph*)]
             \item
+                Die Zufallsvariable $X_n$ sei die Anzahl der Sechsen in den
+                ersten $n$ Würfen.
+
+                \begin{behaupt}
+                    $(X_n)_{n \in \N_0}$ ist eine DTMC.
+                \end{behaupt}
+                \begin{proof}
+                    Der Zustandsraum ist die Menge der natürlichen Zahlen
+                    inklusive der $0$, $\N_0$, da die Zufallsvariablen Anzahlen
+                    angeben.
+
+                    Die Wahrscheinlichkeit, dass $X_n$ den Zustand $j \in \N_0$
+                    annimmt, ist nur von dem Zustand $X_{n-1}$ abhängig ($n \in
+                    \N$).  Dabei unterscheiden wir drei Fälle: Wird im $n$-ten
+                    Wurf eine Sechs gewürfelt (Wahrscheinlichkeit
+                    $\nicefrac{1}{6}$), wird die Anzahl ewürfelter Sechsen
+                    inkrementiert ($X_n = X_{n-1}+1$). Bei allen anderen
+                    Augenzahlen (Wahrscheinlichkeit $\nicefrac{5}{6}$) bleibt
+                    die Anzahl gewürfelter Sechsen unverändert ($X_n =
+                    X_{n-1}$).  Weiterhin kann die Anzahl gewürfelter Sechsen
+                    nicht verringert oder um mehr als $1$ erhöht werden.
+                    Derartige Übergänge sind also ausgeschlossen.
+                    Für die Einschritt-Übergangswahrscheinlichkeiten gilt also
+                    \begin{equation*}
+                        p_{ij} = \prob(X_1=j \ |\  X_0=i) =
+                        \begin{cases}
+                            \nicefrac{1}{6} & \text{if } j = i + 1 \\
+                            \nicefrac{5}{6} & \text{if } j = i \\
+                            0 & \text{else}
+                        \end{cases}
+                        \qquad
+                        \forall i,j \in N_0
+                        \text{ .}
+                    \end{equation*}
+                    Da bei $0$ Würfen noch keine Sechs gefallen sein kann, gilt
+                    $\prob(X_0 = 0) = 1$.
+                    Damit ist $(X_n)_{n \in \N_0}$ eine Markov-Kette.
+                \end{proof}
 
             \item
+                Die Zufallsvariable $X_n$ sei die größte gewürfelte Augenzahl
+                während der ersten $n$ Würfe.
+                Da ein Maximum über $0$ Ergebnisse nicht wohldefiniert ist,
+                betrachten wir die Folge $(X_n)_{n \in \N}$ (ohne $X_0$) und
+                untersuchen, ob diese eine DTMC gemäß Definition 1.2.1 ist mit
+                der Änderung, dass die Indizes auch mit $1$ beginnen dürfen.
+
+                \begin{behaupt}
+                    $(X_n)_{n \in \N}$ ist eine DTMC.
+                \end{behaupt}
+                \begin{proof}
+                    Der Zustandsraum ist $Z = \{1, \dotsc, 6\}$.
+
+                    Die Wahrscheinlichkeit, dass $X_n$ den Zustand $j \in Z$
+                    annimmt, ist nur von dem Zustand $X_{n-1}$ abhängig ($n \in
+                    \N \land n > 1$).  Es sind wieder drei Fälle zu
+                    unterscheiden: Wird eine Zahl kleiner oder gleich dem
+                    bisherigen Maximum $i$ gewürfelt (Wahrscheinlichkeit
+                    $\nicefrac{i}{6}$) ändert sich das Maximum nicht. Für jede
+                    gewürfelte Zahl $j > i$ (jeweils Wahrscheinlichkeit
+                    $\nicefrac{1}{6}$) wird das neue Maximum auf $j$ gesetzt.
+                    Da das neue Maximum nicht kleiner als das bisherige sein
+                    kann, sind solche Übergänge ausgeschlossen.
+                    Für die Einschritt-Übergangswahrscheinlichkeiten gilt also
+                    \begin{equation*}
+                        p_{ij} = \prob(X_2=j \ |\  X_1=i) =
+                        \begin{cases}
+                            \nicefrac{1}{6} & \text{if } j > i \\
+                            \nicefrac{i}{6} & \text{if } j = i \\
+                            0 & \text{if } j < i
+                        \end{cases}
+                        \qquad
+                        \forall i,j \in \{1,2, \dotsc, 6\}
+                    \end{equation*}
+                    Das erste Element der Folge $X_1$ nimmt die Werte
+                    gleichverteilt über $\{1,2, \dotsc, 6\}$ an.
+                    Damit ist $(X_n)_{n \in \N}$ eine Markov-Kette.
+                \end{proof}
 
         \end{enumerate}
 
