@@ -67,16 +67,24 @@
                 Bernoullikette.
 
             \item
-                Es sei $Y$ eine Zufallsvariable mit $Y \sim \text{Geom}_p$.
-
-                TODO: Erklärung
+                Es sei $Y$ eine Zufallsvariable mit $Y \sim \text{Geom}_p$.              
+                \begin{equation*}
+                    Geom_p = p(1-p)^{k-1} 
+                    = p(1-p)^k \cdot p(1-p)^{-1}   
+                    = \frac{1}{p(1-p)} p(1-p)^k   
+                    = \frac{1}{p(1-p)} Geom_p^0  
+                \end{equation*}
+                
+                Somit lässt sich der Zusammenhang erkennen, dass die Verteilungen korrelieren; 
+                die Werte von $Geom_p$ sind lediglich um den Faktor $\frac1{p(1-p)}$ zu $Geom_p^0$ skaliert.
+                
+                Dies lässt sich auch wie folgt ausdrücken:
                 \begin{equation*}
                     \prob(Z=k) = p(1-p)^{k-1} = \prob(Y=k-1)
                 \end{equation*}
                 \begin{equation*}
                     Z = Y + 1
                 \end{equation*}
-
         \end{enumerate}
 
     \item
