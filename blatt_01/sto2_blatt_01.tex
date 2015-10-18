@@ -257,8 +257,35 @@
         \begin{behaupt}
             Es gilt $W \sim \text{Geom}_p$ mit $p \in (0,1]$.
         \end{behaupt}
-        \begin{proof}
-            TODO
+
+            Für eine bessere Einsicht änderen wir die Betrachtung unserer 
+            Variable. Was wir zuvor als $k$ betrachteten, soll im Folgenden
+            $n+k$ heißen, wobei $k$ den Abstand zu $n$ aufzeigt, wodurch nun
+            $k \in \{1, 2, \dotsc\}$.
+            
+            Gegeben ist die somit die umformulierte Geleichung
+            \begin{equation*}
+	      \prob(W = n+k \ |\  W > n) = \prob(W = k)
+            \end{equation*}
+            Da dies für jede beliebige Kombination von $n,k$ gilt,
+            ist dadurch ersichtlich, dass die Wahrscheinlichkeit eines Wertes
+	    allein vom Ausgangspunkt der Betrachtung abhängt. Für eine bessere
+	    Einsicht, vergleiche oben stehenden Ausdruck mit
+	    \begin{equation*}
+	      \prob(W = n+k \ |\  W > n) = \prob(W = k \ |\ W > 0)
+            \end{equation*}
+            Die Variable $n$ stellt also unseren Ausgangspunkt dar und die 
+            Wahrscheinlichkeit von einem Wert $n+k$ ist allein von der Größe $k$
+            abhängig.
+            
+            Wir betrachten Zufallsvariable $X_i$, welche auf $\{0,1\}$ abbilden.
+            Ein $X_i$ repräsentiert das Ergbnis eines Tests, ob $W>i$. Wobei wir 
+            die Einschritt-Übergangswahrscheinlichkeit mit $p$ angeben:
+            \begin{equation*}
+	      \prob(X_{n+1} = 1 \ |\  X_n = 1) = p
+            \end{equation*}
+                        
+                    \begin{proof}
         \end{proof}
 
 \end{enumerate}
