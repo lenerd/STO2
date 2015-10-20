@@ -299,7 +299,8 @@
                           &= \prob(W > j) \\
                     \gdw\ && \prob(W > n+j)
                           &= \prob(W > n) \cdot \prob(W > j) \\
-                    \gdw\ && \prob(W > k) &= (\prob(W > 1))^k \\
+                    \stackrel{(\star\star)}{\gdw}\ &&
+                    \prob(W > k) &= (\prob(W > 1))^k \\
                     \gdw\ && \prob(W > k) &= (1-p)^k
                 \end{alignedat}
                 \label{eq:memless1}
@@ -307,6 +308,18 @@
             In der mit $(\star)$ markierten Zeile wird verwendet, dass $\prob(W
             > j) = \sum_{i > j} \prob(W = i)$ gilt (analog für die linke
             Seite).
+
+            $(\star\star)$ lässt sich einfach durch Induktion zeigen: Mit $k=1$
+            gilt $\prob(W > 1) = (\prob(W > 1)^1 = (1-p)^1$.  Angenommen, es
+            gelte für $k=m$.  Dann gilt es auch für $k=m+1$:
+            \begin{equation*}
+                \begin{split}
+                    \prob(W > m+1)
+                    &= \prob(W > m) \cdot \prob(W > 1) \\
+                    &\stackrel{I.A.}{=} (\prob(W > 1))^m \cdot \prob(W > 1) \\
+                    &= (\prob(W > 1))^{m+1}
+                \end{split}
+            \end{equation*}
 
             Obiges Ergebnis verwenden wir nun, um die eigentliche Behauptung zu
             zeigen. Wir beginnen mit der zweiten Zeile von Gleichung
