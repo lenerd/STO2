@@ -33,15 +33,15 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
-\def \blattnr {2 }
+\def \blattnr {2}
 
-\lhead{Stochastik 2 - Blatt \blattnr}
+\lhead{Stochastik 2 - Blatt {\blattnr}}
 \rhead{Florian Abt, Lennart Braun, Sascha Schulz}
 \cfoot{\thepage}
 
 
 \title{Stochastik 2 für Informatiker}
-\subtitle{Blatt \blattnr Hausaufgaben}
+\subtitle{Blatt {\blattnr} Hausaufgaben}
 \author{
     Florian Abt (6524404), \\
     Lennart Braun (6523742), \\
@@ -52,10 +52,89 @@
 \begin{document}
 \maketitle
 
-\begin{enumerate}[label=\bfseries 1.\arabic*]
+\begin{enumerate}[label=\bfseries \blattnr.\arabic*]
     \item
 
     \item
+        Es sei $E$ eine diskrete Menge und $P = (p_{ij})_{i,j \in E}$ und $R =
+        (r_{ij})_{i,j \in E}$ seien stochastische Matrizen.
+        \begin{enumerate}[label=\alph*)]
+            \item
+                \begin{behaupt}
+                    $P \cdot R$ ist eine stochastische Matrix.
+                \end{behaupt}
+                \begin{proof}
+                    Sei $Q = P \cdot R$. Damit gilt
+                    \begin{equation*}
+                        q_{ij} = \sum_{k \in E} p_{ik} \cdot r_{kj}
+                        \qquad
+                        \forall i,j \in E
+                    \end{equation*}
+                    $Q$ ist eine stochastische Matrix wenn $\forall i,j \in E :
+                    q_{ij} \in [0,1]$ und die Einträge der Zeilen sich jeweils
+                    zu $1$ aufsummieren:
+                    \begin{equation*}
+                        \sum_{j \in E} q_{ij} = 1
+                        \qquad
+                        \forall i \in E
+                    \end{equation*}
+
+                    \begin{equation*}
+                        \begin{split}
+                            \sum_{j \in E} q_{ij}
+                            &= \sum_{j \in E} \sum_{k \in E}
+                                p_{ik} \cdot r_{kj} \\
+                            &= \sum_{k \in E} \sum_{j \in E}
+                                p_{ik} \cdot r_{kj} \\
+                            &= \sum_{k \in E} p_{ik} \cdot
+                                \underbrace{\sum_{j \in E} r_{kj}}_{= 1} \\
+                            &= \sum_{k \in E} p_{ik} \\
+                            &= 1
+                        \end{split}
+                    \end{equation*}
+                    Da alle Einträge auf $P$ und $R$ nichtnegativ sind, sind
+                    es die durch Addition und Multiplikation entstandenen
+                    Einträge von $Q$ auch nicht.
+                    Da sich die Zeilen zu $1$ aufsummieren, kann jeder Eintrag
+                    höchstens den Wert $1$ annehmen.
+                    Daher gilt $\forall i,j \in E : q_{ij} \in [0,1]$.
+                    $Q = P \cdot R$ ist eine stochastische Matrix.
+                \end{proof}
+
+            \item
+                \begin{behaupt}
+                    Für eine endliche Menge $E$ ist $1$ ein Eigenwert von $P$.
+                \end{behaupt}
+                \begin{proof}
+                    $\lambda$ ist ein Eigenwert von $P$ zum Eigenvektor $x$,
+                    wenn gilt
+                    \begin{equation*}
+                        P \cdot x = \lambda \cdot x
+                        \text{ .}
+                    \end{equation*}
+                    Wir betrachten den Fall $\lambda = 1$. Es muss also einen
+                    Spaltenvektor $(x_i)_{i \in E}$ geben, so dass
+                    \begin{equation*}
+                        P \cdot x = x
+                        \text{ .}
+                        \label{eq:eigenfoo}
+                    \end{equation*}
+                    Wir behaupten, dass der Einsvektor der Länge $|E|$ ein
+                    solcher Eigenvektor ist: $x = (1)_{i \in E}$.
+                    Sei $x' = P \cdot x$. Dann gilt für alle $i \in E$:
+                    \begin{equation*}
+                        x'_i = \sum_{j \in E} p_{ij} \cdot x_j
+                        = \sum_{j \in E} p_{ij} \cdot 1
+                        = \sum_{j \in E} p_{ij}
+                        = 1
+                        = x_i
+                    \end{equation*}
+                    Der Einsvektor erfüllt also die Gleichung
+                    \eqref{eq:eigenfoo} Damit ist gezeigt, dass $1$ ein
+                    Eigenwert von $P$ ist.
+                \end{proof}
+
+        \end{enumerate}
 
     \item
 
