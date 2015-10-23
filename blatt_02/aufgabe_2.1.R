@@ -21,10 +21,14 @@ print(P)
 cat("\U3b1 = ")
 print(alpha)
 
+# initialize pi_ with alpha = pi^(0)
 pi_ <- alpha
+
 for (i in 0:100)
 {
     cat(sprintf("\U3C0^(%3d) = ", i))
     print(pi_)
+
+    # calculate pi^(i+1)
     pi_ <- c(pi_ %*% P)
 }

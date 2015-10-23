@@ -48,11 +48,15 @@ P =
 α = > print(alpha)
 [1] 0.3 0.1 0.6
 > 
+> # initialize pi_ with alpha = pi^(0)
 > pi_ <- alpha
+> 
 > for (i in 0:100)
 + {
 +     cat(sprintf("\U3C0^(%3d) = ", i))
 +     print(pi_)
++ 
++     # calculate pi^(i+1)
 +     pi_ <- c(pi_ %*% P)
 + }
 π^(  0) = [1] 0.3 0.1 0.6
@@ -159,4 +163,4 @@ P =
 > 
 > proc.time()
    user  system elapsed 
-  0.298   0.047   0.399 
+  0.300   0.022   0.347 
