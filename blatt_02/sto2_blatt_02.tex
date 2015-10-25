@@ -178,197 +178,103 @@
 
         \end{enumerate}
 
+    \pagebreak
     \item
         \begin{enumerate}[label=\alph*)]
             \item
-                Es sei $X = (X_n)_{n \in \N_0}$ eine DTMC auf dem Zustandsraum
-                $E = \{r,s\}^3$, d.~h. alle Wörter der Länge 3 über dem
-                Alphabet $\Sigma = \{r,s\}$. Jeder Zustand repräsentiert die
-                drei zuletzt aufgetreteten Farben. Die Übergangsmatrix sei
-                gegeben durch $P$. Die Zeilen und Spaltenindizes ergeben sich
-                aus den Wörtern, indem diese als Binärzahlen mit $r=0$ und
-                $s=1$ interpretiert werden (z.~B.  $rrr = 000_2 = 0$, $srs =
-                101_2 = 5$). 
-                \begin{equation*}
-                    P =
+		Sei $\sigma = \sigma_0 \sigma_1 \sigma_2 \dotsm \in \Sigma^\omega$ 
+		ein unendlich langes Wort welches die \\$\{rot,schwarz\}$-Ziehung repräsentiert.
+		
+		Sei $w = \{rot,schwarz\}^3$ ein beliebiges Wort, auf das gewettet werden kann.
+		
+		Sei $(Y_n)_{n\in\N_0}$ eine DTMC welche angibt, wie viele Übereinstimmungen das gewählte
+		Wort im Verlauf von $\sigma$ hat, wobei $Y_i$ die Anzahl der Übereinstimmungen für 
+		$\sigma_i$ angibt. Folglich ist $E_Y = \{0,1,2,3\}$, wobei $3\in E$ ein absorbierender 
+		Zustand ist und das Vorkommen von $w$ repräsentiert.
+		
+		Es ergeben sich 4 Grundsätzliche Arten, $w$ zu wählen, wobei für jede Art eine andere
+		Übergangsmatrix für die entsprechende $Y_n$ festlegt:
+		
+		\textbf{1. Fall, Schema ``xxy'': w=(rot,rot,schwarz) $\vee$ w=(schwarz,schwarz,rot)}
+		
+		\begin{equation*}
+                    P_{xxy} =
                     \begin{pmatrix}
-                        \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 \\
-                        0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 \\
-                        0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 \\
-                        0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} \\
-                        \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 \\
-                        0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 \\
-                        0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 \\
-                        0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} \\
+                        \frac12 & \frac12 & 0 & 0 \\
+                        \frac12 & 0 & \frac12 & 0 \\
+                        0 & 0 & \frac12 & \frac12 \\
+                        0 & 0 & 0 & 1
                     \end{pmatrix}
                 \end{equation*}
-                Die Markovkette als Zustandsdiagramm:
+                
+                \textbf{2. Fall, Schema ``xyx'': w=(rot,schwarz,rot) $\vee$ w=(schwarz,rot,schwarz)}
+                
                 \begin{equation*}
-                    \begin{tikzpicture}[%
-                        ->,
-                        >=stealth',
-                        shorten >=1pt,
-                        auto,
-                        node distance=1.5cm,
-                        %semithick,
-                    ]
-
-
-                    \node[circle] (0)                 {$rrr$};
-                    \node[circle] (1) [right of=0]    {$rrs$};
-                    \node[circle] (2) [right of=1]    {$rsr$};
-                    \node[circle] (3) [right of=2]    {$rss$};
-                    \node[circle] (4) [right of=3]    {$srr$};
-                    \node[circle] (5) [right of=4]    {$srs$};
-                    \node[circle] (6) [right of=5]    {$ssr$};
-                    \node[circle] (7) [right of=6]    {$sss$};
-
-                    \path   (0) edge [loop left]                  node {r} (0)
-                            (0) edge [bend right, below]          node {s} (1)
-                            (1) edge [bend right]                 node {r} (2)
-                            (1) edge [bend right, below]          node {s} (3)
-                            (2) edge [bend right]                 node {r} (4)
-                            (2) edge [bend right, below]          node {s} (5)
-                            (3) edge [bend right, below, pos=0.9] node {r} (6)
-                            (3) edge [bend right, below]          node {s} (7)
-                            (4) edge [bend right, above]          node {r} (0)
-                            (4) edge [bend right, above, pos=0.9] node {s} (1)
-                            (5) edge [bend right, above]          node {r} (2)
-                            (5) edge [bend right]                 node {s} (3)
-                            (6) edge [bend right, above]          node {r} (4)
-                            (6) edge [bend right]                 node {s} (5)
-                            (7) edge [bend right, above]          node {r} (6)
-                            (7) edge [loop right]                 node {s} (7)
-                            ;
-                    \end{tikzpicture}
-                \end{equation*}
-
-                Soll nun ein bestimmter Fall modelliert werden, müssen die
-                Wahrscheinlichkeiten in $P$ bzw. die Kanten des Graphen
-                angepasst werden. Seien nun $w = rsr$ das gewählte Wort des
-                Gegners und $w' = rrs$ das Wort des Teufels. Die folgende
-                Matrix $P'$ und der Grap repräsentieren die entsprechende
-                DTMC mit den absorbierenden Zuständen $rrs$ und $rsr$.
-                \begin{equation*}
-                    P' =
+                    P_{xyx} =
                     \begin{pmatrix}
-                        \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 \\
-                        0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
-                        0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
-                        0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} \\
-                        \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 \\
-                        0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 \\
-                        0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 \\
-                        0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2} & \frac{1}{2} \\
+                        \frac12 & \frac12 & 0 & 0 \\
+                        0 & \frac12 & \frac12 & 0 \\
+                        \frac12 & 0 & 0 & \frac12 \\
+                        0 & 0 & 0 & 1
                     \end{pmatrix}
                 \end{equation*}
+                
+                \textbf{3. Fall, Schema ``xyy'': w=(rot,schwarz,schwarz) $\vee$ w=(schwarz,rot,rot)}
+                
                 \begin{equation*}
-                    \begin{tikzpicture}[%
-                        ->,
-                        >=stealth',
-                        shorten >=1pt,
-                        auto,
-                        node distance=1.5cm,
-                        %semithick,
-                    ]
-
-
-                    \node[circle] (0)                 {$rrr$};
-                    \node[circle] (1) [right of=0]    {$rrs$};
-                    \node[circle] (2) [right of=1]    {$rsr$};
-                    \node[circle] (3) [right of=2]    {$rss$};
-                    \node[circle] (4) [right of=3]    {$srr$};
-                    \node[circle] (5) [right of=4]    {$srs$};
-                    \node[circle] (6) [right of=5]    {$ssr$};
-                    \node[circle] (7) [right of=6]    {$sss$};
-
-                    \path   (0) edge [loop left]                  node {r} (0)
-                            (0) edge [bend right, below]          node {s} (1)
-                            (1) edge [loop below, below]          node {r} (1)
-                            %(1) edge [bend right]                 node {r} (2)
-                            %(1) edge [bend right, below]          node {s} (3)
-                            (2) edge [loop below, below]          node {r} (2)
-                            %(2) edge [bend right]                 node {r} (4)
-                            %(2) edge [bend right, below]          node {s} (5)
-                            (3) edge [bend right, below, pos=0.9] node {r} (6)
-                            (3) edge [bend right, below]          node {s} (7)
-                            (4) edge [bend right, above]          node {r} (0)
-                            (4) edge [bend right, above, pos=0.9] node {s} (1)
-                            (5) edge [bend right, above]          node {r} (2)
-                            (5) edge [bend right]                 node {s} (3)
-                            (6) edge [bend right, above]          node {r} (4)
-                            (6) edge [bend right]                 node {s} (5)
-                            (7) edge [bend right, above]          node {r} (6)
-                            (7) edge [loop right]                 node {s} (7)
-                            ;
-                    \end{tikzpicture}
-                \end{equation*}
-
-                Für obige Wörter wurde das Skript aus Aufgabe 2.1 entsprechend
-                modifiziert. Dabei wurde von einer initialen Gleichverteilung
-                ausgegangen:
-                \begin{equation*}
-                    \pi^{(0)} =
+                    P_{xyy} =
                     \begin{pmatrix}
-                        \num{0,125} & 
-                        \num{0,125} & 
-                        \num{0,125} & 
-                        \num{0,125} & 
-                        \num{0,125} & 
-                        \num{0,125} & 
-                        \num{0,125} & 
-                        \num{0,125}
+                        \frac12 & \frac12 & 0 & 0 \\
+                        0 & \frac12 & \frac12 & 0 \\
+                        0 & \frac12 & 0 & \frac12 \\
+                        0 & 0 & 0 & 1
                     \end{pmatrix}
                 \end{equation*}
-                Es ist erkennbar, dass für $n \to \infty$
+                
+                \textbf{4. Fall, Schema ``xxx'': w=(rot,rot,rot) $\vee$ w=(schwarz,schwarz,schwarz)}
+                
                 \begin{equation*}
-                    \pi^{(n)} \to
+                    P_{xxx} =
                     \begin{pmatrix}
-                        0 &
-                        \frac{2}{3} &
-                        \frac{1}{3} &
-                        0 &
-                        0 &
-                        0 &
-                        0 &
-                        0 &
+                        \frac12 & \frac12 & 0 & 0 \\
+                        \frac12 & 0 & \frac12 & 0 \\
+                        \frac12 & 0 & 0 & \frac12 \\
+                        0 & 0 & 0 & 1
                     \end{pmatrix}
-                    \text{ .}
                 \end{equation*}
-                Für $n \to \infty$ gilt also $P(X_n = rrs) = \nicefrac{2}{3}$,
-                $P(X_n = rsr) = \nicefrac{1}{3}$ und $P(X_n \neq rrs, X_n \neq
-                rsr) = 0$.
-                Der Teufel gewinnt also mit einer Wahrscheinlichkeit von
-                $\nicefrac{2}{3}$.
+                
+                Davon abgeleitet, betrachten wir den Verlauf einer Wettrunde zwischen zwei Kontrahenten 
+                als DTMC $(X_n)_{n\in\N_0}$. Diese setzt zwei Instanzen von $(Y_n)_{n\in\N_0}$ in Bezug
+                und koppelt deren Ereigniswerte; wobei es nur einen Gewinner geben kann. 
+                
+                Wir stellen dies als Tupel dar, es ergibt sich:
+                
+                $E_X = \{(a,b)| a,b\in{0,1,2,3} \wedge (a,b)\neq(3,3)\}$, wobei \\
+                $E_{absorb} = \{(3,k), (k,3)\}_{k\in\{0,1,2\}}$ absorbierende Zustände sind, \\welche 
+                Kenntlich machen, ob $a$ oder $b$ gewonnen hat.
+                
+                Es ergibt sich die Einschritt-Übergangswahrscheinlichkeit: \\
+		$Pr(X_{i+1} = (a',b') | (X_i = (a,b))$ \\
+		$ = Pr(Y^A_{i+1} = a', Y^B_{i+1} = b' | Y^A_i = a, Y^B_i=b) $ \\
+		$\stackrel{*}{=} Pr(Y^A_{i+1} = a' | Y^A_i = a) \cdot Pr(Y^B_{i+1} = b' | Y^B_i = b)$ \\
+		$= p^A_{aa'} \cdot p^B_{bb'}$
+                
+                (*) da $Y^A$, $Y^B$ stochastisch unabhängig
 
-                \lstinputlisting[%
-                ]{aufgabe_2.3.R}
-
+                
             \item
-                Intuitiv würden wir dem Teufel die folgende Strategie
-                empfehlen.  Sei $w =a_1a_2a_3 \in \Sigma^3$ mit $\Sigma = \{r,
-                s\}$ das vom Gegenspieler gewählte Wort. Nun sollte ein Wort
-                $w' = a_0a_1a_2 \in \Sigma^3$ mit $w \neq w'$ gewählt werden.
-                Das Suffix von $w'$ soll also dem Prefix von $w$ entsprechen.
-                Die Überlegung dahinter ist folgende:
-                Sei $\sigma  = \sigma_0\sigma_1\sigma_2 \dotsm \in \Sigma^\omega$ ein unendlich langes Wort über
-                $\Sigma$. $\sigma$ representiere die Folge beim Roulette
-                beobachteter Zahlen.
-                Nun gebe es ein Teilwort $\sigma_i\sigma_{i+1}\sigma_{i+2} = w$,
-                welches das erste dieser Art in $\sigma$ ist.
-                Ist $i = 0$ so ist $w$ der Beginn von $\sigma$ und der
-                Gegenspieler hat gewonnen. Ist $i > 0$, so hat der Teufel die
-                Chance zu gewinnen -- wenn $\sigma_{i+1} = a_0$ -- bevor die
-                Sequenz des Gegenspielers komplett ist. Denn bevor der Zustand
-                $\sigma_1\sigma_2\sigma_3$ erreicht wird, muss sich die
-                Markovkette im Zustand $r\sigma_1\sigma_2$ oder
-                $s\sigma_1\sigma_2$ befinden.
-
-                Im Beispiel von Teilaufgabe a) hat der Teufel entsprechend
-                gewählt und gewinnt mit einer Wahrscheinlichkeit von
-                $\nicefrac{2}{3}$.
-
-
+                Intuitiv würden wir dem Teufel die folgende Strategie empfehlen:
+                
+                Der Gegenspieler vermutet, dass die Wahl von $w$ beliebig ist, da 
+                das eintreten aller $w$ gleichwahrscheinlich ist. Analysiert man die 
+                4 Fälle der möglichen Übergangswahrscheinlichkeiten, fällt auf, dass 
+                dies nicht korrekt ist, da die Wahrscheinlichkeit von auftretenden Präfixen 
+                berücksichtigt werden muss, und nicht das gesamte Wort an sich.
+                
+                Intuitiv nehmen wir an, dass der Dritte Fall mit dem Schema $xxy$ die beste 
+                Gewinnwahrscheinlichkeit mit sich bringt. Daher sollte der Teufel ein Wort dieses
+                Falls derart oft wählen, dass der Gegenspieler keinen verdacht schöpft und weiterhin
+                an die Gleichverteilung der Wahrscheinlichkeiten glaubt, der Teufel jedoch profitiert.
         \end{enumerate}
 
 \end{enumerate}
