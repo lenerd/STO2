@@ -67,21 +67,20 @@
    \item
    \item 
    
-     Eine Invariante Verteilung setzt vorraus, dass $\pi = \pi \cdot P$.
+     Eine Invariante Verteilung setzt vorraus, dass $\pi = \pi \cdot P$,\\ wobei $\pi$ ein stochstischer Vektor ist.
    
      \begin{enumerate}
       \item
-	
 	\begin{equation*}
 	 \pi = \pi \cdot P \\
 	 \end{equation*}
 	 \begin{equation*}
 	  \begin{pmatrix}
-	   p1 & p2 & p3
+	   p_1 & p_2 & p_3
 	  \end{pmatrix}
 	  =
 	  \begin{pmatrix}
-	   p1 & p2 & p3
+	   p_1 & p_2 & p_3
 	  \end{pmatrix}
 	  \cdot
 	  \begin{pmatrix}
@@ -91,43 +90,128 @@
 	  \end{pmatrix}
 	\end{equation*}
 
-      Daraus ergiebt sich das Gleichungssystem:
+      Daraus ergiebt sich das LGS:
       
       \begin{equation}
-       p1 = \frac23 p2 + \frac13 p3 
+       p_1 = \frac13 p_2 + \frac23 p_3 
       \end{equation}
       \begin{equation}
-       p2 = \frac13 p1 + \frac23 p3 
+       p_2 = \frac23 p_1 + \frac13 p_3 
       \end{equation}       
       \begin{equation}
-	p3 = \frac23 p1 + \frac13 p2
+	p_3 = \frac13 p_1 + \frac23 p_2
       \end{equation}       
-      
+           
       \begin{equation}
 	\begin{split}
-       p1 &= \frac23 p2 + \frac13 (p3 = \frac23 p1 + \frac13 p2) \\
-       \Rightarrow p1 &= \frac23 p2 + \frac29 p1 + \frac19 p2 \\
-       \Rightarrow \frac79 p1 &= \frac79 p2 \\
-       \Rightarrow p1 &= p2 \\
-       \Rightarrow p3 &= \frac23 p1 + \frac13 p1 \\
-       \Rightarrow p3 &= p1
+       \Rightarrow p_1 &= \frac13 p_2 + \frac23 \left(\frac13 p_1 + \frac23 p_2\right) \\
+       \Rightarrow p_1 &= \frac13 p_2 + \frac29 p_1 + \frac49 p_2 \\
+       \Rightarrow \frac79 p_1 &= \frac79 p_2 \\
+       \Rightarrow p_1 &= p_2 \\
+       \Rightarrow p_3 &= \frac13 p_1 + \frac23 p_1 \\
+       \Rightarrow p_3 &= p_1
 	\end{split}
       \end{equation}
       
-      Folglich ist $\pi = (1,1,1)$ die einzige Invariante Verteilung und bis auf eine multiplikative Konstante stets eindeutig.
+      Folglich ist $\pi = \left(\frac13,\frac13,\frac13\right)$ die eindeutige invariante Verteilung. 
       
-      Da E endlich ist und eine einduetige invariante Verteilung existiert, ist $(X_n)_{n\in\N_0}$ irreduzibel.
+      Da $p_{ij} > 0$ für $i\neq j$ ist jedes Ereignis mit einem Schritt aus jedem anderen Ereignis erreichbar, somit ist
+      der Ereignisraum irreduzibel.
+      
+      Da zusätzlich auch $p_{ii}=0$ gilt, ist direkt ersichtlich, dass jedes Ereignis periodisch
+      mit $d_i=2$ ist, folglich ist $(X_n)_{n\in\N_0}$ periodisch.	
+	
+      \item
+	\begin{equation*}
+	 \pi = \pi \cdot P \\
+	 \end{equation*}
+	 \begin{equation*}
+	  \begin{pmatrix}
+	   p_1 & p_2 & p_3
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	   p_1 & p_2 & p_3
+	  \end{pmatrix}
+	  \cdot
+	  \begin{pmatrix}
+	    \frac14 & 0 & \frac34 \\
+	    0 & 1 & 0 \\
+	    \frac12 & 0 & \frac12 
+	  \end{pmatrix}
+	\end{equation*}
 
-      Da $p_{ii}^{(n)} > 0$ für alle $n \in \N$ und alle $i \in E$ ist $(X_n)_{n\in\N_0}$ weder periodisch noch aperiodisch.
-	
+      Daraus ergiebt sich das Gleichungssystem:
+      
+      \begin{equation} \label{eq:3.3.b.I}
+       p_1 = \frac14 p_1 + \frac12 p_3 \Rightarrow \frac34 p_1 = \frac12 p_3 \Rightarrow p_1 = \frac23 p_3
+      \end{equation}
+      \begin{equation}
+       p_2 = p_2 
+      \end{equation}       
+      \begin{equation} \label{eq:3.3.b.III}
+	p_3 = \frac34 p_1 + \frac12 p_3
+      \end{equation}       
+
+      Folglich ist $\pi=\left(k,c,\frac23k\right)$ mit $1 = c + \frac53k$  die invariante Veteilung.
+      
+      Irreduzibilität nicht gegeben. Zum einen, da das Ereignis 2 absorbierend 
+      und somit von ihm aus gehend kein anderer erreichbar ist.
+      
+      Für das Ereignis 2 ist durch die Absorbtion keine Periodizität gegeben; 
+      da $p_{ii}>0$ für $i \in E\setminus\{2\}$ sind alle anderen Ereignisse aperiodisch.
+      
+      
 	
       \item
-	Irreduzibilität nicht gegeben, da der Zustand 2 absorbierend 
-	und somit von ihm aus gehend kein anderer erreichbar ist. 
-	
-      \item
-	Irreduzibilität nicht gegeben, da die Zustände $\{2,3\}$ absorbierend 
-	und somit von ihm aus gehend kein anderer erreichbar ist. 
+      
+      \begin{equation*}
+	 \pi = \pi \cdot P \\
+	 \end{equation*}
+	 \begin{equation*}
+	  \begin{pmatrix}
+	   p_1 & p_2 & p_3
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	   p_1 & p_2 & p_3
+	  \end{pmatrix}
+	  \cdot
+	  \begin{pmatrix}
+	    0 & \frac14 & \frac34 \\
+	    1 & 0 & 0 \\
+	    1 & 0 & 0
+	  \end{pmatrix}
+	\end{equation*}
+
+      Daraus ergiebt sich das Gleichungssystem:
+      
+      \begin{equation} \label{3.3.c.I}
+       p_1 = p_2 + p_3
+      \end{equation}
+      \begin{equation} \label{3.3.c.II}
+       p_2 = \frac14 p_1
+      \end{equation}       
+      \begin{equation} \label{3.3.c.III}
+	p_3 = \frac34 p_1
+      \end{equation}  
+      
+      Hieraus lässt sich die invariante Verteilung $\pi = \left(\frac12, \frac18, \frac38\right)$ ablesen, welche eindeutig ist.
+      
+      Der Zustandsraum $E$ ist irreduzibel, da aus den Gleichungen (\ref{3.3.c.I}) bis (\ref{3.3.c.III}) ersichtlich wird, dass jedes Ereignis von 
+      jedem anderen Ereignis in maximal 2 Schritten erreicht werden kann.
+      
+      Betrachten wir die Periodizität der einzelnen Zustände, ergibt sich analog zu vorhergehender Aussage:
+      
+      $p^{(n)}_{ii}$ mit n = 
+      $\begin{cases} 
+	\{ 2,4,6,\ldots \} &, i = 1 \\
+	\{ 2,4,6,\ldots\} &, i = 2 \\
+	\{ 2,4,6,\ldots\} &, i = 3
+      \end{cases}
+      $
+      
+      Folglich haben alle Ereignisse die gleiche Periodizität $d_i=2$ und somit ist $(X_n)_{n\in\N_0}$ periodisch.
      \end{enumerate}
 
 
