@@ -63,8 +63,157 @@
 \maketitle
 
 \begin{enumerate}[label=\bfseries \blattnr.\arabic*]
+    \item
+        \begin{enumerate}[label=\alph*)]
+            \item
+                \begin{behaupt}
+                    $x_i = 1$ für alle $i \in T$ ist eine Lösung des linearen
+                    Gleichungssystems
+                    \begin{equation*}
+                        x_i = \sum_{c \in C} p_{ic} + \sum_{j \in T} p_{ij} x_j
+                        \text{ .}
+                    \end{equation*}
+                \end{behaupt}
+                \begin{proof}
+                    Sei $x_i = 1$ für alle $i \in T$.
+                    \begin{equation*}
+                        \begin{split}
+                            \sum_{c \in C} p_{ic} + \sum_{j \in T} p_{ij} x_j
+                            &= \sum_{c \in C} p_{ic} + \sum_{j \in T} p_{ij} \\
+                            &= \sum_{k \in E = C \cup T} p_{ik} \\
+                            &= 1 = x_i
+                        \end{split}
+                    \end{equation*}
+                \end{proof}
+
+                \begin{behaupt}
+                    Aus den drei Aussagen folgt die Behauptung.
+                \end{behaupt}
+                \begin{proof}
+                    Wir wissen:
+                    \begin{itemize}
+                        \item
+                            $x_i = \alpha_i(C)$ ist eine Lösung für das LGS.
+                        \item
+                            $x_i = 1$ ist eine Lösung für das LGS.
+                        \item
+                            Die Lösung ist eindeutig für jede Form der
+                            Inhomogenität, also auch für $\gamma_i = \sum_{c
+                            \in C} p_{ic}$.
+                    \end{itemize}
+                    Dann muss $\alpha_i(C) = x_i = 1$ für alle $i \in T$
+                    gelten.
+                \end{proof}
+
+            \item
+                \begin{behaupt}
+                    $x_i = 1$ für $i \in \N$ ist eine Lösung für
+                    \begin{equation*}
+                        x_i = p_{i0} + \sum_{j=1}^\infty p_{ij} x_j
+                        \text{ .}
+                    \end{equation*}
+                \end{behaupt}
+                \begin{proof}
+                    Sei $x_i = 1$ für alle $i \in \N$.
+                    Zunächst betrachten wir den Fall $1 < i \in \N$.
+                    \begin{equation*}
+                        \begin{split}
+                            p_{i0} + \sum_{j=1}^\infty p_{ij} x_j
+                            &= 0 + p_{i,i-1} x_{i-1} + p_{i,i+1} x_{i+1} \\
+                            &= (1-p) \cdot 1 + p \cdot 1 \\
+                            &= (1-p) + p \\
+                            &= 1 = x_i
+                        \end{split}
+                    \end{equation*}
+                    Nun betrachten wir den Fall $i = 1$.
+                    \begin{equation*}
+                        \begin{split}
+                            p_{i0} + \sum_{j=1}^\infty p_{ij} x_j
+                            &= p_{1,0} + p_{1,2} x_{2} \\
+                            &= (1-p)  + p \cdot 1 \\
+                            &= (1-p) + p \\
+                            &= 1 = x_1
+                        \end{split}
+                    \end{equation*}
+                    $x_i = 1$ für alle $i \in \N$ ist also eine Lösung des
+                    linearen Gleichungssystems.
+                \end{proof}
+
+                \begin{behaupt}
+                    $x_i = \left(\frac{1-p}{p}\right)^i$ für $i \in \N$ ist
+                    eine Lösung für
+                    \begin{equation*}
+                        x_i = p_{i0} + \sum_{j=1}^\infty p_{ij} x_j
+                        \text{ .}
+                    \end{equation*}
+                \end{behaupt}
+                \begin{proof}
+                    Sei $x_i = \left(\frac{1-p}{p}\right)^i$ für alle $i \in
+                    \N$.  Zunächst betrachten wir den Fall $1 < i \in \N$.
+                    \begin{equation*}
+                        \begin{split}
+                            p_{i0} + \sum_{j=1}^\infty p_{ij} x_j
+                            &= 0 + p_{i,i-1} x_{i-1} + p_{i,i+1} x_{i+1} \\
+                            &= (1-p) \left( \frac{1-p}{p} \right)^{i-1} +
+                                p \left( \frac{1-p}{p} \right)^{i+1} \\
+                            &= \left( \frac{1-p}{p} \right)^{i-1}
+                                \left( (1-p) + 
+                                p \left( \frac{1-p}{p} \right)^{2} \right) \\
+                            &= \left( \frac{1-p}{p} \right)^{i-1}
+                                \left( (1-p) + \frac{(1-p)^2}{p} \right) \\
+                            &= \left( \frac{1-p}{p} \right)^{i-1}
+                                \left( \frac{p -p^2 +1 -2p +p^2}{p} \right) \\
+                            &= \left( \frac{1-p}{p} \right)^{i-1}
+                                \left( \frac{1-p}{p} \right) \\
+                            &= \left( \frac{1-p}{p} \right)^i = x_i
+                        \end{split}
+                    \end{equation*}
+                    Nun betrachten wir den Fall $i = 1$.
+                    \begin{equation*}
+                        \begin{split}
+                            p_{i0} + \sum_{j=1}^\infty p_{ij} x_j
+                            &= p_{1,0} + p_{1,2} x_{2} \\
+                            &= (1-p) + p \cdot \left(\frac{1-p}{p}\right)^2 \\
+                            &= (1-p) + \frac{(1-p)^2}{p} \\
+                            &= \frac{p -p^2 +1 -2p +p^2}{p} \\
+                            &= \frac{1-p}{p} \\
+                            &= \left(\frac{1-p}{p}\right)^1 = x_1
+                        \end{split}
+                    \end{equation*}
+                    $x_i = \left(\frac{1-p}{p}\right)^i$ für alle $i \in \N$
+                    ist also eine Lösung des linearen Gleichungssystems.
+                \end{proof}
+
+            \item
+                Wir halten $x_i = \left( \frac{1-p}{p} \right)^i$ ($\forall i
+                \in \N$) für die „glaubhaftere“ Lösung.
+
+                Die Wahrscheinlichkeit, das Spiel mit einem Startkapital von
+                $a$ zu verlieren, also in den Zustand $0$ zugelangen, wurde in
+                der Vorlesung mit
+                \begin{equation*}
+                    \alpha_a(0)
+                    = 1 - \frac{1 - \left( \frac{1-p}{p} \right)^a}
+                               {1 - \left( \frac{1-p}{p} \right)^{a+b}}
+                \end{equation*}
+                angegeben. $b$ sei hierbei das Startkapital des Gegenspielers.
+                Da $\frac{1-p}{p} < 1$ gilt $\left( \frac{1-p}{p} \right)^{a+b}
+                \to 0$ für $b \to \infty$.
+                Für den Grenzwert der Absorbtionswahrscheinlichkeit ergibt sich
+                \begin{equation*}
+                    \begin{split}
+                        \lim_{b \to \infty} \alpha_a(0)
+                        &= 1 - \frac{1 - \left( \frac{1-p}{p} \right)^a}
+                                    {1 - 0} \\
+                        &= \left( \frac{1-p}{p} \right)^a = x_a
+                        \text{ .}
+                    \end{split}
+                \end{equation*}
+
+        \end{enumerate}
+
    \item
-   \item
+
    \item 
    
      Eine Invariante Verteilung setzt vorraus, dass $\pi = \pi \cdot P$,\\ wobei $\pi$ ein stochstischer Vektor ist.
