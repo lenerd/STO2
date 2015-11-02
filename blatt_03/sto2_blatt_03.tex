@@ -213,6 +213,101 @@
         \end{enumerate}
 
    \item
+       \begin{enumerate}
+           \item
+               $\tau$ ist eine Zufallsvariable.
+
+           \item
+               Sei $m_i := \e[\tau\ |\ X_0 = i]$.
+               \begin{behaupt}
+                   Es gilt
+                   \begin{equation*}
+                       m_i = 1 + \sum_{j \in T} p_{ij}m_j
+                       = 1 + \sum_{j \in E} p_{ij}m_j
+                       , \qquad i \in T
+                   \end{equation*}
+                   mit $m_c = 0$ für alle $c \in C$.
+               \end{behaupt}
+               \begin{proof}
+                   Es sei $i \in T$.
+                   \begin{equation*}
+                       \begin{split}
+                           m_i &= \e[\tau\ |\ X_0 = i] \\
+                               &\overset{(1)}{=} \sum_{j \in E}
+                                    \e[\tau\ |\ X_1 = j, X_0 = i]
+                                    \cdot \prob(X_1 = j\ |\ X_0 = i) \\
+                               &\overset{(2)}{=} \sum_{j \in E}
+                                    \e[\tau\ |\ X_1 = j]
+                                    \cdot p_{ij} \\
+                               &= \sum_{j \in E}
+                                    \e[\tau + 1\ |\ X_0 = j]
+                                    \cdot p_{ij} \\
+                               &\overset{(3)}{=} \sum_{j \in E}
+                                    (\e[\tau\ |\ X_0 = j] + 1)
+                                    \cdot p_{ij} \\
+                               &= \sum_{j \in E} (m_j + 1) \cdot p_{ij} \\
+                               &= \sum_{j \in E} p_{ij} +
+                                    \sum_{j \in E} p_{ij} m_j \\
+                               &= 1 + \sum_{j \in E} p_{ij} m_j \\
+                               &\overset{(4)}{=} 1 + \sum_{j \in T} p_{ij} m_j
+                       \end{split}
+                   \end{equation*}
+                   Wir verwenden den Satz von der totalen Wahrscheinlichkeit
+                   $(1)$, die Markov-Eigenschaft $(2)$ und die Linearität des
+                   Erwartungswertes $(3)$.
+                   $(4)$ gilt, da $p_{ij} = 0$ für alle $j \in C = E
+                   \setminus T$.
+               \end{proof}
+
+           \item
+               \begin{behaupt}
+                   \begin{equation*}
+                       m_i = i(a+b-i)
+                   \end{equation*}
+                   ist die erwartete Spieldauer bei Startkapital $i = a$ für
+                   Spieler $A$, einem festen Gesamtkapital $a+b$ und $p =
+                   \frac{1}{2}$ mit $m_c = 0$ für alle $c \in C$.
+               \end{behaupt}
+               \begin{proof}
+                   Sei $0 < i < a + b$.
+                   \begin{equation*}
+                       \begin{split}
+                           m_i &= 1 + \sum_{j \in E} p_{ij}m_j \\
+                               &= 1 + p_{i,i-1}m_{i-1} + p_{i,i+1}m_{i+1} \\
+                               &= 1 + \frac{1}{2} \cdot m_{i-1} + \frac{1}{2}
+                                    \cdot m_{i+1} \\
+                               &= 1 + \frac{1}{2} \Big( (i-1)(a+b-i+1) +
+                                    (i+1)(a+b-i-1) \Big) \\
+                               &= 1 + \frac{1}{2} \Big( (i-1)(a+b-i+1) +
+                                    (i-1)(a+b-i-1) + 2 \cdot (a+b-i-1) \Big) \\
+                               &= 1 + \frac{1}{2} \Big( (i-1)(2a+2b-2i) +
+                                    2 \cdot (a+b-i-1) \Big) \\
+                               &= 1 + (i-1)(a+b-i) + (a+b-i-1) \\
+                               &= (i-1)(a+b-i) + (a+b-i) \\
+                               &= i(a+b-i)
+                       \end{split}
+                   \end{equation*}
+               \end{proof}
+               \begin{behaupt}
+                   Für eine gleichmäßige Verteilung des Startkapitals wird
+                   $m_i$ maximal.
+               \end{behaupt}
+               \begin{proof}
+                   Um ein Extremum zu finden, setzen wir die erste Ableitung von
+                   $m_i$ gleich $0$.
+                   \begin{align*}
+                       m_i &= i(a+b-i) = i(a+b) - i^2 \\
+                       \frac{\mathrm{d}}{\mathrm{d} i} m_i &= (a+b) -2i \\
+                       \frac{\mathrm{d}^2}{\mathrm{d} i^2} m_i &= -2 \\
+                       0 &= (a+b) -2i \gdw i = \frac{(a+b)}{2}
+                   \end{align*}
+                   Da die zweite Ableitung negativ ist, ist $m_i$ maximal, wenn
+                   $i$ die Hälfte des Gesamtkapitals ist. Dies kann natürlich
+                   nur auftreten, falls $2\ |\ (a+b)$. Andernfalls wird $m_i$
+                   maximal, falls sich $|a-b|=1$.
+               \end{proof}
+
+       \end{enumerate}
 
    \item 
    
