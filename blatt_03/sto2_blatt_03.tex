@@ -213,6 +213,35 @@
         \end{enumerate}
 
    \item
+   
+    \begin{enumerate}
+     \item TODO: Varianz?!
+     \item
+	Wir wählen eine Zufallsvariable Y, welche die Anzahl der Schritte bis zum erreichen eines absorbierenden Zustands zählt.
+	
+	Folglich ist $\mathbb{E}(\tau|X_0=i) = \mathbb{E}(Y|X_0=i)$, wobei
+	
+	\begin{equation*}
+	  \begin{split}
+	    \mathbb{E}(Y|X_0=i) 
+		&= \sum_{n=1}^\infty \mathbb{P}(Y=n|X_0=i) \cdot n \\
+		&= 1 + \sum_{n=1}^\infty \sum_{j\in T} \mathbb{P}(Y=n, X_1=j | X_0=i) \cdot n \\
+		&= 1 + \sum_{j\in T} \sum_{n=1}^\infty \mathbb{P}(Y=n|X_1 = j, X_0=i) \cdot \mathbb{P}(X_1=j|X_0=i) \cdot n \\
+		&= 1 + \sum_{j\in T} \sum_{n=1}^\infty \mathbb{P}(Y=n|X_1 = j) \cdot p_{ij} \cdot n \\
+		&= 1 + \sum_{j\in T} p_{ij} \cdot \sum_{n=1}^\infty \mathbb{P}(Y=n|X_0=j) \cdot n \\
+		&= 1 + \sum_{j\in T} p_{ij} \cdot \mathbb{E}(Y|X_0=j)
+	  \end{split}
+	\end{equation*}
+	
+	Wobei $\mathbb{E}(Y|X_0=j)$ dem $m_j$ entspricht.
+	
+	Da $m_c = \mathbb{E}(Y|X_0=c) = 0$ gegeben ist, kann dies verallgemeinert werden:
+	$$ \mathbb{E}(Y|X_0=i) = 1 + \sum_{j\in T} p_{ij} \cdot \mathbb{E}(Y|X_0=j) = 1 + \sum_{j\in E} p_{ij} \cdot \mathbb{E}(Y|X_0=j)$$
+	da durch die Multiplikation mit dem Faktor 0 alle Therme für $c \in C$ ignoriert werden, welche durch die Erweiterung hinzukommen, da gerade $E\setminus T=C$.
+
+    \end{enumerate}
+
+   
 
    \item 
    
