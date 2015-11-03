@@ -342,7 +342,7 @@
 
    \item 
    
-     Eine Invariante Verteilung setzt vorraus, dass $\pi = \pi \cdot P$,\\ wobei $\pi$ ein stochstischer Vektor ist.
+     Eine invariante Verteilung setzt vorraus, dass $\pi = \pi \cdot P$,\\ wobei $\pi$ ein stochastischer Vektor ist.
    
      \begin{enumerate}
       \item
@@ -365,7 +365,7 @@
 	  \end{pmatrix}
 	\end{equation*}
 
-      Daraus ergiebt sich das LGS:
+      Daraus ergibt sich das LGS:
       
       \begin{equation}
        p_1 = \frac13 p_2 + \frac23 p_3 
@@ -393,8 +393,21 @@
       Da $p_{ij} > 0$ für $i\neq j$ ist jedes Ereignis mit einem Schritt aus jedem anderen Ereignis erreichbar, somit ist
       der Ereignisraum irreduzibel.
       
-      Da zusätzlich auch $p_{ii}=0$ gilt, ist direkt ersichtlich, dass jedes Ereignis periodisch
-      mit $d_i=2$ ist, folglich ist $(X_n)_{n\in\N_0}$ periodisch.	
+      % Da zusätzlich auch $p_{ii}=0$ gilt, ist direkt ersichtlich, dass jedes Ereignis periodisch
+      % mit $d_i=2$ ist, folglich ist $(X_n)_{n\in\N_0}$ periodisch.	
+      Da $P^2$ nur positive Einträge enthält und $P$ eine stochastische Matrix
+      ist, enhalten auch alle höheren Potenzen von $P$ ausschließlich positive
+      Einträge.
+      \begin{equation*}
+          P^2 =
+          \begin{pmatrix}
+              \frac{4}{9} & \frac{1}{9} & \frac{4}{9} \\
+              \frac{4}{9} & \frac{4}{9} & \frac{1}{9} \\
+              \frac{1}{9} & \frac{4}{9} & \frac{4}{9} \\
+          \end{pmatrix}
+      \end{equation*}
+      Damit gilt $p_{ii}^{(n)} > 0$ für alle $n > 1$ und alle $i \in E$. Daher
+      sind alle Zustände aperiodisch.
 	
       \item
 	\begin{equation*}
@@ -416,7 +429,7 @@
 	  \end{pmatrix}
 	\end{equation*}
 
-      Daraus ergiebt sich das Gleichungssystem:
+      Daraus ergibt sich das Gleichungssystem:
       
       \begin{equation} \label{eq:3.3.b.I}
        p_1 = \frac14 p_1 + \frac12 p_3 \Rightarrow \frac34 p_1 = \frac12 p_3 \Rightarrow p_1 = \frac23 p_3
@@ -428,13 +441,13 @@
 	p_3 = \frac34 p_1 + \frac12 p_3
       \end{equation}       
 
-      Folglich ist $\pi=\left(k,c,\frac23k\right)$ mit $1 = c + \frac53k$  die invariante Veteilung.
+      Folglich sind alle $\pi=\left(k,c,\frac23k\right)$ mit $1 = c + \frac53k$  die invarianten Veteilungen.
       
-      Irreduzibilität nicht gegeben. Zum einen, da das Ereignis 2 absorbierend 
-      und somit von ihm aus gehend kein anderer erreichbar ist.
+      Irreduzibilität nicht gegeben, da der Zustand 2 absorbierend 
+      und somit von ihm ausgehend kein anderer erreichbar ist.
       
-      Für das Ereignis 2 ist durch die Absorbtion keine Periodizität gegeben; 
-      da $p_{ii}>0$ für $i \in E\setminus\{2\}$ sind alle anderen Ereignisse aperiodisch.
+      Für den Zustand 2 ist durch die Absorbtion keine Periodizität gegeben; 
+      da $p_{ii}>0$ für $i \in E\setminus\{2\}$ sind auch alle anderen Zustände aperiodisch.
       
       
 	
@@ -459,7 +472,7 @@
 	  \end{pmatrix}
 	\end{equation*}
 
-      Daraus ergiebt sich das Gleichungssystem:
+      Daraus ergibt sich das Gleichungssystem:
       
       \begin{equation} \label{3.3.c.I}
        p_1 = p_2 + p_3
@@ -473,18 +486,33 @@
       
       Hieraus lässt sich die invariante Verteilung $\pi = \left(\frac12, \frac18, \frac38\right)$ ablesen, welche eindeutig ist.
       
-      Der Zustandsraum $E$ ist irreduzibel, da aus den Gleichungen (\ref{3.3.c.I}) bis (\ref{3.3.c.III}) ersichtlich wird, dass jedes Ereignis von 
-      jedem anderen Ereignis in maximal 2 Schritten erreicht werden kann.
+      Der Zustandsraum $E$ ist irreduzibel, da sich jeder Zustand von jedem
+      anderen aus in maximal zwei Schritten erreichen lässt. Entweder direkt
+      (2 und 3 von 1 aus und umgekehrt) oder über 1 (zwischen 2 und 3).
+      %% Das sehe ich irgendwie nicht.
+      % Der Zustandsraum $E$ ist irreduzibel, da aus den Gleichungen (\ref{3.3.c.I}) bis (\ref{3.3.c.III}) ersichtlich wird, dass jedes Ereignis von 
+      % jedem anderen Ereignis in maximal 2 Schritten erreicht werden kann.
       
-      Betrachten wir die Periodizität der einzelnen Zustände, ergibt sich analog zu vorhergehender Aussage:
+      Betrachten wir die Periodizität der einzelnen Zustände:
+      \begin{equation*}
+          P^{2k+1} =
+          \begin{pmatrix}
+              0 & \frac{1}{4} & \frac{3}{4} \\
+              1 & 0 & 0 \\
+              1 & 0 & 0 \\
+          \end{pmatrix}
+          \text{ und }
+          P^{2k} =
+          \begin{pmatrix}
+              1 & 0 & 0 \\
+              0 & \frac{1}{4} & \frac{3}{4} \\
+              0 & \frac{1}{4} & \frac{3}{4} \\
+          \end{pmatrix}
+          \qquad
+          \forall k \in \N_0
+      \end{equation*}
       
-      $p^{(n)}_{ii}$ mit n = 
-      $\begin{cases} 
-	\{ 2,4,6,\ldots \} &, i = 1 \\
-	\{ 2,4,6,\ldots\} &, i = 2 \\
-	\{ 2,4,6,\ldots\} &, i = 3
-      \end{cases}
-      $
+      Es gilt also $p^{(n)}_{ii} > 0$ mit $n \in \{ 2,4,6,\ldots \}$ und $i \in E$.
       
       Folglich haben alle Ereignisse die gleiche Periodizität $d_i=2$ und somit ist $(X_n)_{n\in\N_0}$ periodisch.
      \end{enumerate}
