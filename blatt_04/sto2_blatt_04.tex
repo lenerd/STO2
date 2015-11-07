@@ -78,8 +78,64 @@
     \item 
         \begin{enumerate}
             \item
+                Die Zufallsvariable $Y$ sei mit Parameter $\lambda$ verteilt:
+                $Y \sim \text{Exp}(\lambda)$.
+                \begin{behaupt}
+                    Es gilt $\prob(Y > y) = e^{-\lambda y}$ für $y \geq 0$.
+                \end{behaupt}
+                \begin{proof}
+                    \begin{equation*}
+                        \prob(Y > y)
+                        = 1 - \prob(Y \leq y)
+                        = 1 - F_Y(y)
+                        = 1 - (1 - e^{-\lambda y})
+                        = e^{-\lambda y}
+                    \end{equation*}
+                \end{proof}
+
+                \begin{behaupt}
+                    Die Exponentialverteilung ist gedächtnislos:
+                    Es gilt
+                    \begin{equation*}
+                        \prob(Y > s + t\ |\ Y > s) = \prob(Y > t)
+                        \text{ für }
+                        s,t \geq 0
+                        \text{ .}
+                    \end{equation*}
+                \end{behaupt}
+                \begin{proof}
+                    \begin{equation*}
+                        \begin{split}
+                            \prob(Y > s + t\ |\ Y > s)
+                            &= \frac{\prob(Y > s+t, Y > s)}{\prob(Y > s)} \\
+                            &= \frac{\prob(Y > s+t)}{\prob(Y > s)} \\
+                            &= \frac{e^{-\lambda (s+t)}}{e^{-\lambda s}} \\
+                            &= e^{-\lambda t} \\
+                            &= \prob(Y > t)
+                        \end{split}
+                    \end{equation*}
+                \end{proof}
 
             \item
+                Es seien $Y_1, \dotsc, Y_n$ unabhängig mit $Y_i \sim
+                \text{Exp}(\lambda_i)$ für $i = 1, \dotsc, n$.
+                \begin{behaupt}
+                    $\min\{Y_1, \dotsc, Y_n\}$ ist exponentialverteilt mit
+                    Parameter $\sum_{i=1}^n \lambda_i$.
+                \end{behaupt}
+                \begin{proof}
+                    \begin{equation*}
+                        \begin{split}
+                            \prob(\min\{Y_1, \dotsc, Y_n\} > y)
+                            &= \prob(Y_1 > y, \dotsc, Y_n > y) \\
+                            &= \prob(Y_1 > y) \dotsm \prob(Y_n > y) \\
+                            &= e^{-\lambda_1 y} \dotsm e^{-\lambda_n y} \\
+                            &= e^{- \left( \sum_{i=1}^n \lambda_i \right) y} \\
+                            &\Rightarrow \min\{Y_1, \dotsc, Y_n\} \sim
+                            \text{Exp} \left( \sum_{i=1}^n \lambda_i \right)
+                        \end{split}
+                    \end{equation*}
+                \end{proof}
 
             \item
 
