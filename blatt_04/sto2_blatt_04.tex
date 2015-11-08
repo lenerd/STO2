@@ -65,7 +65,89 @@
 
 \begin{enumerate}[label=\bfseries \blattnr.\arabic*]
     \item
+    $G(V,E) \to G'(V', E')$ mit $V' = V$, $E' = E\setminus\{(f,f)\}$
 
+    \begin{minipage}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.75\textwidth]{assets/graph-vorher.png}     
+    \end{minipage}
+    \begin{minipage}{0.01\textwidth}
+    \centering
+    $\to$     
+    \end{minipage}
+    \begin{minipage}{0.24\textwidth}
+     \centering
+     \includegraphics[width=0.75\textwidth]{assets/graph-nachher.png}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+     \begin{equation*}
+	A' = \begin{pmatrix}
+	     0 & 1 & 1 & 0 & 0 & 0 \\
+	     0 & 0 & 0 & 0 & 0 & 0 \\
+	     1 & 1 & 0 & 0 & 1 & 0 \\
+	     0 & 0 & 0 & 0 & 1 & 0 \\
+	     0 & 0 & 0 & 1 & 0 & 1 \\
+	     0 & 0 & 0 & 1 & 0 & \textbf{0}
+	    \end{pmatrix}
+     \end{equation*}
+    \end{minipage}
+    
+    \begin{minipage}{0.5\textwidth}
+      \begin{equation*}
+	H' = \begin{pmatrix}
+	     0 & \frac12 & \frac12 & 0 & 0 & 0 \\
+	     0 & 0 & 0 & 0 & 0 & 0 \\
+	     \frac13 & \frac13 & 0 & 0 & \frac13 & 0 \\
+	     0 & 0 & 0 & 0 & 1 & 0 \\
+	     0 & 0 & 0 & \frac12 & 0 & \frac12 \\
+	     0 & 0 & 0 & \textbf{1} & 0 & \textbf{0}
+	    \end{pmatrix}
+     \end{equation*}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+     \begin{equation*}
+	S' = \begin{pmatrix}
+	     0 & \frac12 & \frac12 & 0 & 0 & 0 \\
+	     \frac16 & \frac16 & \frac16 & \frac16 & \frac16 & \frac16 \\
+	     \frac13 & \frac13 & 0 & 0 & \frac13 & 0 \\
+	     0 & 0 & 0 & 0 & 1 & 0 \\
+	     0 & 0 & 0 & \frac12 & 0 & \frac12 \\
+	     0 & 0 & 0 & \textbf{1} & 0 & \textbf{0}
+	    \end{pmatrix}
+     \end{equation*}
+    \end{minipage}
+    
+    $G' = \alpha S' + (1-\alpha)E$ mit $\alpha = \frac 9{10}$:
+    
+    \begin{equation*}
+	G' = \begin{pmatrix}
+	     \frac{1}{60} & \frac{28}{60} & \frac{28}{60} & \frac{1}{60} & \frac{1}{60} & \frac{1}{60} \\
+	     \frac{10}{60} & \frac{10}{60} & \frac{10}{60} & \frac{10}{60} & \frac{10}{60} & \frac{10}{60} \\
+	     \frac{19}{60} & \frac{19}{60} & \frac{1}{60} & \frac{1}{60} & \frac{1}{60} & \frac{19}{60} \\
+	     \frac{1}{60} & \frac{1}{60} & \frac{1}{60} & \frac{1}{60} & \frac{55}{60} & \frac{1}{60} \\
+	     \frac{1}{60} & \frac{1}{60} & \frac{1}{60} & \frac{28}{60} & \frac{1}{60} & \frac{28}{60} \\
+	     \frac{1}{60} & \frac{1}{60} & \frac{1}{60} & \frac{55}{60} & \frac{1}{60} & \frac{1}{60}
+	    \end{pmatrix}
+     \end{equation*}
+     
+     Dies führt laut Wolfram-Alpha für den Eigenwert 1 zum Eigenvektor:
+     
+    \begin{equation*}
+	v_1 \approx (0.19804, 0.287159, 0.220891, 1.83373, 1.78213, 1)
+     \end{equation*}
+     
+     Wir teilen jeden Eintrag durch die Summe, damit ein stochastischer Vektor entsteht:
+     
+     \begin{equation*}
+      \Rightarrow \pi \approx (0.0372119, 0.0539575, 0.0415057, 0.34456, 0.334864, 0.187901)
+     \end{equation*}
+     
+     Somit ergibt sich für G' die Rangfolge: D, E, F, B, C, A. 
+     
+     Vergleichen wir dies mit der Rangfolge, die auf Basis von G errechnet wurde (F, D, E, B, C, A)
+     sehen wir, dass F in G' zwei Rangplätze verloren hat. Das entfernen des Selbst-Links hatte also 
+     drastische Folgen.
+    
     \item
         \begin{enumerate}
             \item
