@@ -307,21 +307,26 @@
                 Es seien $Y_1, \dotsc, Y_n$ unabhängig mit $Y_i \sim
                 \text{Exp}(\lambda_i)$ für $i = 1, \dotsc, n$.
                 \begin{behaupt}
-                    $\min\{Y_1, \dotsc, Y_n\}$ ist exponentialverteilt mit
-                    Parameter $\sum_{i=1}^n \lambda_i$.
+                    $\min\{Y_1, \dotsc, Y_n\} \sim Exp(max\{\lambda_1, \dotsc, \lambda_n\})$.
                 \end{behaupt}
                 \begin{proof}
+		    Sei $\min\{Y_1, \dotsc, Y_n\} = Y_k \sim Exp(\lambda_k)$.
+		    Damit bleibt zu zeigen: Für welches $\lambda_i$ wird das zugehörige $Y_i$ minimal?
+		    
+		    Wir gehen davon aus dass $F_{Y_1}(y) < F_{Y_2}(y)$ für $y>0$.
                     \begin{equation*}
                         \begin{split}
-                            \prob(\min\{Y_1, \dotsc, Y_n\} > y)
-                            &= \prob(Y_1 > y, \dotsc, Y_n > y) \\
-                            &= \prob(Y_1 > y) \dotsm \prob(Y_n > y) \\
-                            &= e^{-\lambda_1 y} \dotsm e^{-\lambda_n y} \\
-                            &= e^{- \left( \sum_{i=1}^n \lambda_i \right) y} \\
-                            &\Rightarrow \min\{Y_1, \dotsc, Y_n\} \sim
-                            \text{Exp} \left( \sum_{i=1}^n \lambda_i \right)
+                            \Rightarrow 1 - \frac1{e^{-\lambda_1y}} &< 1 - \frac1{e^{-\lambda_2y}} \\
+                            \Rightarrow - \frac1{e^{-\lambda_1y}} &< - \frac1{e^{-\lambda_2y}} \\
+                            \Rightarrow \frac1{e^{-\lambda_1y}} &> \frac1{e^{-\lambda_2y}} \\
+                            \Rightarrow e^{-\lambda_2y} &> e^{-\lambda_1y} \\
+                            \Rightarrow -\lambda_2y &> -\lambda_1y \\
+                            \Rightarrow \lambda_2 &< \lambda_1 \\
                         \end{split}
                     \end{equation*}
+                    
+                    Somit gilt: $F_{Y_1}(y) < F_{Y_2}(y) \Rightarrow \lambda_2 < \lambda_1 \\$ und folglich
+                    $\min\{Y_1, \dotsc, Y_n\} \sim Exp(\max\{\lambda_1, \dotsc, \lambda_n\})$.
                 \end{proof}
 
             \item
