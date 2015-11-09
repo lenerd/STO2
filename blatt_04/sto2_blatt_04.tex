@@ -184,20 +184,24 @@
                             &= \int_{-\infty}^\infty y \cdot f_Y(y) \dif y \\
                             &= \int_0^\infty y \cdot
                                 \lambda e^{-\lambda y} \dif y \\
-                            &= \left[ -y \lambda^2 e^{-\lambda y}
-                                \right]_0^\infty
-                                + \int_0^\infty e^{-\lambda y} \dif y \\
-                            &= \lim_{x \to \infty} \left( -x \cdot \lambda^2
-                                e^{-\lambda \cdot x} \right)
-                                - \left( 0 \cdot -\lambda^2
+                            &\stackrel{a=a+b-b}{=} \int_0^\infty 
+				\left(y \cdot \lambda e^{-\lambda y} 
+				  - 1 \cdot e^{-\lambda y} \right) \dif y 
+				+ \int_0^\infty e^{-\lambda y} \dif y \\
+                            &= \lim_{a \to \infty} \left[ -y e^{-\lambda y}
+                                \right]_0^a
+                                + \lim_{b \to \infty} \left[ -\frac{1}{\lambda} e^{-\lambda y}
+                                \right]_0^b \\
+                            &= \lim_{b \to \infty} \left( -b \cdot 
+                                e^{-\lambda \cdot b} \right)
+                                - \left( - 0 \cdot 
                                 e^{-\lambda \cdot 0} \right)
-                                + \left[ -\frac{1}{\lambda} e^{-\lambda y}
-                                \right]_0^\infty \\
-                            &= 0 -  0 + \lim_{x \to \infty}
-                                \left( -\frac{1}{\lambda} e^{-\lambda \cdot x}
+                                + \lim_{a \to \infty}
+                                \left( -\frac{1}{\lambda} e^{-\lambda \cdot a}
                                 \right) - \left( -\frac{1}{\lambda}
                                 e^{-\lambda \cdot 0} \right) \\
-                            &= 0 - \left(- \frac{1}{\lambda}\right)
+                            &= \lim_{b \to \infty} \left( - \frac{b}{e^{\lambda b}} \right) - 0 + 0 - \left(-\frac1\lambda \right) \\
+                            &\stackrel{l'Hospital}{=} \lim_{b \to \infty} \left( - \frac{1}{\lambda e^{\lambda b}} \right) + \frac1\lambda 
                              = \frac{1}{\lambda}
                         \end{split}
                     \end{equation*}
