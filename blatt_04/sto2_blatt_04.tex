@@ -130,16 +130,26 @@
 	    \end{pmatrix}
      \end{equation*}
      
-     Dies führt laut Wolfram-Alpha für den Eigenwert 1 zum Eigenvektor:
-     
-    \begin{equation*}
-	v_1 \approx (0.19804, 0.287159, 0.220891, 1.83373, 1.78213, 1)
-     \end{equation*}
-     
-     Wir teilen jeden Eintrag durch die Summe, damit ein stochastischer Vektor entsteht:
-     
+     \clearpage
+     Das folgende R-Skript berechnet einen Linkseigenvektor $\pi'$ zu $G'$.
+     \lstinputlisting{eigenvektor.R}
+     Der berechnete Linkseigenvektor zum Eigenwert $1$ lautet
      \begin{equation*}
-      \Rightarrow \pi \approx (0.0372119, 0.0539575, 0.0415057, 0.34456, 0.334864, 0.187901)
+         \pi' \approx
+         \begin{pmatrix}
+             \num{0.0713} & \num{0.1034} & \num{0.0796} & \num{0.6604} &
+             \num{0.6419} & \num{0.3602}
+         \end{pmatrix}
+         \text{ .}
+     \end{equation*}
+     Zu einem stochastischen Vektor normalisiert ergibt sich
+     \begin{equation*}
+         \pi \approx
+         \begin{pmatrix}
+             \num{0.0372} & \num{0.0540} & \num{0.0415} & \num{0.3446} &
+             \num{0.3349} & \num{0.1879}
+         \end{pmatrix}
+         \text{ .}
      \end{equation*}
      
      Somit ergibt sich für G' die Rangfolge: D, E, F, B, C, A. 
@@ -296,6 +306,10 @@
                         \end{split}
                     \end{equation*}
                 \end{proof}
+                Die Wahrscheinlichkeit, dass $Y$ einen Wert $> s+t$ annimmt,
+                gegeben, dass $Y$ schon einen Wert $> s$ hat, ist gleich der
+                Wahrscheinlichkeit, dass $Y > t$ gilt. Es spielt also keine
+                Rolle, was schon „passiert“ ist.
 
             \item
                 Es seien $Y_1, \dotsc, Y_n$ unabhängig mit $Y_i \sim
