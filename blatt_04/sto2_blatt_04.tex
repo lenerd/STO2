@@ -319,6 +319,29 @@
                 \end{proof}
 
             \item
+                \begin{behaupt}
+                    $N_t$ ist Poisson-verteilt mit dem Parameter $\lambda t$.
+                \end{behaupt}
+                \begin{proof}
+                    \begin{equation*}
+                        \begin{split}
+                            \prob(N_t = k)
+                            &= \prob(N_t \geq k) - \prob(N_t \geq k+1) \\
+                            &\overset{(\star)}{=} \prob(S_k \leq t) - \prob(S_{k+1} \leq t) \\
+                            &= F_{S_k}(t) - F_{S_{k+1}}(t) \\
+                            &= 1 - e^{-\lambda t} \sum_{i=0}^{k-1} \frac{(\lambda t)^i}{i!} - 1 + e^{-\lambda t} \sum_{i=0}^k \frac{(\lambda t)^i}{i!} \\
+                            &= e^{-\lambda t} \frac{(\lambda t)^k}{k!} \\
+                            &= \text{Pois}(k)
+                        \end{split}
+                    \end{equation*}
+                    $(\star)$ gilt, aufgrund von
+                    \begin{equation*}
+                        N_t \geq k
+                        \ \gdw\  \max \{n : S_n \leq t \} \geq k
+                        \ \gdw\  S_k \leq t
+                        \text{ .}
+                    \end{equation*}
+                \end{proof}
 
         \end{enumerate}
    
