@@ -77,8 +77,37 @@
     \item
         \begin{enumerate}
             \item
-
-            \item
+	      Es sei $Y \sim \mathcal{N}(\mu, \sigma^2)$ mit der Dichte
+	      \begin{equation*}
+		  f_Y(y) = \frac1{\sigma\sqrt{2\pi}} e^{-\frac{(y-\mu)^2}{2\sigma^2}}
+	      \end{equation*}
+	      
+	      Daraus ergibt sich die Verteilungsfunktion $F_Y(y)$ mit:
+	      \begin{equation*}
+		\begin{split}
+		  F_Y(y) 
+		  &= \int_{-\infty}^y f_Y(t) \dif t \\ 
+		  &= \frac1{\sigma\sqrt{2\pi}} \int_ {-\infty}^y e^{-\frac{(t-\mu)^2}{2\sigma^2}} \dif t\\
+		  &\stackrel{*}{=} \frac1{\sqrt{2\pi}} \int_{-\infty}^{\frac{y-\mu}\sigma} e^{-\frac12z^2} \dif z \\
+		  &= \Phi(y) + \int_y^{(y-\mu)/\sigma} e^{-\frac12z^2} \dif z \text{, mit } \Phi(y) = \frac1{\sqrt{2\pi}} \int_{-\infty}^y e^{\frac12z^2} \dif z \\
+		  & =\Phi\left(\frac{y-\mu}\sigma\right)
+		 \end{split}
+	      \end{equation*}
+	      (*) Substitution mit $\varphi(t) = \frac{t-\mu}{\sigma} = z$, \\
+	      $\varphi'(t) \dif t = \dif z \Leftrightarrow \frac1\sigma \dif t = \dif z \Leftrightarrow dt = \sigma \dif z$.
+	      
+	      Damit ergibt sich für $\mathbb{P}(a < Y \leq b)$:
+	      \begin{equation*}
+		\begin{split}
+		  \mathbb{P}(a < Y \leq b)
+		  &= F_Y(b) - F_Y(a) \\
+		  &= \Phi\left( \frac{b - \mu}\sigma\right) - \Phi\left(\frac{a-\mu}\sigma\right) \\
+		  &= \frac1{\sqrt{2\pi}} \int_{-\infty}^{\frac{b - \mu}\sigma} e^{\frac12z^2} \dif z - \left(\frac1{\sqrt{2\pi}} \int_{-\infty}^{\frac{a-\mu}\sigma} e^{\frac12z^2} \dif z \right) \\
+		  &= \frac1{\sqrt{2\pi}} \int_{\frac{a-\mu}\sigma}^{\frac{b - \mu}\sigma} e^{\frac12z^2} \dif z 
+		 \end{split}
+	      \end{equation*}
+	  
+	  \item
 
         \end{enumerate}
    
