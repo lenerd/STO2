@@ -67,6 +67,24 @@
     \item
         \begin{enumerate}
             \item
+	    
+	    Ist jedem Zeitschritt kommt 1 Werkstück an und die Maschine fällt mit einer Wahrscheinlichkeit von $p$ aus.
+	    
+	    Wenn die Warteschlange leer ist, und die Maschine nicht ausfällt, bleibt die Warteschlange leer. Folglich: $p_{0,0}=1-p$.
+	    Wenn die Warteschlange voll ist, und die Maschine ausfällt, bleibt die Warteschlange voll. Folglich: $p_{M,M}=p$.
+
+	    Ansonsten gilt: Entweder fällt die Maschine aus, dann verbleibt das angekommene Werkstück in der Warteschleife. 
+	    Folglich: $$\forall i \in E\setminus\{M\} \colon p_{i,i+1} = p$$ 
+	    Oder aber die Maschine fällt nicht aus, dann wird ein Werkstück der Warteschlange 
+	    hinzugefügt und zwei enternt. Folglich 
+	    $$\forall i \in E\setminus\{0\} \colon p_{i,i-1} = 1 - p$$
+	    Andere Zustands-Übergänge existieren nicht, daher sind die restlichen Einträge der Matrix 0.
+	    
+
+	    
+
+	   
+            
 
             \item
 
@@ -127,8 +145,18 @@
     \item
         \begin{enumerate}
             \item
+	      Sei $Y = X_1 + \ldots + X_n$.
+	      
+	      Sei $\chi(X_i)$ die Indintikatorfunktion für die $X_1, \ldots, X_n$, mit
+	      \begin{equation*}
+	      \chi(X_i) = \begin{cases}
+			    1 &, \frac{a}n < X_i \leq \frac{b}n \\
+			    0 &, sonst
+	                  \end{cases}
+	      \end{equation*}
 
-            \item
+	      
+	    \item
 
             \item
 
