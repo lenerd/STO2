@@ -76,23 +76,23 @@
 	    Ansonsten gilt: Entweder fällt die Maschine aus, dann verbleibt das angekommene Werkstück in der Warteschleife. 
 	    Folglich: $$\forall i \in E\setminus\{M\} \colon p_{i,i+1} = p$$ 
 	    Oder aber die Maschine fällt nicht aus, dann wird ein Werkstück der Warteschlange 
-	    hinzugefügt und zwei enternt. Folglich 
+	    hinzugefügt und zwei entfernt. Folglich 
 	    $$\forall i \in E\setminus\{0\} \colon p_{i,i-1} = 1 - p$$
 	    Andere Zustands-Übergänge existieren nicht, daher sind die restlichen Einträge der Matrix 0.
 
             \item
             
-            E ist eine endliche Menge, $(X_n)_{n\in\N_0}$ ist eine E-wertige
-            DTMC mit Übergangsmatrix P. Nach obriger Erläuterung der Zustandsübergänge, wird in einem Zeitschritt stets in den nächsten 
-            oder vorherigen Zustand übergegangen; folglich ist jeder Zustand von jedem aus erreichbar und E ist folglich irreduzibel. 
+            E ist eine endliche Menge, $(X_n)_{n\in\N_0}$ ist eine $E$-wertige
+            DTMC mit Übergangsmatrix $P$. Nach obriger Erläuterung der Zustandsübergänge, wird in einem Zeitschritt stets in den nächsten 
+            oder vorherigen Zustand übergegangen; folglich ist jeder Zustand von jedem aus erreichbar und $E$ ist folglich irreduzibel. 
             Folglich ist nach Satz 1.4.1 des Skripts die invariante Verteilung eindeutig.
 
             \item
             
-            Der langfristige Anteil von Zeiteinheiten, in denen der Puffer belegt ist, lässt sich Ausdrücken als der langfristige 
+            Der langfristige Anteil von Zeiteinheiten, in denen der Puffer belegt ist, lässt sich ausdrücken als der langfristige 
             Anteil von Zeiteinheiten, in denen der Puffer nicht leer ist. Folglich:
             \begin{equation*}
-	      1 - \lim_{n\to\infty} \frac1n \sum_{k=0}^{n-1} \textbf{1}_{\{0\}}(X_k) \stackrel{\text{Satz } 1.5.1}{=} 1 - \pi_0
+                1 - \lim_{n\to\infty} \left( \frac1n \sum_{k=0}^{n-1} \textbf{1}_{\{0\}}(X_k) \right) \stackrel{\text{Satz } 1.5.1}{=} 1 - \pi_0
             \end{equation*}
             Und folglich, basierend auf die gegebene invariante Verteilung aus Aufgabenteil (b):
             \begin{equation*}
@@ -102,7 +102,12 @@
 	                  \end{cases}
             \end{equation*}
             
-
+            Das langfristige Mittel der im Puffer wartenden Werkstücke:
+            \begin{equation*}
+                \lim_{n \to \infty} \left( \frac{1}{n} \sum_{k=0}^{n-1} X_i \right)
+                \stackrel{\text{Satz 1.4.2}}{=} \sum_{i=0}^M i \cdot \pi_i
+                = \frac{\sum_{i=0}^M i \cdot q^i}{1 + q + q^2 + \dotsb q^M}
+            \end{equation*}
 
         \end{enumerate}
    
