@@ -88,6 +88,21 @@
             Folglich ist nach Satz 1.4.1 des Skripts die invariante Verteilung eindeutig.
 
             \item
+            
+            Der langfristige Anteil von Zeiteinheiten, in denen der Puffer belegt ist, lässt sich Ausdrücken als der langfristige 
+            Anteil von Zeiteinheiten, in denen der Puffer nicht leer ist. Folglich:
+            \begin{equation*}
+	      1 - \lim_{n\to\infty} \frac1n \sum_{k=0}^{n-1} \textbf{1}_{\{0\}}(X_k) \stackrel{\text{Satz } 1.5.1}{=} 1 - \pi_0
+            \end{equation*}
+            Und folglich, basierend auf die gegebene invariante Verteilung aus Aufgabenteil (b):
+            \begin{equation*}
+	      1 - \pi_0 = \begin{cases}
+			    1 - \frac{1-q}{1-q^{M+1}} &,q \neq 1 \\
+			    1 - \frac1{M+q} &, q = 1
+	                  \end{cases}
+            \end{equation*}
+            
+
 
         \end{enumerate}
    
