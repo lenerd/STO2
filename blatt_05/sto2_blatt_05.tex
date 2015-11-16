@@ -159,18 +159,40 @@
     \item
         \begin{enumerate}
             \item
-	      Sei $Y = X_1 + \ldots + X_n$.
-	      
-	      Sei $\chi(X_i)$ die Indintikatorfunktion für die $X_1, \ldots, X_n$, mit
-	      \begin{equation*}
-	      \chi(X_i) = \begin{cases}
-			    1 &, \frac{a}n < X_i \leq \frac{b}n \\
-			    0 &, sonst
-	                  \end{cases}
-	      \end{equation*}
+                  % Sei $Y = X_1 + \ldots + X_n$.
+                  % 
+                  % Sei $\chi(X_i)$ die Indintikatorfunktion für die $X_1, \ldots, X_n$, mit
+                  % \begin{equation*}
+                  % \chi(X_i) = \begin{cases}
+                  %       1 &, \frac{a}n < X_i \leq \frac{b}n \\
+                  %       0 &, sonst
+                  %             \end{cases}
+                  % \end{equation*}
+                Sei $Y \sim \text{Bin}(n, p)$. Dann gilt $Y = \sum_{i=1}^n X_i$
+                mit $X_i \sim \text{Bin}(1, p)$ für $1 \leq i \leq n$. Die
+                $X_i$ sind also iid. mit $\e[X_i] = \mu = p$ und $\var[X_i] =
+                \sigma^2 = p(1-p)$.
+                Nach dem zentralen Grenzwertsatz ist $\frac{X_1 + \dotsb + X_n
+                -n\mu}{\sigma\sqrt{n}}$ approximativ normalverteilt.
+                \begin{equation*}
+                    \begin{split}
+                        \prob(a < Y \leq b)
+                        &= \prob \left( a < \sum_{i=1}^n X_i \leq b \right) \\
+                        &= \prob \left( a-n\mu < \sum_{i=1}^n X_i -n\mu \leq
+                            b-n\mu \right) \\
+                        &= \prob \left( \frac{a-n\mu}{\sigma\sqrt{n}} <
+                            \frac{\sum_{i=1}^n X_i -n\mu}{\sigma\sqrt{n}} \leq
+                            \frac{b-n\mu}{\sigma\sqrt{n}} \right) \\
+                        &\approx \Phi \left( \frac{b-n\mu}{\sigma\sqrt{n}}
+                            \right) - \Phi \left( \frac{a-n\mu}{\sigma\sqrt{n}}
+                            \right) \\
+                        &= \Phi \left( \frac{b-np}{\sqrt{np(1-p)}} \right) -
+                            \Phi \left( \frac{a-np}{\sqrt{np(1-p)}} \right)
+                    \end{split}
+                \end{equation*}
 
 	      
-	    \item
+            \item
 
             \item
 
