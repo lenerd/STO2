@@ -1,0 +1,97 @@
+
+R version 3.2.2 (2015-08-14) -- "Fire Safety"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #!/usr/bin/env Rscript
+> 
+> # P(a <= Y <= b) mit Y ~ Bin(n, p)
+> exact <- function(a, b, n, p)
++ {
++     p <- pbinom(b, n, p) - pbinom(a - 1, n, p)
++     return (p)
++ }
+> 
+> # P(a <= Y <= b) mit Y ~ Bin(n, p) approximiert durch
+> # Normalverteilung
+> approx <- function(a, b, n, p)
++ {
++     p <- pnorm((b + 0.5 - n * p) / sqrt(n*p*(1-p))) -
++          pnorm((a - 0.5 - n * p) / sqrt(n*p*(1-p)))
++     return (p)
++ }
+> 
+> cat("P(9 <= Y <= 11) mit Y ~ Bin(20, 0.5)\n")
+P(9 <= Y <= 11) mit Y ~ Bin(20, 0.5)
+> cat("exact:\n")
+exact:
+> exact(9, 11, 20, 0.5)
+[1] 0.4965553
+> 
+> cat("approximativ:\n")
+approximativ:
+> approx(9, 11, 20, 0.5)
+[1] 0.497665
+> 
+> cat('\n')
+
+> 
+> cat("P(90 <= Y <= 110) mit Y ~ Bin(200, 0.5)\n")
+P(90 <= Y <= 110) mit Y ~ Bin(200, 0.5)
+> cat("exact:\n")
+exact:
+> exact(90, 110, 200, 0.5)
+[1] 0.8626333
+> 
+> cat("approximativ:\n")
+approximativ:
+> approx(90, 110, 200, 0.5)
+[1] 0.8624361
+> 
+> cat('\n')
+
+> 
+> cat("P(20 <= Y <= 40) mit Y ~ Bin(200, 0.15)\n")
+P(20 <= Y <= 40) mit Y ~ Bin(200, 0.15)
+> cat("exact:\n")
+exact:
+> exact(20, 40, 200, 0.15)
+[1] 0.9631204
+> 
+> cat("approximativ:\n")
+approximativ:
+> approx(20, 40, 200, 0.15)
+[1] 0.9624111
+> 
+> cat('\n')
+
+> 
+> cat("P(0 <= Y <= 20) mit Y ~ Bin(200, 0.05)\n")
+P(0 <= Y <= 20) mit Y ~ Bin(200, 0.05)
+> cat("exact:\n")
+exact:
+> exact(0, 20, 200, 0.05)
+[1] 0.9988401
+> 
+> cat("approximativ:\n")
+approximativ:
+> approx(0, 20, 200, 0.05)
+[1] 0.9993423
+> 
+> proc.time()
+   user  system elapsed 
+  0.118   0.007   0.119 

@@ -165,19 +165,47 @@
 		 \end{split}
 	      \end{equation*}
 	  
-	  \item
-	    \begin{equation*}
-	     \begin{split}
-		\mathbb{E}(X)
-		&= \int_{-\infty}^{\infty} \varphi(x) \dif x \\
-		&= \int_{-\infty}^{\infty} \frac1{\sqrt{2\pi}} e^{-\frac12x^2} \dif x \\
-		&= \frac1{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\frac12x^2} \dif x \\
-		&= \frac1{\sqrt{2\pi}} \lim_{a\to -\infty} \lim_{b\to\infty} \left[ - \frac1x \cdot e^{-\frac12 x^2} \right]_a^b \\
-		&= \frac1{\sqrt{2\pi}} \left( \lim_{a\to -\infty} - \frac1  {a \cdot e^{\frac12 a^2}} - \lim_{b\to\infty} - \frac1 {b \cdot e^{\frac12 b^2}} \right) \\
-		&= \frac1{\sqrt{2\pi}} (0 - 0) \\
-		&= 0
-	     \end{split}
-	    \end{equation*}
+	    \item
+            \begin{behaupt}
+                $\e[X] = 0$ für $X \sim \mathcal{N}(0,1)$.
+            \end{behaupt}
+            \begin{proof}
+                Wir verwenden die Eigenschaft der Standardnormalverteilung,
+                dass diese symmetrisch zur Y-Achse ist:
+                \begin{equation*}
+                    \begin{split}
+                        \e[X]
+                        &= \int_{-\infty}^\infty x \cdot \varphi(x) \dif x \\
+                        &= \int_{-\infty}^\infty x \cdot \frac{1}{\sqrt{2\pi}}
+                        \cdot e^{-\frac{x^2}{2}} \dif x \\
+                        &= \int_0^\infty x \cdot \frac{1}{\sqrt{2\pi}}
+                        \cdot e^{-\frac{x^2}{2}} \dif x +
+                        \int_{-\infty}^0 x \cdot \frac{1}{\sqrt{2\pi}}
+                        \cdot e^{-\frac{x^2}{2}} \dif x \\
+                        &= \int_0^\infty x \cdot \frac{1}{\sqrt{2\pi}}
+                        \cdot e^{-\frac{x^2}{2}} \dif x +
+                        \int_0^\infty -x \cdot \frac{1}{\sqrt{2\pi}}
+                        \cdot e^{-\frac{(-x)^2}{2}} \dif x \\
+                        &= \int_0^\infty x \cdot \frac{1}{\sqrt{2\pi}}
+                        \cdot e^{-\frac{x^2}{2}} \dif x -
+                        \int_0^\infty x \cdot \frac{1}{\sqrt{2\pi}}
+                        \cdot e^{-\frac{x^2}{2}} \dif x \\
+                        &= 0
+                    \end{split}
+                \end{equation*}
+            \end{proof}
+	    % \begin{equation*}
+	    %  \begin{split}
+		% \mathbb{E}(X)
+		% &= \int_{-\infty}^{\infty} \varphi(x) \dif x \\
+		% &= \int_{-\infty}^{\infty} \frac1{\sqrt{2\pi}} e^{-\frac12x^2} \dif x \\
+		% &= \frac1{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\frac12x^2} \dif x \\
+		% &= \frac1{\sqrt{2\pi}} \lim_{a\to -\infty} \lim_{b\to\infty} \left[ - \frac1x \cdot e^{-\frac12 x^2} \right]_a^b \\
+		% &= \frac1{\sqrt{2\pi}} \left( \lim_{a\to -\infty} - \frac1  {a \cdot e^{\frac12 a^2}} - \lim_{b\to\infty} - \frac1 {b \cdot e^{\frac12 b^2}} \right) \\
+		% &= \frac1{\sqrt{2\pi}} (0 - 0) \\
+		% &= 0
+	    %  \end{split}
+	    % \end{equation*}
 
 
         \end{enumerate}
@@ -219,8 +247,36 @@
 
 	      
             \item
+                Da es sich bei $M,N$ um ganze Zahlen handelt und
+                binomialverteilte Zufallsvariablen nur ganzahlige Werte
+                annehmen können, gilt
+                \begin{equation*}
+                    \prob(M \leq Y \leq N) = \prob(M-1 < Y < N+1)
+                    \text{ .}
+                \end{equation*}
+                Bei der Normalverteilung handelt es sich um eine stetige
+                Verteilung. Daher würde bei der Approximation durch diese, ein
+                größerer Wert herauskommen, wenn von der rechten Variante
+                ausgegangen wird, da das Intervall größer ist, auch wenn es die
+                selben Ganzzahlen enthält.  Um auf eine bessere Approximation
+                zu kommen wird nun jeweils die Mitte zwischen den beiden
+                Möglichkeiten verwendet:
+                \begin{equation*}
+                    \prob(M-\num{0,5} < Y < N+\num{0,5})
+                    \text{ .}
+                \end{equation*}
 
-            \item
+                Da die Normalverteilung Punktwahrscheinlichkeiten wie
+                $\prob(Y=y)$ immer den Wert $0$ zuweist, muss für die
+                Approximation einer Binomialverteilung ein Intervall um $y$
+                angegeben werden:
+                \begin{equation*}
+                    \prob(Y=y) = \prob(y-\num{0,5} < Y \leq y+\num{0,5})
+                \end{equation*}
+
+            \item \hfill \\
+                \lstinputlisting{aufgabe-5.3c.R}
+                \lstinputlisting{aufgabe-5.3c.out}
 
         \end{enumerate}
    
