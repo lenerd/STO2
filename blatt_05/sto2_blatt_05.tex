@@ -105,7 +105,7 @@
             Das langfristige Mittel der im Puffer wartenden Werkstücke:
             \begin{equation*}
                 \lim_{n \to \infty} \left( \frac{1}{n} \sum_{k=0}^{n-1} X_i \right)
-                \stackrel{\text{Satz 1.4.2}}{=} \sum_{i=0}^M i \cdot \pi_i
+                = \sum_{i=0}^M i \cdot \pi_i
                 = \frac{\sum_{i=0}^M i \cdot q^i}{1 + q + q^2 + \dotsb q^M}
             \end{equation*}
 
@@ -213,15 +213,6 @@
     \item
         \begin{enumerate}
             \item
-                  % Sei $Y = X_1 + \ldots + X_n$.
-                  % 
-                  % Sei $\chi(X_i)$ die Indintikatorfunktion für die $X_1, \ldots, X_n$, mit
-                  % \begin{equation*}
-                  % \chi(X_i) = \begin{cases}
-                  %       1 &, \frac{a}n < X_i \leq \frac{b}n \\
-                  %       0 &, sonst
-                  %             \end{cases}
-                  % \end{equation*}
                 Sei $Y \sim \text{Bin}(n, p)$. Dann gilt $Y = \sum_{i=1}^n X_i$
                 mit $X_i \sim \text{Bin}(1, p)$ für $1 \leq i \leq n$. Die
                 $X_i$ sind also iid. mit $\e[X_i] = \mu = p$ und $\var[X_i] =
@@ -235,6 +226,14 @@
                         &= \prob \left( a-n\mu < \sum_{i=1}^n X_i -n\mu \leq
                             b-n\mu \right) \\
                         &= \prob \left( \frac{a-n\mu}{\sigma\sqrt{n}} <
+                            \frac{\sum_{i=1}^n X_i -n\mu}{\sigma\sqrt{n}} \leq
+                            \frac{b-n\mu}{\sigma\sqrt{n}} \right) \\
+                            \end{split}
+                \end{equation*}  
+                Daraus folgt, für $n \to \infty$:       
+                \begin{equation*}
+                    \begin{split}    
+                        &  \lim_{n\to\infty} \prob\left( \frac{a-n\mu}{\sigma\sqrt{n}} <
                             \frac{\sum_{i=1}^n X_i -n\mu}{\sigma\sqrt{n}} \leq
                             \frac{b-n\mu}{\sigma\sqrt{n}} \right) \\
                         &\approx \Phi \left( \frac{b-n\mu}{\sigma\sqrt{n}}
