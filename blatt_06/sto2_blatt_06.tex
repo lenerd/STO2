@@ -23,6 +23,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
 
+
 \newtheorem*{behaupt}{Behauptung}
 \newcommand{\gdw}{\Leftrightarrow}
 \newcommand{\dif}{\ \mathrm{d}}
@@ -68,6 +69,17 @@
 \item 
 \begin{enumerate}
  \item 
+ 
+ \begin{equation*}
+    \begin{split}
+      \bar{x} 
+      &= \frac1n \sum_{i=1}^n x_i 
+      = \frac1n \sum_{i=1}^k x_i^* \cdot \underbrace{\sum_{i=1}^n \textbf{1}_{\{x_i^*\}}(x_i)}_{h_n(x_i^*)}
+      = \sum_{i=1}^k x_i^* \cdot r_n(x_i^*)
+    \end{split}
+ \end{equation*}
+
+ 
  \item 
 \end{enumerate}
 
@@ -88,6 +100,7 @@
  \item 
 \end{enumerate}
 
+\end{enumerate}
 
 \end{document}
 
