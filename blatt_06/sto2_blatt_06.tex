@@ -125,8 +125,39 @@
     
     Für gerade Stichprobengröße wird jedoch der ``rechte mittlere'' Wert verwendet, was zumindest von unserer Auffassung des 
     Medians im Rahmen dieses Moduls abweicht.
- \item 
- \item 
+
+    \item
+
+    \item 
+        \begin{behaupt}
+            Für die Quantile der Exponentialverteilung gelten
+            \begin{equation*}
+                x_p = -\frac{1}{\lambda} \cdot \ln(1-p)
+                \text{ für }
+                p \in (0,1)
+            \end{equation*}
+        \end{behaupt}
+        \begin{proof}
+            Sei $p \in (0,1)$. Es gilt
+            \begin{equation*}
+                x_p = \inf \{t \in \mathbb{R} : F(t) \geq p\}
+                \text{ .}
+            \end{equation*}
+            Da die Verteilungsfunktion $F$ jeden Wert in $(0,1)$ genau einmal
+            annimmt, gibt es ein $t$ mit $F(t) = p$. Da $F$ monoton steigend
+            ist, ist diese $t$ das gesuchte Quantil $x_p$.
+            \begin{equation*}
+                \begin{alignedat}{2}
+                    && F(t) &= p \\
+                    \gdw\ && 1 - e^{-\lambda t} &= p \\
+                    \gdw\ && e^{-\lambda t} &= 1 - p \\
+                    \gdw\ && -\lambda t &= \ln(1 - p) \\
+                    \gdw\ && t &= -\frac{1}{\lambda} \cdot \ln(1 - p) \\
+                    \gdw\ && x_p &= -\frac{1}{\lambda} \cdot \ln(1 - p)
+                \end{alignedat}
+            \end{equation*}
+        \end{proof}
+
 \end{enumerate}
 
 
