@@ -73,7 +73,7 @@
  \begin{equation*}
       \bar{x} 
       = \frac1n \sum_{i=1}^n x_i 
-      = \frac1n \sum_{i=1}^k x_i^* \cdot \underbrace{\sum_{i=1}^n \textbf{1}_{\{x_i^*\}}(x_i)}_{h_n(x_i^*)}
+      = \frac1n \sum_{i=1}^k x_i^* \cdot \underbrace{\sum_{j=1}^n \mathbf{1}_{\{x_i^*\}}(x_j)}_{h_n(x_i^*)}
       = \sum_{i=1}^k x_i^* \cdot r_n(x_i^*)
  \end{equation*}
  
@@ -81,8 +81,8 @@
   \begin{split}
      s_x^2 
      &= \frac1{n-1} \left( \sum_{i=1}^n x_i^2 - n\bar{x}^2 \right) \\
-     &= \frac1{n-1} \left( \sum_{i=1}^k \left( (x_i^*)^2 \cdot \sum_{i=1}^n \textbf{1}_{\{x_i^*\}}(x_i) \right) - n\bar{x}^2  \right) \\
-     &= \frac{n}{n-1} \left(\frac1n \sum_{i=1}^k \left( (x_i^*)^2 \cdot \sum_{i=1}^n \textbf{1}_{\{x_i^*\}}(x_i) \right) - \bar{x}^2  \right) \\
+     &= \frac1{n-1} \left( \sum_{i=1}^k \left( (x_i^*)^2 \cdot h_n(x_i^*) \right) - n\bar{x}^2  \right) \\
+     &= \frac{n}{n-1} \left(\frac1n \sum_{i=1}^k \left( (x_i^*)^2 \cdot h_n(x_i^*) \right) - \bar{x}^2  \right) \\
      &= \frac{n}{n-1} \left( \sum_{i=1}^k (x_i^*)^2 \cdot r_n(x_i^*) - \bar{x}^2  \right) 
      \end{split}
  \end{equation*}
