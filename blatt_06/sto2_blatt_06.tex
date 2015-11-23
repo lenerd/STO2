@@ -66,7 +66,7 @@
 
 \begin{enumerate}[label=\bfseries \blattnr.\arabic*]
 
-\item 
+\item
 \begin{enumerate}
  \item 
  
@@ -100,20 +100,26 @@
  
 \end{enumerate}
 
-\item 
+\item
 
 \begin{enumerate}
- \item 
-    Umfang der Stichprobe (4,5,7,7,6,5,7): $n=7$.
-    
-    Korrekte Sortierung der Stichprobe: (4,5,5,6,7,7,7).
-    \begin{equation*}
-    \text{\~{x}}_{0.2} = x_{\lceil n \cdot p \rceil} = x_{\lceil 7 \cdot 0.2 \rceil} = x_{\lceil 1.4 \rceil} = x_2 = 5     
-    \end{equation*}
-    \begin{equation*}
-    \text{\~{x}}_{0.7} = x_{\lceil n \cdot p \rceil} = x_{\lceil 7 \cdot 0.7 \rceil} = x_{\lceil 4.9 \rceil} = x_5 = 7     
-    \end{equation*}
-    
+ \item
+    Umfang der Stichprobe (4,5,7,7,6,5,7): $n=7$
+
+    Korrekte Sortierung der Stichprobe: (4,5,5,6,7,7,7)
+    \begin{align*}
+        \text{\~{x}}_{\num{0.2}}
+        &= x_{(\lceil n \cdot p \rceil)}
+        = x_{(\lceil 7 \cdot 0.2 \rceil)}
+        = x_{(\lceil 1.4 \rceil)}
+        = x_{(2)} = 5 \\
+        \text{\~{x}}_{0.7}
+        &= x_{(\lceil n \cdot p \rceil)}
+        = x_{(\lceil 7 \cdot 0.7 \rceil)}
+        = x_{(\lceil 4.9 \rceil)}
+        = x_{(5)} = 7
+    \end{align*}
+
  \item
     $\text{\~{x}}_{0.5}$ zeigt auf das mittlere Element bei ungerader Stichprobengröße und ist somit dessen Median.
     
