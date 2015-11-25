@@ -70,7 +70,20 @@
 \item 
 \begin{enumerate}
 \item 
+\begin{equation*}
+ \begin{split}
+    \mathbb{E}_{\sigma^2}[T_n(X_1,\ldots,X_n)]
+    &= \mathbb{E}_{\sigma^2}\left[\frac1n \sum_{i=1}^n(X_i-\mu)^2\right] \\
+    &= \frac1n \sum_{i=1}^n \mathbb{E}_{\sigma^2} [(X_i-\mu)^2] \\
+    &= \frac1n \sum_{i=1}^n Var[X_i] \text{ mit } Var[X_1]=Var[X_i] \\
+    &= \frac{n \cdot Var[X_1]}n \\
+    &= Var[X_1]
+  \end{split}
+\end{equation*}
+
 \item 
+  Den Schätzer auf Basis des Erwartungswertes, da dies Rechnungsschritte einspart und wir eine
+  Information über die Verteilung berücksichtigen, die stichprobenunabhängig ist.
 \end{enumerate}
 
 \item 
@@ -102,7 +115,7 @@ Als Bestätigung, dass es sich bei dem Extrema um ein Maximum handelt, betrachte
 
 \item 
 Stichprobe: $x = (11,8,1,6)$.
-
+  
 \begin{equation*}
 \vartheta_0 = \frac{4}{1^2 + 6^2 + 8^2 + 11^2} = \frac2{111} 
 \end{equation*}
