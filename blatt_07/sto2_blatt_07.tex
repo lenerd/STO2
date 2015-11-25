@@ -1,0 +1,127 @@
+\documentclass[a4paper]{scrartcl}
+
+% font/encoding packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage[ngerman=ngerman-x-latest]{hyphsubst}
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{array}
+\usepackage{stmaryrd}
+\usepackage{marvosym}
+\allowdisplaybreaks
+\usepackage[output-decimal-marker={,}]{siunitx}
+\usepackage[shortlabels]{enumitem}
+\usepackage[section]{placeins}
+\usepackage{float}
+\usepackage{units}
+\usepackage{listings}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+
+\newtheorem*{behaupt}{Behauptung}
+\newcommand{\gdw}{\Leftrightarrow}
+\newcommand{\dif}{\ \mathrm{d}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\cov}{\operatorname{Cov}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\corr}{\operatorname{Corr}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lstset{%
+    frame=single,
+    numbers=left,
+    keepspaces,
+    language=R,
+    title=Listing: \lstname,
+}
+
+\def \blattnr {7}
+
+\lhead{Stochastik 2 - Blatt {\blattnr}}
+\rhead{Florian Abt, Lennart Braun, Sascha Schulz}
+\cfoot{\thepage}
+
+
+\title{Stochastik 2 für Informatiker}
+\subtitle{Blatt {\blattnr} Hausaufgaben}
+\author{
+    Florian Abt (6524404), \\
+    Lennart Braun (6523742), \\
+    Sascha Schulz (6434677)
+}
+\date{zum 1. Dezember 2015}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}[label=\bfseries \blattnr.\arabic*]
+
+
+\item 
+\begin{enumerate}
+\item 
+\item 
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+\item 
+
+\begin{equation*}
+ \begin{split}
+   \log \left( L(\vartheta;x_1,\ldots,x_n) \right)
+   &= \log \left( \prod_{i=1}^n 2\vartheta x_i e^{-\vartheta x_i^2} \right) \\
+   &= \sum_{i=1}^n \left( \log(2) + \log(\vartheta) + \log(x_i) -\vartheta x_i^2 \right) \\
+   &= n\log(2) + n\log(\vartheta) + \sum_{i=1}^n x_i^2 - \vartheta \sum_{i=1}^n x_i^2 \\   
+   \frac{d}{d\vartheta} \log \left( L(\vartheta;x_1,\ldots,x_n) \right)
+   &= \frac{n}\vartheta - \sum_{i=1}^n x_i^2
+  \end{split}
+\end{equation*}
+Daraus folgt als Nullstelle:
+\begin{equation*}
+\vartheta_0 = \frac{n}{\sum_{i=1}^n x_i^2} 
+\end{equation*}
+Als Bestätigung, dass es sich bei dem Extrema um ein Maximum handelt, betrachten wir die 2. Ableitung.
+\begin{equation*}
+ \begin{split} 
+   \frac{d}{d\vartheta} \left( \frac{d}{d\vartheta} \log \left( L(\vartheta;x_1,\ldots,x_n) \right) \right)
+   = -\frac{n}{\vartheta^2}
+   < 0 \text{ für } \vartheta_0 = \frac{n}{\sum_{i=1}^n x_i^2} > 0
+  \end{split}
+\end{equation*}
+
+\item 
+Stichprobe: $x = (11,8,1,6)$.
+
+\begin{equation*}
+\vartheta_0 = \frac{4}{1^2 + 6^2 + 8^2 + 11^2} = \frac2{111} 
+\end{equation*}
+
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+\item 
+\item 
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+\item 
+\item 
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+
