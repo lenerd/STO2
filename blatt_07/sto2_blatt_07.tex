@@ -148,6 +148,20 @@ Stichprobe: $x = (11,8,1,6)$.
 \item 
 \begin{enumerate}
 \item 
+
+Angenommen, $X_1$ und $X_2$ seien stochastisch abhängig, sodass ein monotoner Zusammenhang besteht; sie also korrelieren  $\Rightarrow Cov(X_1,X_2)\neq 0$.
+Für die zusammengesetzte Normalverteilung der 2ten Gleichung ist die  Varianz $\sum_{i=1}^n a_i^2\sigma_i^2$ gesetzt, jedoch:
+\begin{equation*}
+  \begin{split}
+ Var\left[ \sum_{i=1}^n a_iX_i \right] 
+ &= Var[a_1X_1] + Var[a_2X_2] + Cov[a_1X_1,a_2X_2] \\
+ &= a_1^2\sigma_1^2 + a_2^2\sigma_2^2 + Cov[a_1X_1,a_2X_2] \\
+ &\neq a_1^2\sigma_1^2 + a_2^2\sigma_2^2 \\
+ &= \sum_{i=1}^n a_i^2\sigma_i^2
+ \end{split}
+\end{equation*}
+Folglich ist Unkorrelliertheit notwendig, damie die 2. Gleichung gilt.
+
 \item 
 \end{enumerate}
 
