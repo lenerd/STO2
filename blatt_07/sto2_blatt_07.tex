@@ -163,6 +163,38 @@ Für die zusammengesetzte Normalverteilung der 2ten Gleichung ist die  Varianz $
 Folglich ist Unkorrelliertheit notwendig, damie die 2. Gleichung gilt.
 
 \item 
+
+\begin{equation*}
+  \begin{split}
+\bar{X} 
+= \frac1n \sum_{i=1}^n X_i 
+= \sum_{i=1}^n \frac1n X_i 
+\stackrel{unabh.}{\sim} \mathcal{N}\left( \sum_{i=1}^n \frac1n \mu_i, \sum_{i=1}^n \frac1{n^2} \sigma_i^2 \right)
+\stackrel{*}{=} \mathcal{N}\left( \mu, \frac{\sigma^2}{n} \right)
+ \end{split}
+\end{equation*}
+* Da $X_1, \ldots, X_n$ identisch verteilt mit $X_i \sim \mathcal{N}(\mu, \sigma^2)$ für $i \in \{1,\ldots, n\}$.
+Folglich gilt: $(\mathbb{E}[X_i]=\mu)_{i \in \{1,\ldots, n\}} \Rightarrow \sum_{i=1}^n \frac1n \mu_i = \frac{n\mu}n = \mu$,
+\\sowie $(Var[X_i] = \sigma^2)_{i \in \{1,\ldots, n\}} \Rightarrow \sum_{i=1}^n \frac1{n^2} \sigma_i^2 = \frac{n\sigma^2}n = \frac{\sigma^2}n$.
+
+Wir wissen also, dass $\bar{X} \sim \mathcal{N}(\mu, \frac{\sigma^2}n)$. 
+Aus dem Einleitungstext der Aufgabenstellung ist bekannt, dass 
+\\(I) wenn $X \sim \mathcal{N}(\mu,\sigma^2)$ auch $aX+b \sim \mathcal{N}(a\mu+b,a^2\sigma^2)$ gilt.
+
+
+Wir nutzen dies, formen um und setzen ein:
+\begin{equation*}
+  \begin{split}
+\frac{\sqrt{n}}\sigma \left( \bar{X} - \mu \right)
+= \underbrace{\frac{\sqrt{n}}\sigma}_{a} \bar{X} \underbrace{- \frac{\sqrt{n} \mu}\sigma}_{b}
+\stackrel{(I)}{\sim} \mathcal{N}\left( \underbrace{\frac{\sqrt{n}}\sigma}_{a} \mu \underbrace{- \frac{\sqrt{n} \mu}\sigma}_{b}, 
+    \underbrace{\left(\frac{\sqrt{n}}\sigma \right)^2}_{a^2} \frac{\sigma^2}n \right) 
+=\mathcal{N}(0,1)
+  \end{split}
+\end{equation*}
+
+
+
 \end{enumerate}
 
 \end{enumerate}
