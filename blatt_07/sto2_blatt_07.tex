@@ -68,134 +68,298 @@
 
 
 \item 
-\begin{enumerate}
-\item 
-\begin{equation*}
- \begin{split}
-    \mathbb{E}_{\sigma^2}[T_n(X_1,\ldots,X_n)]
-    &= \mathbb{E}_{\sigma^2}\left[\frac1n \sum_{i=1}^n(X_i-\mu)^2\right] \\
-    &= \frac1n \sum_{i=1}^n \mathbb{E}_{\sigma^2} [(X_i-\mu)^2] \\
-    &= \frac1n \sum_{i=1}^n Var[X_i] \text{ mit } Var[X_1]=Var[X_i] \\
-    &= \frac{n \cdot Var[X_1]}n \\
-    &= Var[X_1]
-  \end{split}
-\end{equation*}
+    \begin{enumerate}
+        \item 
+            \begin{behaupt}
+                \begin{equation*}
+                    T_n(X_1, \dotsc, X_n) =
+                    \frac{1}{n} \sum_{i=1}^n (X_i - \mu)^2
+                \end{equation*}
+                ist ein erwartungstreuer Schätzer für die Varianz $\var[X_1]$.
+            \end{behaupt}
+            \begin{proof}
+                \begin{equation*}
+                    \begin{split}
+                        \e_{\sigma^2}[T_n(X_1,\dotsc,X_n)]
+                        &= \e_{\sigma^2}\left[\frac1n \sum_{i=1}^n(X_i-\mu)^2\right] \\
+                        &= \frac1n \sum_{i=1}^n \e_{\sigma^2} [(X_i-\mu)^2] \\
+                        &= \frac1n \sum_{i=1}^n \var[X_i] \qquad \text{ mit } \var[X_1]= \var[X_i] \\
+                        &= \frac{n \cdot \var[X_1]}{n} \\
+                        &= \var[X_1]
+                    \end{split}
+                \end{equation*}
+            \end{proof}
+
+        \item 
+          Den Schätzer auf Basis des Erwartungswertes, da dies
+          Rechnungsschritte einspart und wir eine Information über die
+          Verteilung berücksichtigen, die stichprobenunabhängig ist.
+
+    \end{enumerate}
 
 \item 
-  Den Schätzer auf Basis des Erwartungswertes, da dies Rechnungsschritte einspart und wir eine
-  Information über die Verteilung berücksichtigen, die stichprobenunabhängig ist.
-\end{enumerate}
+    Es sei $X$ eine Zufallsvariable, welche durch die Dichte $f_\vartheta$
+    beschrieben wird.
+    \begin{equation*}
+        f_\vartheta \colon \mathbb{R} \to \mathbb{R}
+        \qquad
+        f_\vartheta (x) =
+        \begin{cases}
+            2 \vartheta x e^{-\vartheta x^2}, & x \geq 0 \\
+            0, & x < 0
+        \end{cases}
+    \end{equation*}
+    $\vartheta > 0$ sei unbekannt.
+    \begin{enumerate}
+        \item 
+            \begin{behaupt}
+                Der Maximum-Likelihood-Schätzer für $\vartheta$ ist
+                \begin{equation*}
+                    T_n(x_1, \dotsc, x_n) = \frac{n}{\sum_{i=1}^n x_i}
+                    \text{ .}
+                \end{equation*}
+            \end{behaupt}
+            \begin{proof}
+                Wir gehen davon aus, dass $x_i \geq 0$ für $1 \leq i \leq n$
+                gilt, da obige Verteilung sonst offensichtlich nicht geeignet
+                wäre.
+                \begin{align*}
+                    \begin{split}
+                        \log \left( L(\vartheta;x_1,\dotsc,x_n) \right)
+                        &= \log \left( \prod_{i=1}^n 2\vartheta x_i e^{-\vartheta x_i^2} \right) \\
+                        &= \sum_{i=1}^n \log \left( 2\vartheta x_i e^{-\vartheta x_i^2} \right) \\
+                        &= \sum_{i=1}^n \left( \log(2) + \log(\vartheta) + \log(x_i) -\vartheta x_i^2 \right) \\
+                        &= n\log(2) + n\log(\vartheta) + \sum_{i=1}^n \log(x_i) - \vartheta \sum_{i=1}^n x_i^2
+                    \end{split} \\
+                    \frac{\dif}{\dif\vartheta} \log \left( L(\vartheta;x_1,\dotsc,x_n) \right)
+                    &= \frac{n}\vartheta - \sum_{i=1}^n x_i^2
+                \end{align*}
+                Daraus folgt als Nullstelle:
+                \begin{equation*}
+                    \vartheta_0 = \frac{n}{\sum_{i=1}^n x_i^2} 
+                \end{equation*}
+                Als Bestätigung, dass es sich bei dem Extrema um ein Maximum
+                handelt, betrachten wir die 2. Ableitung.
+                \begin{equation*}
+                        \frac{\dif^2}{\dif\vartheta^2} \log \left( L(\vartheta;x_1,\dotsc,x_n) \right)
+                        = -\frac{n}{\vartheta^2}
+                        < 0 \text{ für } \vartheta_0 = \frac{n}{\sum_{i=1}^n x_i^2} > 0
+                \end{equation*}
+            \end{proof}
+
+        \item 
+            Stichprobe: $(x_1, \dotsc, x_4) = (11,8,1,6)$.
+            \begin{equation*}
+                T_4(\vartheta; x_1, \dotsc, x_4)
+                = \frac{4}{1^2 + 6^2 + 8^2 + 11^2}
+                = \frac{2}{111} 
+            \end{equation*}
+
+    \end{enumerate}
 
 \item 
-\begin{enumerate}
+    \begin{enumerate}
+        \item 
+            Ein Merkmal sei auf $\{1,2,\dotsc, m\}$, mit $m$ unbekannt,
+            gleichverteilt.
+            Für eine diskrete, uniform verteile Zufallsvariable $X$ gilt
+            \begin{equation*}
+                \prob_m(X = x) =
+                \begin{cases}
+                    \frac{1}{m} &, x \in \{1,\dotsc,m\} \\
+                    0 &, \text{else}
+                \end{cases}
+                \text{ .}
+            \end{equation*}
+            \begin{behaupt}
+                Die Likelihood-Funktion ist
+                \begin{equation*}
+                    L(m; x_1, \dotsc, x_n) = 
+                    \begin{cases}
+                        \frac{1}{m^n}, & x_1,\dotsc,x_n \in \{1, \dotsc,m\} \\
+                        0, & \text{else}
+                    \end{cases}
+                    \text{ .}
+                \end{equation*}
+            \end{behaupt}
+            \begin{proof}
+                Sind $x_1, \dotsc, x_n \in \{1, 2, \dotsc, m\}$, so gilt
+                \begin{equation*}
+                    \begin{split}
+                        L(m; x_1, \dotsc, x_n)
+                        &= \prod_{i=1}^n f_m(x_i) \\
+                        &= \prod_{i=1}^n \frac{1}{m} \\
+                        &= \frac{1}{m^n}
+                    \end{split}
+                    \text{ .}
+                \end{equation*}
+                Ist dies nicht der Fall, ist $L(m; x_1, \dotsc, x_n) = 0$.
+            \end{proof}
+
+            \begin{behaupt}
+                Der Maximum-Likelihood-Schätzer für $m$ ist
+                \begin{equation*}
+                    T_n(X_1, \dotsc, X_n) = \max(X_1, \dots, X_n)
+                    \text{ .}
+                \end{equation*}
+            \end{behaupt}
+            \begin{proof}
+                $L$ wird maximal, wenn $m$ minimal ist. Da $x_i \leq m$, $i \in
+                \{1,\dotsc,n\}$, gelten muss, ist
+                \begin{equation*}
+                    T_n(x_1, \dotsc, x_n) = \max(x_1, \dotsc, x_n)
+                    \text{ .}
+                \end{equation*}
+            \end{proof}
+
+        \item 
+            \begin{behaupt}
+                $T_n$ ist kein erwartungstreuer Schätzer für $m$.
+            \end{behaupt}
+            \begin{proof}
+                Seien $X_1, \dotsc, X_n$ iid. Zufallsvariablen und $Y = \max(X_1,
+                \dotsc, X_n)$. Dann gilt:
+                \begin{align*}
+                    \begin{split}
+                            \prob(Y \leq y)
+                            &= \prob(X_1 \leq y, \dotsc, X_n \leq y) \\
+                            &= \prod_{i=1}^n \prob(X_i \leq y) \\
+                            &= \prod_{i=1}^n \frac{y}{m} \\
+                            &= \left(\frac{y}{m}\right)^n
+                    \end{split} \\
+                    \begin{split}
+                            \prob(Y = y)
+                            &= \prob(Y \leq y) - \prob(Y \leq y-1) \\
+                            &= \left(\frac{y}{m}\right)^n - \left(\frac{y-1}{m}\right)^n \\
+                            &= \frac{y^n - (y-1)^n}{m^n}
+                    \end{split}
+                \end{align*}
+                Für den Erwartungswert von $Y$ und damit für den Schätzer $T_n$
+                gilt:
+                \begin{equation*}
+                    \begin{split}
+                        \e[Y] &= \sum_{i=1}^m i \cdot \prob(Y = i) \\
+                              &= \sum_{i=1}^m i \cdot \left(\left(\frac{i}{m}\right)^n - \left(\frac{i-1}{m}\right)^n \right) \\
+                              &= 1 \left(\left(\frac{1}{m}\right)^n - \left(\frac{0}{m}\right)^n \right) + 2 \left(\left(\frac{2}{m}\right)^n - \left(\frac{1}{m}\right)^n \right) + \dotsc + m \left(\left(\frac{m}{m}\right)^n - \left(\frac{m-1}{m}\right)^n \right)  \\
+                              &= \left(\frac{1}{m}\right)^n + 2\left(\frac{2}{m}\right)^n -2\left(\frac{1}{m}\right)^n + \dotsc + m\left(\frac{m}{m}\right)^n -m\left(\frac{m-1}{m}\right)^n \\
+                              &= m - \underbrace{\sum_{i=1}^{m-1} \left(\frac{i}{m}\right)^n}_{> 0 \text{ für } m > 1}
+                              \neq m
+                    \end{split}
+                \end{equation*}
+                Der Schätzer $T_n$ ist damit nicht erwartungstreu.
+            \end{proof}
+    \end{enumerate}
+
 \item 
+    \begin{enumerate}
+        \item 
+            Angenommen, $X_1$ und $X_2$ seien stochastisch abhängig, sodass ein
+            monotoner Zusammenhang besteht; sie also korrelieren  $\Rightarrow
+            Cov(X_1,X_2)\neq 0$.
+            Für die zusammengesetzte Normalverteilung der 2ten Gleichung ist
+            die  Varianz $\sum_{i=1}^n a_i^2\sigma_i^2$ gesetzt, jedoch:
+            \begin{equation*}
+                \begin{split}
+                    Var\left[ \sum_{i=1}^n a_iX_i \right] 
+                    &= Var[a_1X_1] + Var[a_2X_2] + Cov[a_1X_1,a_2X_2] \\
+                    &= a_1^2\sigma_1^2 + a_2^2\sigma_2^2 + Cov[a_1X_1,a_2X_2] \\
+                    &\neq a_1^2\sigma_1^2 + a_2^2\sigma_2^2 \\
+                    &= \sum_{i=1}^n a_i^2\sigma_i^2
+                \end{split}
+            \end{equation*}
+            Folglich ist Unkorrelliertheit notwendig, damie die 2. Gleichung
+            gilt.
+            \\
 
-\begin{equation*}
- \begin{split}
-   \log \left( L(\vartheta;x_1,\ldots,x_n) \right)
-   &= \log \left( \prod_{i=1}^n 2\vartheta x_i e^{-\vartheta x_i^2} \right) \\
-   &= \sum_{i=1}^n \left( \log(2) + \log(\vartheta) + \log(x_i) -\vartheta x_i^2 \right) \\
-   &= n\log(2) + n\log(\vartheta) + \sum_{i=1}^n x_i^2 - \vartheta \sum_{i=1}^n x_i^2 \\   
-   \frac{d}{d\vartheta} \log \left( L(\vartheta;x_1,\ldots,x_n) \right)
-   &= \frac{n}\vartheta - \sum_{i=1}^n x_i^2
-  \end{split}
-\end{equation*}
-Daraus folgt als Nullstelle:
-\begin{equation*}
-\vartheta_0 = \frac{n}{\sum_{i=1}^n x_i^2} 
-\end{equation*}
-Als Bestätigung, dass es sich bei dem Extrema um ein Maximum handelt, betrachten wir die 2. Ableitung.
-\begin{equation*}
- \begin{split} 
-   \frac{d}{d\vartheta} \left( \frac{d}{d\vartheta} \log \left( L(\vartheta;x_1,\ldots,x_n) \right) \right)
-   = -\frac{n}{\vartheta^2}
-   < 0 \text{ für } \vartheta_0 = \frac{n}{\sum_{i=1}^n x_i^2} > 0
-  \end{split}
-\end{equation*}
+            \begin{behaupt}
+                Sind $X_1, \dotsc, X_n$ Zufallsvariablen mit
+                $X_i \sim \mathcal{N}(\mu_i, \sigma_i^2)$,
+                dann folgt nicht
+                \begin{equation*}
+                    \sum_{i=1}^n a_i X_i \sim
+                    \mathcal{N} \left( \sum_{i=1}^n a_i \mu_i,
+                                       \sum_{i=1}^n a_i^2 \sigma_i^2 \right)
+                    \text{ .}
+                \end{equation*}
+            \end{behaupt}
+            \begin{proof}
+                Wir zeigen dies mit einem Gegenbeispiel.
+                Sei $X_1 \sim \mathcal{N}(\mu, \sigma^2)$ mit $\sigma^2 \neq 0$
+                und $X_2 = -X_1$.  Dann gilt $X_2 \sim \mathcal{N}(-\mu,
+                \sigma^2)$.  Angenommen die Folgerung würde gelten, dann wäre
+                \begin{equation*}
+                    \begin{alignedat}{2}
+                        && X_1 + X_2 &\sim
+                        \mathcal{N} \left( \mu - \mu, \sigma^2 + \sigma^2 \right) \\
+                        \gdw\ && X_1 - X_1 &\sim
+                        \mathcal{N} \left( 0, 2 \sigma^2 \right) \\
+                        \gdw\ && 0 &\sim
+                        \mathcal{N} \left( 0, 2 \sigma^2 \right)
+                    \end{alignedat}
+                \end{equation*}
+                Dies ist ein Widerspruch, da die Konstante $0$ nicht mit einer
+                positiven Varianz verteilt sein kann.
+                Also gilt die Folgerung nicht.
+            \end{proof}
 
-\item 
-Stichprobe: $x = (11,8,1,6)$.
-  
-\begin{equation*}
-\vartheta_0 = \frac{4}{1^2 + 6^2 + 8^2 + 11^2} = \frac2{111} 
-\end{equation*}
+        \item 
+            \begin{behaupt}
+                Für $X_1, \dotsc, X_n$ iid. mit $X_1 \sim \mathcal{N}(\mu,
+                \sigma^2)$ gelten
+                \begin{gather*}
+                    \overline{X} \sim
+                    \mathcal{N}\left(\mu, \frac{\sigma^2}{n} \right) \\
+                    \text{ und } \\
+                    \frac{\sqrt{n}}{\sigma} (\overline{X} - \mu) \sim
+                    \mathcal{N}(0, 1)
+                    \text{ .}
+                \end{gather*}
+            \end{behaupt}
+            \begin{proof}
+                \begin{equation*}
+                    \begin{split}
+                        \overline{X} 
+                        = \frac1n \sum_{i=1}^n X_i 
+                        = \sum_{i=1}^n \frac1n X_i 
+                        \stackrel{unabh.}{\sim} \mathcal{N}\left( \sum_{i=1}^n \frac1n \mu_i, \sum_{i=1}^n \frac1{n^2} \sigma_i^2 \right)
+                        \stackrel{\ast}{=} \mathcal{N}\left( \mu, \frac{\sigma^2}{n} \right)
+                    \end{split}
+                \end{equation*}
+                $\ast$ Da $X_1, \dotsc, X_n$ identisch verteilt mit $X_i \sim
+                \mathcal{N}(\mu, \sigma^2)$ für $i \in \{1,\dotsc, n\}$.
+                Folglich gelten
+                \begin{equation*}
+                    (\e[X_i]=\mu)_{i \in \{1,\dotsc, n\}}
+                    \Rightarrow
+                    \sum_{i=1}^n \frac1n \mu_i = \frac{n\mu}n = \mu
+                \end{equation*}
+                sowie
+                \begin{equation*}
+                    (\var[X_i] = \sigma^2)_{i \in \{1,\dotsc, n\}}
+                    \Rightarrow
+                    \sum_{i=1}^n \frac1{n^2} \sigma_i^2
+                    = \frac{n\sigma^2}n = \frac{\sigma^2}n
+                    \text{ .}
+                \end{equation*}
 
-\end{enumerate}
+                Wir wissen also, dass $\overline{X} \sim \mathcal{N}(\mu,
+                \frac{\sigma^2}n)$. 
+                Aus dem Einleitungstext der Aufgabenstellung ist bekannt, dass 
+                wenn $X \sim \mathcal{N}(\mu,\sigma^2)$ auch $aX+b \sim
+                \mathcal{N}(a\mu+b,a^2\sigma^2)$ gilt $(I)$.
+                Wir nutzen dies, formen um und setzen ein:
+                \begin{equation*}
+                    \begin{split}
+                        \frac{\sqrt{n}}\sigma \left( \overline{X} - \mu \right)
+                        = \underbrace{\frac{\sqrt{n}}\sigma}_{a} \overline{X} \underbrace{- \frac{\sqrt{n} \mu}\sigma}_{b}
+                        \stackrel{(I)}{\sim} \mathcal{N}\left( \underbrace{\frac{\sqrt{n}}\sigma}_{a} \mu \underbrace{- \frac{\sqrt{n} \mu}\sigma}_{b}, 
+                            \underbrace{\left(\frac{\sqrt{n}}\sigma \right)^2}_{a^2} \frac{\sigma^2}n \right) 
+                        =\mathcal{N}(0,1)
+                    \end{split}
+                \end{equation*}
+            \end{proof}
 
-\item 
-\begin{enumerate}
-\item 
-
-\begin{equation*}
- f_\vartheta(x) = \begin{cases}
-		    \frac1m &, x \in [1,m] \\
-		    0 &, sonst
-                  \end{cases}
-\end{equation*}
-
-\begin{equation*}
- L(\vartheta;x_1,\ldots,x_n) = \begin{cases}
-		    \prod_{i=1}^n\frac1m &, x_1,\ldots,x_n \in [1,m] \\
-		    0 &, sonst
-                  \end{cases}
-\end{equation*}
- 
-
-
-\item 
-\end{enumerate}
-
-\item 
-\begin{enumerate}
-\item 
-
-Angenommen, $X_1$ und $X_2$ seien stochastisch abhängig, sodass ein monotoner Zusammenhang besteht; sie also korrelieren  $\Rightarrow Cov(X_1,X_2)\neq 0$.
-Für die zusammengesetzte Normalverteilung der 2ten Gleichung ist die  Varianz $\sum_{i=1}^n a_i^2\sigma_i^2$ gesetzt, jedoch:
-\begin{equation*}
-  \begin{split}
- Var\left[ \sum_{i=1}^n a_iX_i \right] 
- &= Var[a_1X_1] + Var[a_2X_2] + Cov[a_1X_1,a_2X_2] \\
- &= a_1^2\sigma_1^2 + a_2^2\sigma_2^2 + Cov[a_1X_1,a_2X_2] \\
- &\neq a_1^2\sigma_1^2 + a_2^2\sigma_2^2 \\
- &= \sum_{i=1}^n a_i^2\sigma_i^2
- \end{split}
-\end{equation*}
-Folglich ist Unkorrelliertheit notwendig, damie die 2. Gleichung gilt.
-
-\item 
-
-\begin{equation*}
-  \begin{split}
-\bar{X} 
-= \frac1n \sum_{i=1}^n X_i 
-= \sum_{i=1}^n \frac1n X_i 
-\stackrel{unabh.}{\sim} \mathcal{N}\left( \sum_{i=1}^n \frac1n \mu_i, \sum_{i=1}^n \frac1{n^2} \sigma_i^2 \right)
-\stackrel{*}{=} \mathcal{N}\left( \mu, \frac{\sigma^2}{n} \right)
- \end{split}
-\end{equation*}
-* Da $X_1, \ldots, X_n$ identisch verteilt mit $X_i \sim \mathcal{N}(\mu, \sigma^2)$ für $i \in \{1,\ldots, n\}$.
-Folglich gilt: $(\mathbb{E}[X_i]=\mu)_{i \in \{1,\ldots, n\}} \Rightarrow \sum_{i=1}^n \frac1n \mu_i = \frac{n\mu}n = \mu$,
-\\sowie $(Var[X_i] = \sigma^2)_{i \in \{1,\ldots, n\}} \Rightarrow \sum_{i=1}^n \frac1{n^2} \sigma_i^2 = \frac{n\sigma^2}n = \frac{\sigma^2}n$.
-
-Wir wissen also, dass $\bar{X} \sim \mathcal{N}(\mu, \frac{\sigma^2}n)$. 
-Aus dem Einleitungstext der Aufgabenstellung ist bekannt, dass 
-\\(I) wenn $X \sim \mathcal{N}(\mu,\sigma^2)$ auch $aX+b \sim \mathcal{N}(a\mu+b,a^2\sigma^2)$ gilt.
-
-
-Wir nutzen dies, formen um und setzen ein:
-\begin{equation*}
-  \begin{split}
-\frac{\sqrt{n}}\sigma \left( \bar{X} - \mu \right)
-= \underbrace{\frac{\sqrt{n}}\sigma}_{a} \bar{X} \underbrace{- \frac{\sqrt{n} \mu}\sigma}_{b}
-\stackrel{(I)}{\sim} \mathcal{N}\left( \underbrace{\frac{\sqrt{n}}\sigma}_{a} \mu \underbrace{- \frac{\sqrt{n} \mu}\sigma}_{b}, 
-    \underbrace{\left(\frac{\sqrt{n}}\sigma \right)^2}_{a^2} \frac{\sigma^2}n \right) 
-=\mathcal{N}(0,1)
-  \end{split}
-\end{equation*}
-
-
-
-\end{enumerate}
+        \end{enumerate}
 
 \end{enumerate}
 
