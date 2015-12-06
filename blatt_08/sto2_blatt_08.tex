@@ -69,8 +69,52 @@
 \item 
 \begin{enumerate}
  \item 
+    $1-\alpha = 0.95 \Rightarrow \alpha = 0.05 \Rightarrow 1-\frac\alpha 2 = 0.975$.
+    
+    $\Rightarrow z_{1-\frac\alpha 2} = z_{0.975} = 1.960$.
+    \begin{equation*}
+      \begin{split}
+	[U(x_1,\ldots,x_n)&,O(x_1,\ldots,x_n)] \\
+	= [\bar{x}-z_{1-\frac\alpha 2} \frac{\sqrt{s_x^2}}{\sqrt{n}} &, \bar{x}+z_{1-\frac\alpha 2} \frac{\sqrt{s_x^2}}{\sqrt{n}}] \\
+	= [6.4-1.960 \frac{\sqrt{1.2}}{\sqrt{80}} &, 6.4+1.960 \frac{\sqrt{1.2}}{\sqrt{80}}] \\
+	= [6.15995 &, 6.64005]
+      \end{split}
+    \end{equation*}
  \item 
+    Nun sei $\sigma^2=0.6$.    
+    \begin{equation*}
+      \begin{split}
+	O(x_1,\ldots, x_n) - U(x_1,\ldots,x_n) 
+	= l 
+	&= O(x_1,\ldots, x_m) - U(x_1,\ldots,x_m) \\
+	&= \left(\bar{x} + z_{1-\frac\alpha 2}\frac\sigma{\sqrt{m}}\right) - \left(\bar{x} - z_{1-\frac\alpha 2}\frac\sigma{\sqrt{m}}\right) \\
+	&= 2z_{1-\frac\alpha 2}\frac\sigma{\sqrt{m}} \\
+	\Rightarrow \sqrt{m} &= 2z_{1-\frac\alpha 2}\frac\sigma{l} \\
+	\Rightarrow m &= 4z^2_{1-\frac\alpha 2}\frac{\sigma^2}{l^2} \\
+	&=4 \cdot (1.960)^2 \cdot \frac{0.6}{(6.64005 - 6.15995)^2} \\
+	&=40
+      \end{split}
+    \end{equation*}
+    Der Ingenieur hätte nur eine Stichprobe vom Umfang $m=40$ testen müssen.
  \item 
+  Nun sei l=0.25, gesucht $1-\alpha$.
+  \begin{equation*}
+      \begin{split}
+	l 
+	&=O(x_1,\ldots, x_n) - U(x_1,\ldots,x_n)  \\
+	&= \left(\bar{x} + z_{1-\frac\alpha 2}\frac\sigma{\sqrt{n}}\right) - \left(\bar{x} - z_{1-\frac\alpha 2}\frac\sigma{\sqrt{n}}\right) \\
+	&= 2z_{1-\frac\alpha 2}\frac\sigma{\sqrt{n}} \\
+	\Rightarrow z_{1-\frac\alpha 2} &= \frac {l\cdot \sqrt{n}}{2\sigma} \\
+	\Rightarrow 1-\frac\alpha 2 &= \Phi\left( \frac {l\cdot \sqrt{n}}{2\sigma} \right) \\
+	\Rightarrow 1-\alpha &= 2\cdot \Phi\left( \frac {l\cdot \sqrt{n}}{2\sigma} \right) -1 \\
+	&= 2\cdot \Phi\left( \frac{0.25 \cdot \sqrt{80}}{2 \sqrt{0.6}} \right) -1 \\
+	&= 2\cdot \Phi(1.443376) -1 \\
+	&\approx 2 \cdot \Phi(1.44) -1 \\
+	&= 2 \cdot 0.9251 - 1 \\
+	&= 0.8502
+      \end{split}
+    \end{equation*}
+    Das Konfidenzintevall des Kollegen genügt lediglich dem Niveau von ca. 0.85.
 \end{enumerate}
 
 \item 
