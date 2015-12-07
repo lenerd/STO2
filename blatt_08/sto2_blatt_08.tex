@@ -66,97 +66,264 @@
 
 \begin{enumerate}[label=\bfseries \blattnr.\arabic*]
 
-\item 
-\begin{enumerate}
- \item 
-    $1-\alpha = 0.95 \Rightarrow \alpha = 0.05 \Rightarrow 1-\frac\alpha 2 = 0.975$.
+    \item 
+        Es sei x eine Stichprobe vom Umfang $n = 80$ mit Mittelwert
+        $\overline{x} = \num{6,4}$ und Stichprobenvarianz $s_x^2 = \num{1,2}$.
+        \begin{enumerate}
+            \item 
+                \begin{behaupt}
+                    $[\num{6,1562}, \num{6,6438}]$
+                    ist ein Konfidenzintervall für den Erwartungswert $\mu$ zum
+                    Niveau \num{0,95}.
+                \end{behaupt}
+                \begin{proof}
+                    \begin{gather*}
+                        1 - \alpha = \num{0.95}
+                        \gdw
+                        \alpha = \num{0.05}
+                        \gdw
+                        1 - \frac{\alpha}{2} = \num{0.975}
+                        \\
+                        \Rightarrow t_{n-1; 1-\frac{\alpha}{2}}
+                        =
+                        t_{79; \num{0.975}} = \num{1.9905}
+                    \end{gather*}
+                    \begin{equation*}
+                        \begin{split}
+                            \left[ U(x_1, \dotsc, x_n),\ 
+                            O(x_1, \dotsc, x_n) \right]
+                            &= \left[ \overline{x} - t_{n-1; 1-\frac{\alpha}{2}}
+                            \frac{\sqrt{s_x^2}}{\sqrt{n}},\ 
+                            \overline{x} + t_{n-1; 1 - \frac{\alpha}{2}}
+                            \frac{\sqrt{s_x^2}}{\sqrt{n}} \right] \\
+                            &= \left[ \num{6.4} - \num{1.960}
+                            \frac{\sqrt{\num{1.2}}}{\sqrt{80}},\ 
+                            \num{6.4} + \num{1.960}
+                            \frac{\sqrt{\num{1.2}}}{\sqrt{80}} \right] \\
+                            &= \left[ \num{6.15995},\ \num{6.64005} \right]
+                        \end{split}
+                    \end{equation*}
+                \end{proof}
     
-    $\Rightarrow z_{1-\frac\alpha 2} = z_{0.975} = 1.960$.
-    \begin{equation*}
-      \begin{split}
-	[U(x_1,\ldots,x_n)&,O(x_1,\ldots,x_n)] \\
-	= [\bar{x}-z_{1-\frac\alpha 2} \frac{\sqrt{s_x^2}}{\sqrt{n}} &, \bar{x}+z_{1-\frac\alpha 2} \frac{\sqrt{s_x^2}}{\sqrt{n}}] \\
-	= [6.4-1.960 \frac{\sqrt{1.2}}{\sqrt{80}} &, 6.4+1.960 \frac{\sqrt{1.2}}{\sqrt{80}}] \\
-	= [6.15995 &, 6.64005]
-      \end{split}
-    \end{equation*}
- \item 
-    Nun sei $\sigma^2=0.6$.    
-    \begin{equation*}
-      \begin{split}
-	O(x_1,\ldots, x_n) - U(x_1,\ldots,x_n) 
-	= l 
-	&= O(x_1,\ldots, x_m) - U(x_1,\ldots,x_m) \\
-	&= \left(\bar{x} + z_{1-\frac\alpha 2}\frac\sigma{\sqrt{m}}\right) - \left(\bar{x} - z_{1-\frac\alpha 2}\frac\sigma{\sqrt{m}}\right) \\
-	&= 2z_{1-\frac\alpha 2}\frac\sigma{\sqrt{m}} \\
-	\Rightarrow \sqrt{m} &= 2z_{1-\frac\alpha 2}\frac\sigma{l} \\
-	\Rightarrow m &= 4z^2_{1-\frac\alpha 2}\frac{\sigma^2}{l^2} \\
-	&=4 \cdot (1.960)^2 \cdot \frac{0.6}{(6.64005 - 6.15995)^2} \\
-	&=40
-      \end{split}
-    \end{equation*}
-    Der Ingenieur hätte nur eine Stichprobe vom Umfang $m=40$ testen müssen.
- \item 
-  Nun sei l=0.25, gesucht $1-\alpha$.
-  \begin{equation*}
-      \begin{split}
-	l 
-	&=O(x_1,\ldots, x_n) - U(x_1,\ldots,x_n)  \\
-	&= \left(\bar{x} + z_{1-\frac\alpha 2}\frac\sigma{\sqrt{n}}\right) - \left(\bar{x} - z_{1-\frac\alpha 2}\frac\sigma{\sqrt{n}}\right) \\
-	&= 2z_{1-\frac\alpha 2}\frac\sigma{\sqrt{n}} \\
-	\Rightarrow z_{1-\frac\alpha 2} &= \frac {l\cdot \sqrt{n}}{2\sigma} \\
-	\Rightarrow 1-\frac\alpha 2 &= \Phi\left( \frac {l\cdot \sqrt{n}}{2\sigma} \right) \\
-	\Rightarrow 1-\alpha &= 2\cdot \Phi\left( \frac {l\cdot \sqrt{n}}{2\sigma} \right) -1 \\
-	&= 2\cdot \Phi\left( \frac{0.25 \cdot \sqrt{80}}{2 \sqrt{0.6}} \right) -1 \\
-	&= 2\cdot \Phi(1.443376) -1 \\
-	&\approx 2 \cdot \Phi(1.44) -1 \\
-	&= 2 \cdot 0.9251 - 1 \\
-	&= 0.8502
-      \end{split}
-    \end{equation*}
-    Das Konfidenzintevall des Kollegen genügt lediglich dem Niveau von ca. 0.85.
-\end{enumerate}
+            \item 
+                Nun sei $\sigma^2 = \num{0.6}$.
+                \begin{behaupt}
+                    Der Ingenieur hätte nur eine Stichprobe vom Umfang $m = 49$
+                    testen müssen.
+                \end{behaupt}
+                \begin{proof}
+                    Die Breite des Konfidenzintervalls ist
+                    \begin{equation*}
+                        b = 2 \cdot t_{n-1; 1-\frac{\alpha}{2}}\frac{s_x}{\sqrt{n}}
+                        = \num{0.4876}
+                        \text{ .}
+                    \end{equation*}
+                    Da die Stichprobenlänge eine natürliche Zahl sein muss, ist
+                    es unter Umständen sehr schwierig, dieselbe
+                    Konfidenzintervall-Länge zu erreichen.
+                    Daher gehen wir davon aus, dass das neue Konfidenzintervall
+                    das breiteste sein soll, welches mindestens so gut (schmal)
+                    sein muss, wie das alte.
+                    \begin{equation*}
+                        \begin{alignedat}{2}
+                            && b 
+                            &\geq 2 \cdot z_{1-\frac{\alpha}{2}}
+                            \frac{\sigma}{\sqrt{m}} \\
+                            \gdw\ && \sqrt{m}
+                            &\geq 2 \cdot z_{1-\frac{\alpha}{2}}
+                            \frac{\sigma}{b} \\
+                            \Rightarrow\ && m
+                            &\geq 4 \cdot z_{1-\frac{\alpha}{2}}^2
+                            \frac{\sigma^2}{b^2} \\
+                            \Rightarrow\ && m
+                            &= \left\lceil 4 \cdot z_{1-\frac{\alpha}{2}}^2
+                            \frac{\sigma^2}{b^2} \right\rceil \\
+                            \gdw\ && m
+                            &= \left\lceil \num{38,7789} \right\rceil \\
+                            \gdw\ && m &= 39 \\
+                        \end{alignedat}
+                    \end{equation*}
+                \end{proof}
 
-\item 
+            \item 
+                \begin{behaupt}
+                    Das Konfidenzintervall der Breite $b' = \num{0,25}$ bei
+                    einem Stichprobenumfang von $n' = 80$ genügte einem
+                    Konfidenzniveau von $1 - \alpha' = \num{0,8502}$.
+                \end{behaupt}
+                \begin{proof}
+                    \begin{equation*}
+                        \begin{alignedat}{2}
+                            && b' &= 2 \cdot z_{1-\alpha'}
+                            \frac{\sigma}{\sqrt{n'}} \\
+                            \gdw\ && z_{1-\alpha'}
+                            &= \frac{b' \sqrt{n'}}{2 \sigma} \\
+                            \gdw\ && 1-\alpha'
+                            &= \Phi \left( \frac{b' \sqrt{n'}}{2 \sigma}
+                            \right) \\
+                            &&&= \Phi \left( \frac{\num{0,25} \sqrt{80}}
+                            {2 \sqrt{\num{0,6}}} \right) \\
+                            &&&\approx \Phi \left( \num{1,4434} \right) \\
+                            &&&\approx \num{0,8502}
+                        \end{alignedat}
+                    \end{equation*}
+                \end{proof}
+        \end{enumerate}
 
-\begin{enumerate}
- \item 
- \item 
-  Konfidenzniveau 0.95:
-  
-  $1-\alpha = 0.95 \Rightarrow \alpha=0.05 \Rightarrow \frac\alpha 2 = 0.025 \Rightarrow 1-\frac\alpha 2 = 0.975$.
-  
-  $\chi_{n-1;\alpha/2} = \chi_{8;0.05} = 2.18$, $\chi_{n-1;1-\alpha/2} = \chi_{8;0.975} = 17.53$.
-  \begin{equation*}
-    \begin{split}
-      \left[ \frac{(n-1)s_x^2}{\chi^2_{n-1;1-\alpha /2}} \right.,\left. \frac{(n-1)s_x^2}{\chi^2_{n-1;\alpha /2}} \right] 
-      \Rightarrow \left[ \frac{(9-1) \cdot 6.25}{17.53} \right.,\left. \frac{(9-1) \cdot 6.25}{2.18} \right] 
-      = [2.852253 , 22.93578]
-    \end{split}
-  \end{equation*}
-  
-  Konfidenzniveau 0.99:
-  
-  $1-\alpha = 0.99 \Rightarrow \alpha=0.01 \Rightarrow \frac\alpha 2 = 0.005 \Rightarrow 1-\frac\alpha 2 = 0.995$.
-  
-  $\chi_{n-1;\alpha/2} = \chi_{8;0.01} = 1.34$, $\chi_{n-1;1-\alpha/2} = \chi_{8;0.995} = 21.96$.
-  \begin{equation*}
-    \begin{split}
-      \left[ \frac{(n-1)s_x^2}{\chi^2_{n-1;1-\alpha /2}} \right.,\left. \frac{(n-1)s_x^2}{\chi^2_{n-1;\alpha /2}} \right] 
-      \Rightarrow \left[ \frac{(9-1) \cdot 6.25}{21.96} \right.,\left. \frac{(9-1) \cdot 6.25}{1.34} \right] 
-      = [2.276867 , 37.31343]
-    \end{split}
-  \end{equation*}
-\end{enumerate}
+    \item 
+        \begin{enumerate}
+            \item 
+                \begin{behaupt}
+                    \begin{equation*}
+                        \left[
+                            \frac{(n-1)S_X^2}
+                            {\chi^2_{n-1; 1-\nicefrac{\alpha}{2}}}
+                            ,
+                            \frac{(n-1)S_X^2}
+                            {\chi^2_{n-1; \nicefrac{\alpha}{2}}}
+                        \right]
+                    \end{equation*}
+                    ist ein Konfidenzinterfall für $\sigma^2$ zum
+                    Konfidenzniveau $1 - \alpha$.
+                \end{behaupt}
+                \begin{proof}
+                    \begin{equation*}
+                        \begin{split}
+                            \prob
+                            \left(
+                                \frac{(n-1)S_X^2}
+                                {\chi^2_{n-1; 1-\nicefrac{\alpha}{2}}}
+                                \leq
+                                \sigma^2
+                                \leq
+                                \frac{(n-1)S_X^2}
+                                {\chi^2_{n-1; \nicefrac{\alpha}{2}}}
+                            \right)
+                            &=
+                            \prob
+                            \left(
+                                \frac{\chi^2_{n-1; \nicefrac{\alpha}{2}}}
+                                {(n-1)S_X^2}
+                                \leq
+                                \frac{1}{\sigma^2}
+                                \leq
+                                \frac{\chi^2_{n-1; 1-\nicefrac{\alpha}{2}}}
+                                {(n-1)S_X^2}
+                            \right) \\
+                            &=
+                            \prob
+                            \left(
+                                \chi^2_{n-1; \nicefrac{\alpha}{2}}
+                                \leq
+                                \frac{(n-1)S_X^2}{\sigma^2}
+                                \leq
+                                \chi^2_{n-1; 1-\nicefrac{\alpha}{2}}
+                            \right) \\
+                            &=
+                            \prob
+                            \left(
+                                \frac{(n-1)S_X^2}{\sigma^2}
+                                \leq
+                                \chi^2_{n-1; 1-\nicefrac{\alpha}{2}}
+                            \right) \\
+                            &-
+                            \prob
+                            \left(
+                                \frac{(n-1)S_X^2}{\sigma^2}
+                                \leq
+                                \chi^2_{n-1; \nicefrac{\alpha}{2}}
+                            \right) \\
+                            &= 1- \frac{\alpha}{2} - \frac{\alpha}{2}
+                            = 1- \alpha
+                        \end{split}
+                    \end{equation*}
+                \end{proof}
 
-\item 
-\pagebreak
-\begin{enumerate}
- \item 
-    \lstinputlisting{aufgabe-8.3.a.r}
- \item 
-    Der ermittelte relative Anteil war 0.9009 und passt soweit zum angegebenen Konfidenzniveau von 0.9.
-\end{enumerate}
+            \item 
+                Es seien $n = 9$ und $s_x^2 = \num{6,25}$.
+
+                Konfidenzniveau $1 - \alpha = \num{0.95}$:
+  
+                \begin{equation*}
+                    1 - \alpha = \num{0.95}
+                    \gdw
+                    \alpha = \num{0.05}
+                    \gdw
+                    \frac{\alpha}{2} = \num{0.025}
+                    \gdw
+                    1 - \frac{\alpha}{2} = \num{0.975}
+                \end{equation*}
+                \begin{equation*}
+                    \chi_{n-1; \nicefrac{\alpha}{2}}^2
+                    = \chi_{8; \num{0.025}}^2
+                    = \num{2.18}
+                    \qquad
+                    \chi_{n-1; 1 - \nicefrac{\alpha}{2}}^2
+                    = \chi_{8; \num{0.975}}^2
+                    = \num{17.53}
+                \end{equation*}
+                \begin{equation*}
+                    \left[
+                    \frac{(n-1)s_x^2}{\chi^2_{n-1;1-\frac{\alpha}{2}}}
+                    ,\ 
+                    \frac{(n-1)s_x^2}{\chi^2_{n-1;\frac{\alpha}{2}}}
+                    \right] 
+                    =
+                    \left[
+                    \frac{(9-1) \cdot \num{6.25}}{\num{17.53}}
+                    ,\ 
+                    \frac{(9-1) \cdot \num{6.25}}{\num{2.18}}
+                    \right] 
+                    = [\num{2.8523},\ \num{22.9358}]
+                \end{equation*}
+  
+                Konfidenzniveau $1 - \alpha' = \num{0.99}$:
+  
+                \begin{equation*}
+                    1 - \alpha' = \num{0.99}
+                    \gdw
+                    \alpha' = \num{0.01}
+                    \gdw
+                    \frac{\alpha'}{2} = \num{0.005}
+                    \gdw
+                    1 - \frac{\alpha'}{2} = \num{0.995}
+                \end{equation*}
+                \begin{equation*}
+                    \chi_{n-1; \nicefrac{\alpha'}{2}}^2
+                    = \chi_{8; \num{0.005}}^2
+                    = \num{1.34}
+                    \qquad
+                    \chi_{n-1; 1 - \nicefrac{\alpha'}{2}}^2
+                    = \chi_{8; \num{0.995}}^2
+                    = \num{21.96}
+                \end{equation*}
+                \begin{equation*}
+                    \left[
+                    \frac{(n-1)s_x^2}{\chi^2_{n-1;1-\frac{\alpha'}{2}}}
+                    ,\ 
+                    \frac{(n-1)s_x^2}{\chi^2_{n-1;\frac{\alpha'}{2}}}
+                    \right] 
+                    =
+                    \left[
+                    \frac{(9-1) \cdot \num{6.25}}{\num{21,96}}
+                    ,\ 
+                    \frac{(9-1) \cdot \num{6.25}}{\num{1,34}}
+                    \right] 
+                    = [\num{2,2769},\ \num{37,3134}]
+                \end{equation*}
+        \end{enumerate}
+
+    \pagebreak
+    \item
+        \begin{enumerate}
+            \item \hfill \\ 
+                \lstinputlisting{aufgabe-8.3.a.r}
+
+            \item 
+                Der ermittelte relative Anteil war \num{0.9009} und passt
+                soweit zum angegebenen Konfidenzniveau von \num{0.9}.
+
+        \end{enumerate}
 
 \end{enumerate}
 

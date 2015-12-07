@@ -1,19 +1,19 @@
 #!/usr/bin/env Rscript
 
-N <- 10000
-n <- 20
-x_exp <- 10
-x_std_dev <- 5
+N          <- 10000
+n          <- 20
+mu         <- 10
+sigma      <- 5
 conf_level <- 0.9
-matches <- 0
+matches    <- 0
 
 for (i in 1:N) {
-	x <- rnorm(n,x_exp,x_std_dev)
+	x <- rnorm(n, mu, sigma)
 	conf_interval <- t.test(
 		x,conf.level = conf_level)$conf.int
 
-	if (conf_interval[1] <= x_exp 
-		&& x_exp <= conf_interval[2]) {
+	if (conf_interval[1] <= mu 
+		&& mu <= conf_interval[2]) {
 		
 		matches <- matches + 1;
 	}
