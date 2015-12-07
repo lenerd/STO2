@@ -122,6 +122,31 @@
 \begin{enumerate}
  \item 
  \item 
+  Konfidenzniveau 0.95:
+  
+  $1-\alpha = 0.95 \Rightarrow \alpha=0.05 \Rightarrow \frac\alpha 2 = 0.025 \Rightarrow 1-\frac\alpha 2 = 0.975$.
+  
+  $\chi_{n-1;\alpha/2} = \chi_{8;0.05} = 2.18$, $\chi_{n-1;1-\alpha/2} = \chi_{8;0.975} = 17.53$.
+  \begin{equation*}
+    \begin{split}
+      \left[ \frac{(n-1)s_x^2}{\chi^2_{n-1;1-\alpha /2}} \right.,\left. \frac{(n-1)s_x^2}{\chi^2_{n-1;\alpha /2}} \right] 
+      \Rightarrow \left[ \frac{(9-1) \cdot 6.25}{17.53} \right.,\left. \frac{(9-1) \cdot 6.25}{2.18} \right] 
+      = [2.852253 , 22.93578]
+    \end{split}
+  \end{equation*}
+  
+  Konfidenzniveau 0.99:
+  
+  $1-\alpha = 0.99 \Rightarrow \alpha=0.01 \Rightarrow \frac\alpha 2 = 0.005 \Rightarrow 1-\frac\alpha 2 = 0.995$.
+  
+  $\chi_{n-1;\alpha/2} = \chi_{8;0.01} = 1.34$, $\chi_{n-1;1-\alpha/2} = \chi_{8;0.995} = 21.96$.
+  \begin{equation*}
+    \begin{split}
+      \left[ \frac{(n-1)s_x^2}{\chi^2_{n-1;1-\alpha /2}} \right.,\left. \frac{(n-1)s_x^2}{\chi^2_{n-1;\alpha /2}} \right] 
+      \Rightarrow \left[ \frac{(9-1) \cdot 6.25}{21.96} \right.,\left. \frac{(9-1) \cdot 6.25}{1.34} \right] 
+      = [2.276867 , 37.31343]
+    \end{split}
+  \end{equation*}
 \end{enumerate}
 
 \item 
