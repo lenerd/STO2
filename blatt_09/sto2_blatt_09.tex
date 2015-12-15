@@ -174,21 +174,41 @@
 	                \end{split}
 	            \end{equation*}
        
-       \item 
-        700 von 820 Ergebnissen in [0,30] und \\
-	120 von 820 Ergebnissen in [31,36].
+            \item 
+                Es treten 700 von 820 Ergebnissen in $\{0, \dotsc, 30\}$ und
+                120 von 820 Ergebnissen in $\{31, \dotsc, 36\}$ auf.  Wäre das
+                Roulette fair, so würden die Einzelergebnisse Laplace-verteilt
+                sein, d.\,h. $\prob(X_1 = x) = \frac{1}{37}$ für $x \in \{0,
+                \dotsc, 36\}$.
+                Wir betrachten nun ein Ergebnis in $\{31, \dotsc, 36\}$ als
+                Erfolg. Wäre das Roulette fair, so wäre die
+                Erfolgswahrscheinlichkeit $p_0 = \frac{6}{37}$.
+
+                Wir testen nun die Hypothese $H_0 \colon p = p_0 =
+                \frac{6}{37}$ gegen $H_1 \colon p \neq \frac{6}{37}$ mit einem
+                Signifikanzniveau von $\alpha = \num{0,05}$.
+                Der kritische Bereich ist
+                \begin{equation*}
+                    \begin{split}
+                        K
+                        &= \{ x \in \mathbb{R}\ :\ |x| > z_{1-\frac{\alpha}{2}} \} \\
+                        &= \{ x \in \mathbb{R}\ :\ |x| > z_{\num{0,975}} \} \\
+                        &= \Big( -\infty, \num{-1,960} \Big) \cup \Big( \num{1,960}, \infty \Big)
+                    \end{split}
+                \end{equation*}
+                Der konkrete Wert des Schätzers $T_n$ für die gegebene
+                Stichprobe beträgt
+                \begin{equation*}
+                    T_n
+                    = \frac{120 - 820 \cdot \frac{6}{37}}{\sqrt{820 \cdot \frac{6}{37} \cdot \frac{31}{37}}}
+                    = \num{-1,2291}
+                    \text{ .}
+                \end{equation*}
+                Da der Schätzwert nicht im kritischen Bereich $K$ liegt, wird
+                die Nullhypothese nicht abgelehnt. Es ist nicht genug, um das
+                Roulette als unfair einzustufen.
 	
-	Fairness würde La-Place-Verteilung vorraussetzen, sodass gilt \\
-	$$\forall x \in \{0,1,\ldots,36\}: \mathbb{P}(X_1 = x) = \frac1{37}$$
-	\begin{equation*}
-	  \begin{split}
-	    P(k|n,p) = \binom{n}{k} p^ k(1-p)^{n-k} \\
-	    P\left(700|820,\frac{31}{37}\right) \approx 0.0181 \\ 
-	    P\left(120|820,\frac{6}{37}\right) \approx 0.0181
-	  \end{split}
-	\end{equation*}
-	
-      \end{enumerate}
+        \end{enumerate}
 
     \pagebreak
     \item \hfill \\ 
