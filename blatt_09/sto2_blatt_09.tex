@@ -113,7 +113,23 @@
     
     \item 
       \begin{enumerate}
-       \item 
+       \item Für $H_0: \mu = \mu_0$ ist 
+       $K = \left\{x:|x>z_{1-\frac\alpha 2} \right\} = \left(-\infty, z_{\frac\alpha 2}\right) \cup \left(z_{1-\frac\alpha 2}, \infty \right)$. Und somit
+	\begin{equation*}
+	  \begin{split}
+	    T_n<z_{\frac\alpha 2} \Leftrightarrow \Phi(T_n)<\frac\alpha 2 &\Rightarrow \alpha > 2\cdot \Phi(T_n) \\
+	    t_n>t_{1-\frac\alpha 2} \Leftrightarrow \Phi(T_n) > 1-\frac\alpha 2 &\Rightarrow \alpha > 2(1-\Phi(T_n))
+	  \end{split}
+	\end{equation*}
+      Daraus ergib sich als Schranke: 
+      \begin{equation*}
+	  \begin{split}
+	    p 
+	    &= \min\{2\cdot \Phi(T_n), 2(1-\Phi(T_n))\}  \\
+	    &= 2 \cdot \min\{\Phi(T_n), 1-\Phi(T_n)\}
+	  \end{split}
+	\end{equation*}
+       
        \item 
       \end{enumerate}
 
