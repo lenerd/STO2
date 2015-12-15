@@ -131,6 +131,19 @@
 	\end{equation*}
        
        \item 
+        700 von 820 Ergebnissen in [0,30] und \\
+	120 von 820 Ergebnissen in [31,36].
+	
+	Fairness würde La-Place-Verteilung vorraussetzen, sodass gilt \\
+	$$\forall x \in \{0,1,\ldots,36\}: \mathbb{P}(X_1 = x) = \frac1{37}$$
+	\begin{equation*}
+	  \begin{split}
+	    P(k|n,p) = \binom{n}{k} p^ k(1-p)^{n-k} \\
+	    P\left(700|820,\frac{31}{37}\right) \approx 0.0181 \\ 
+	    P\left(120|820,\frac{6}{37}\right) \approx 0.0181
+	  \end{split}
+	\end{equation*}
+	
       \end{enumerate}
 
     \pagebreak
