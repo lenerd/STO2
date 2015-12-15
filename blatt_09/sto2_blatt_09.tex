@@ -65,51 +65,84 @@
 \maketitle
 
 \begin{enumerate}[label=\bfseries \blattnr.\arabic*]
+    \item
+        \begin{enumerate}
+            \item
+                \begin{equation*}
+                    H_0: \mathbb{P} \in \mathcal{P}_0 \text{ mit }
+                    \mathcal{P}_0 =
+                    \{ \mathcal{N}(\mu,\sigma^2) \ |\ 
+                    \mu,\sigma^2 \in \mathbb{R} \land \sigma^2 > 0 \}
+                \end{equation*}
 
-    \item 
-      \begin{enumerate}
-       \item 
-        \begin{equation*}
-	  H_0: \mathbb{P} \in \mathcal{P}_0; \mathcal{P}_0 = \{ \mathcal{N}(\mu,\sigma^2) \}
-	\end{equation*}
-	Mit beliebigen Werten für $\mu$ und $\sigma$.
-       \item 
-	\begin{equation*}
-	  H_0: \mathbb{P} \in \mathcal{P}_0; \mathcal{P}_0 = \{ \mathcal{N}(0,1) \}
-	\end{equation*}
-       \item 
-	Da $\mathcal{P}$ als Menge aller Wahrscheinlichkeitsverteilungen mit 
-	\textbf{stetiger Verteilungsfunktion} angegeben wird, existiert zu einer 
-	jeder dieser Verteilungsfunktionen auch eine Dichte.
-	\begin{equation*}
-	  H_0: \mathbb{P} \in \mathcal{P}_0; \mathcal{P}_0 = 
-	   \left\{ \mathbb{P} : F(x)=\mathbb{P}(T_n(X_1,\ldots,X_n) \leq x) \wedge 3 \leq \int_{-\infty}^{\infty} F'(x) \dif x \right\}
-	\end{equation*}
-       \item 
+            \item 
+                \begin{equation*}
+                    H_0: \mathbb{P} \in \mathcal{P}_0 \text{ mit }
+                    \mathcal{P}_0 =
+                    \{ \mathcal{N}(0,1) \}
+                \end{equation*}
+
+            \item 
+                % Da $\mathcal{P}$ als Menge aller
+                % Wahrscheinlichkeitsverteilungen mit \textbf{stetiger
+                % Verteilungsfunktion} angegeben wird, existiert zu einer jeder
+                % dieser Verteilungsfunktionen auch eine Dichte.
+                % \begin{equation*}
+                %     H_0: \mathbb{P} \in \mathcal{P}_0; \mathcal{P}_0 = \left\{
+                %     \mathbb{P} : F(x)=\mathbb{P}(T_n(X_1,\ldots,X_n) \leq x)
+                %     \wedge 3 \leq \int_{-\infty}^{\infty} F'(x) \dif x \right\}
+                % \end{equation*}
+                % Das Integral müsste = 1 sein.
+
+                \begin{equation*}
+                    H_0: \mathbb{P} \in \mathcal{P}_0 \text{ mit }
+                    \mathcal{P}_0 =
+                    \{ \prob_0 \in \mathcal{P}\ |\ 
+                    \forall X \sim \prob_0 : \e[X] \geq 3 \}
+                \end{equation*}
+
+           \item 
+                \begin{equation*}
+                    H_0: \mathbb{P} \in \mathcal{P}_0 \text{ mit }
+                    \mathcal{P}_0 =
+                    \{ \prob_0 \in \mathcal{P}\ |\ 
+                    \forall X \sim \prob_0 : \var[X] = 5 \}
+                \end{equation*}
       \end{enumerate}
 
     \item 
-      Wähle die Nullhypothese als Gefahr, die mit möglichst nicht verkannt werden soll.
-      
-      $H_0: \mu \geq \mu_0$, und somit $H_1: \mu>\mu_0$.
-      
-      \begin{tabular}{c|c|c}
-        & Entscheide ``Gefahr'' & Entscheide ``keine Gefahr'' \\
-        \hline
-       Ist ``Gefahr'' & - & Fehler 1. Art \\
-       Ist ``keine Gefahr'' & Fehler 2. Art & - 
-      \end{tabular}
+        Wähle die Hypothesen so, dass ein Fehler 1. Art die ungünstigere
+        Fehlentscheidung ist, deren Wahrscheinlichkeit möglichst gering sein
+        soll.
+        \begin{equation*}
+            H_0 \colon \mu \geq \mu_0
+            \quad \text{und} \quad
+            H_1 \colon \mu < \mu_0
+        \end{equation*}
+        Konsequenz eines Fehlers 1. Art (die Nullhypothese wird zu unrecht
+        abgelehnt, $H_0$ gilt):
+        Die ehemaligen Bewohner werden in die verstrahlten Gebiete gelassen,
+        obwohl die mittlere Strahlung über dem Grenzwert liegt. Die Gesundheit
+        der Menschen kann beeinträchtigt werden und die Regierung müsste
+        eventuell Entschädigungen zahlen. (Dies möchte man vermeiden.)
 
-    
-      Konsequenz eines Fehlers 1. Art: Der tatsächliche mittlere Strahlenwert wurde unterschätzt und das Betreten wurde zu unrecht 
-      gestattet. Dies kann enorme Gesundheits-Schäden durch die Strahlenkrankheit, bis zu Todesopfern zur Folge haben.
-      
-      Konsequenz eines Fehlers 2. Art: Der tatsächliche mittlere Strahlenwert wurde übreschätzt und das Betreten wurde zu unrecht 
-      verboten. Betroffene verlieren Besitztümer, die sie nicht retten dürfen. 
-      
-      Auf Grund des ethischen Quasi-Konsens unserer Gesellschaft wird die Konsequenz eines Fehlers erster Art als deutlich verwerflicher 
-      als die Konsequenz eines Fehlers zweiter Art bewertet, weshalb Fehler der ersten Art zu minimieren sind ($\Rightarrow$ entsprechende 
-      Wahl der Nullhypothese).
+        Konsequenz eines Fehlers 2. Art (die Nullhypothese wird nicht abgelehnt,
+        obwohl $H_1$ gilt):
+        Die mittlere Strahlung wird überschätzt und die Menschen dürfen keine
+        Besitztümer aus dem verstrahlten Gebiet retten und haben Pech gehabt.
+        
+        \begin{tabular}{c|c|c}
+            & Entscheide „Gefahr“ & Entscheide „keine Gefahr“ \\
+            \hline
+            Ist „Gefahr“           & -             & Fehler 1. Art \\
+            Ist „keine Gefahr“     & Fehler 2. Art & - 
+        \end{tabular}
+        
+        Auf Grund des ethischen Quasi-Konsens unserer Gesellschaft wird die
+        Konsequenz eines Fehlers erster Art als deutlich verwerflicher als die
+        Konsequenz eines Fehlers zweiter Art bewertet, weshalb Fehler der
+        ersten Art zu minimieren sind ($\Rightarrow$ entsprechende Wahl der
+        Nullhypothese).
     
     \item 
       \begin{enumerate}
