@@ -23,6 +23,9 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
 
+\usepackage{xcolor}
+\definecolor{light-gray}{HTML}{cccccc}
+
 
 \newtheorem*{behaupt}{Behauptung}
 \newcommand{\gdw}{\Leftrightarrow}
@@ -68,9 +71,120 @@
   \item %.1
     \begin{enumerate}
      \item %.1.a
+	~
+	% 
+	% @see http://www.texample.net/tikz/examples/scatterplot/
+	%
+	\begin{figure}[H]
+	  \centering
+	  \begin{tikzpicture}[only marks, y=.5cm]
+	    \draw[->] (0,0) -- coordinate (x axis mid) (6,0);
+	    \draw[->] (0,0) -- coordinate (y axis mid)(0,11);
+	    \foreach \x in {1,2,...,5} {
+		\draw [xshift=0cm](\x cm,1pt) -- (\x cm,-3pt)
+		    node[anchor=north] {$\x$};
+		\draw [light-gray] (\x cm,1pt) -- (\x cm,11);
+	    }
+	    \foreach \y/\ytext in {1,2,...,10} {
+		\draw (1pt, .5*\y cm) -- (-3pt, .5*\y cm) node[anchor=east] {$\ytext$};
+		\draw [light-gray] (1pt,.5*\y cm) -- (6,.5*\y cm);
+	    }
+	    \node[below=0.75cm] at (x axis mid) {Bohnenportion (in 100g)};
+	    \node[left=1cm, above=0.75,rotate=90] at (y axis mid) {Flatulenzanzahl};
+	    \draw plot[mark=*,xshift=0cm] file {flatulenzen.data};
+	  \end{tikzpicture}
+	\end{figure}	
      \item %.1.b
+     
+	\begin{equation*}
+	   \begin{split}
+	      n&=5 \\
+	      \bar{x} &= \frac1n \sum_{i=1}^n x_i = \frac{15}5 = 3 \\
+	      \bar{y} &= \frac1n \sum_{i=1}^n y_i = \frac{25}5 = 5 \\
+	      s_x^2  &= \frac1{n-1}\left(\sum_{i=1}^n x_i^2 - n\bar{x}^2\right) 
+		      = \frac{55-45}{4}
+		      = \frac52 \\
+	      s_y^2  &= \frac1{n-1}\left(\sum_{i=1}^n y_i^2 - n\bar{y}^2\right) 
+		      = \frac{165-125}{4}
+		      = 10 \\
+	      s_{xy} &= \frac1{n-1}\left(\sum_{i=1}^n x_iy_i - n\bar{x}\bar{y} \right) 
+% 		      = \frac{91 - 5\cdot3\cdot5}{5-1} 
+		      = \frac{91 - 75}{4}
+		      = 4 \\
+	      r_{xy} &= \frac{s_{xy}}{s_xs_y} 
+		      = \frac{4}{\sqrt{\frac52}\sqrt{10}} 
+		      = \frac{4}{\sqrt{\frac{50}2}} 
+		      = \frac45
+		      = 0.8
+	   \end{split}
+	\end{equation*}
+
+	Die Bohnenportionen und die Flatulenzen sind positiv korrelliert; der 
+	Zusammenhang ist starken Grades.
      \item %.1.c
+	Aus vorangegangenem Aufgabenteil wissen wir, dass \\
+	$\bar{x} = 3$, $\bar{y} = 5$, $s_x^2 = \frac52$ und $s_{xy} = 4$ ist.
+	\begin{equation*}
+	   \begin{split}     
+	      a &= \frac{s_{xy}}{s_x^2} 
+	         = \frac4{\frac52} 
+	         = \frac85 
+	         = 1.6\\
+	      b &= \bar{y} - a\bar{x} 
+	         = 5 - 1.6 \cdot 3
+	         = -0.4\\
+	      y &= ax+b
+		 = 1.6x-0.4
+	   \end{split}
+	\end{equation*}
+	% 
+	% @see http://www.texample.net/tikz/examples/scatterplot/
+	%
+	\begin{figure}[H]
+	  \centering
+	  \begin{tikzpicture}[only marks, y=.5cm, domain=0:4]
+	    \draw[->] (0,0) -- coordinate (x axis mid) (6,0);
+	    \draw[->] (0,0) -- coordinate (y axis mid)(0,11);
+	    \foreach \x in {1,2,...,5} {
+		\draw [xshift=0cm](\x cm,1pt) -- (\x cm,-3pt)
+		    node[anchor=north] {$\x$};
+		\draw [light-gray] (\x cm,1pt) -- (\x cm,11);
+	    }
+	    \foreach \y/\ytext in {1,2,...,10} {
+		\draw (1pt, .5*\y cm) -- (-3pt, .5*\y cm) node[anchor=east] {$\ytext$};
+		\draw [light-gray] (1pt,.5*\y cm) -- (6,.5*\y cm);
+	    }
+	    \node[below=0.75cm] at (x axis mid) {Bohnenportion (in 100g)};
+	    \node[left=1cm, above=0.75,rotate=90] at (y axis mid) {Flatulenzanzahl};
+	    \draw plot[mark=*,xshift=0cm] file {flatulenzen.data};
+	    
+	    \draw (0pt, .5 * .25 cm) -- (5.5cm,.5 * 8.4 cm)
+		  node[right] {$f(x) = 1.6x-0.4$};
+	  \end{tikzpicture}
+	\end{figure}	
      \item %.1.d
+	Gegeben ist $n=81$, $s_x^2 = 50$, $\hat a  = \frac23$, $\hat b=\frac15$, 
+	$\hat\sigma^2=40$.
+	
+	Zu zeigen ist, dass eine positive Korrelation vorliegt, d.h. $a>0$.
+	Dies bedeutet im statistischen Test, dass $H_0: a\leq 0$ abzulehnen ist.
+	Es gilt daher:
+	\begin{equation*}
+	   \begin{split}
+	      K &= \{ x \in \mathbb{R}: x > t_{n-2;1-\alpha}\} \\
+	      \hat \sigma_a^2 &= \frac{\hat\sigma^2}{(n-1)s_x^2}
+			      = \frac{40}{80 \cdot 50}
+			      = \frac1{100} \\
+	      T_n &= \frac{\hat a - a_0}{\hat \sigma _a}
+		   = \frac{\frac23 - 0}{\sqrt{\frac1{100}}}
+		   = \frac{20}3
+		   > 1.9905
+		   = t_{79;0.975} \\
+	      \Rightarrow T_n &\in K
+	   \end{split}
+	\end{equation*}
+	Somit wird $H_0$ abgelehnt -- es ist eine positive Korrelation belegt.
+	
     \end{enumerate}
 
   \item %.2
