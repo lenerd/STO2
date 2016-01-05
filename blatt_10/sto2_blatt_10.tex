@@ -132,9 +132,9 @@
 	         = 1.6\\
 	      b &= \bar{y} - a\bar{x} 
 	         = 5 - 1.6 \cdot 3
-	         = -0.4\\
+	         = 0.2\\
 	      y &= ax+b
-		 = 1.6x-0.4
+		 = 1.6x+0.2
 	   \end{split}
 	\end{equation*}
 	% 
@@ -158,8 +158,9 @@
 	    \node[left=1cm, above=0.75,rotate=90] at (y axis mid) {Flatulenzanzahl};
 	    \draw plot[mark=*,xshift=0cm] file {flatulenzen.data};
 	    
-	    \draw (0pt, .5 * .25 cm) -- (5.5cm,.5 * 8.4 cm)
-		  node[right] {$f(x) = 1.6x-0.4$};
+	    %\draw (0pt, .5 * .25 cm) -- (5.5cm,.5 * 8.4 cm)
+	    \draw (0pt, .5 * .2 cm) -- (5.5cm,.5 * 9 cm)
+		  node[right] {$f(x) = 1.6x+0.2$};
 	  \end{tikzpicture}
 	\end{figure}	
      \item %.1.d
