@@ -89,15 +89,14 @@
 		\draw (1pt, .5*\y cm) -- (-3pt, .5*\y cm) node[anchor=east] {$\ytext$};
 		\draw [light-gray] (1pt,.5*\y cm) -- (6,.5*\y cm);
 	    }
-	    \node[below=0.75cm] at (x axis mid) {Bohnenportion (in 100g)};
+        \node[below=0.75cm] at (x axis mid) {Bohnenportion (in \SI{100}{\gram})};
 	    \node[left=1cm, above=0.75,rotate=90] at (y axis mid) {Flatulenzanzahl};
 	    \draw plot[mark=*,xshift=0cm] file {flatulenzen.data};
 	  \end{tikzpicture}
 	\end{figure}	
      \item %.1.b
      
-	\begin{equation*}
-	   \begin{split}
+	\begin{align*}
 	      n&=5 \\
 	      \bar{x} &= \frac1n \sum_{i=1}^n x_i = \frac{15}5 = 3 \\
 	      \bar{y} &= \frac1n \sum_{i=1}^n y_i = \frac{25}5 = 5 \\
@@ -116,16 +115,14 @@
 		      = \frac{4}{\sqrt{\frac{50}2}} 
 		      = \frac45
 		      = 0.8
-	   \end{split}
-	\end{equation*}
+	\end{align*}
 
 	Die Bohnenportionen und die Flatulenzen sind positiv korrelliert; der 
 	Zusammenhang ist starken Grades.
      \item %.1.c
 	Aus vorangegangenem Aufgabenteil wissen wir, dass \\
-	$\bar{x} = 3$, $\bar{y} = 5$, $s_x^2 = \frac52$ und $s_{xy} = 4$ ist.
-	\begin{equation*}
-	   \begin{split}     
+	$\bar{x} = 3$, $\bar{y} = 5$, $s_x^2 = \frac52$ und $s_{xy} = 4$ gelten.
+	\begin{align*}
 	      a &= \frac{s_{xy}}{s_x^2} 
 	         = \frac4{\frac52} 
 	         = \frac85 
@@ -135,8 +132,7 @@
 	         = 0.2\\
 	      y &= ax+b
 		 = 1.6x+0.2
-	   \end{split}
-	\end{equation*}
+	\end{align*}
 	% 
 	% @see http://www.texample.net/tikz/examples/scatterplot/
 	%
@@ -167,7 +163,7 @@
 	Gegeben ist $n=81$, $s_x^2 = 50$, $\hat a  = \frac23$, $\hat b=\frac15$, 
 	$\hat\sigma^2=40$.
 	
-	Zu zeigen ist, dass eine positive Korrelation vorliegt, d.h. $a>0$.
+	Zu zeigen ist, dass eine positive Korrelation vorliegt, d.\,h. $a>0$.
 	Dies bedeutet im statistischen Test, dass $H_0: a\leq 0$ abzulehnen ist.
 	Es gilt daher:
 	\begin{equation*}
@@ -191,16 +187,19 @@
   \item %.2
     \begin{enumerate}
      \item %.2.a
-	\textbf{lm(y\~x)}: Definiert ein \textbf{l}ineares \textbf{M}odell an 
-	Hand einer Formel. Die Eingabe y\~x definiert, dass der y Wert in 
-	Abhängigkeit zum x Wert steht.
+    \lstinline{model = lm(y ~ x)}: Definiert ein \textbf{l}ineares
+    \textbf{M}odell an Hand einer Formel. Die Eingabe \lstinline{y ~ x}
+    definiert, dass der y Wert in Abhängigkeit zum x Wert steht.
+
+    \lstinline{summary(model)}: Gibt eine ausführlichere Zusammenfassung des
+    Modells aus.
 	
-	\textbf{plot(x,y)}: Zeichnet die gegebenen Werte der Vektoren 
-	gegeneinander auf, wobei die i-te Stelle im x-Vektor mit dem i-ten Wert
-	des y-Vektors verknüpft wird.
+    \lstinline{plot(x, y)}: Zeichnet die gegebenen Werte der Vektoren
+    gegeneinander auf, wobei die $i$-te Stelle im $x$-Vektor mit dem $i$-ten
+    Wert des $y$-Vektors verknüpft wird.
 	
-	\textbf{abline(model)}: Zeichnet das lineare Modell, welches zuvor mit 
-	lm(y\~x) erstellt wurde in den Plot ein.
+	\lstinline{abline(model)}: Zeichnet das lineare Modell, welches zuvor mit 
+    \lstinline{lm(y ~ x)} erstellt wurde, in den Plot ein.
      \item %.2.b
      \item %.2.c
      \item %.2.d
