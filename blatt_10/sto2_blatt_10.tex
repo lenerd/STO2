@@ -200,9 +200,75 @@
 	
 	\lstinline{abline(model)}: Zeichnet das lineare Modell, welches zuvor mit 
     \lstinline{lm(y ~ x)} erstellt wurde, in den Plot ein.
+
+    Der Koeffizient von $x$ in dem linearen Modell wird mit \num{368.25}
+    geschätzt. Bei einem Hypothesentest $H: a = 0$ gegen $H_1: a \neq 0$ kann
+    $H_0$ sogar mit Signifikanzniveaus $\alpha \leq \num{0,001}$ abgelehnt
+    werden. Dies ist durch die Markierung \texttt{***} gekennzeichnet.
+    Es lässt sich also zu einem Signifikanzniveau \SI{1}{\percent} belegen,
+    dass eine Korrelation zwischen der Anzahl von Sonnentagen und dem
+    verkauften Eisvolumen besteht.
+
      \item %.2.b
+         Das Konfidenzintervall mit der Option
+         \lstinline{interval="prediction"} beschreibt ein Intervall zu dem
+         entsprechenden Konfidenzniveau, in dem einzelne zukünftige
+         Realisierungen liegen werden.
+
+         Das Konfidenzinterval mit der Option
+         \lstinline{interval="confidence"} beschreibt den Bereich, in dem der
+         Erwartungswert der Zufallsgröße liegt.
+         
+         Im ersten Fall wird der Fehler
+         beachtet, während dieser im zweiten Fall ignoriert werden kann, da der
+         Erwartungswert des Fehlers 0 beträgt. Daher ist das erste Intervall
+         deutlich breiter als das zweite.
      \item %.2.c
+         Das dritte Modell ($Y_i = a x_i^2 + b + Z_i$) ergibt das größte
+         Bestimmtheitsmaß (\texttt{Adjusted R-squared}).
+         \begin{table}[h]
+             \centering
+             \begin{tabular}{l|r}
+                 Modell & Bestimmtheitsmaß \\ \hline
+                 $Y_i = a x_i + b + Z_i$      & \num{0.4776} \\
+                 $Y_i = a \ln(x_i) + b + Z_i$ & \num{0.4414} \\
+                 $Y_i = a e^{x_i} + b + Z_i$  & \num{0.0515} \\
+                 $Y_i = a x_i^2 + b + Z_i$    & \num{0.5013} \\
+             \end{tabular}
+         \end{table}
      \item %.2.d
+         Es fällt auf, dass die $p$-Werte von dem neuen Modell deutlich höher
+         sind als der $p$-Wert aus dem rein linearen Ansatz.
+         Die Hypothesen $H_0^i: \beta_i = 0$, $i \in \{1,2,3\}$, können also
+         nur unter einem deutlich niedrigeren Signifikanzniveau $1 - \alpha$
+         abgelehnt werden.
+         Das lineare Modell passt also besser zu den vorliegenden Daten.
+         \begin{table}[h]
+             \centering
+             \begin{tabular}{l|r|l}
+                 Modell & Koeffizient & $p$-Wert \\ \hline
+                 $Y_i = a x_i + b + Z_i$ & $a$ & \num{0.000445} \\ \hline
+                 $Y_i = \beta_0 + \beta_1x_i + \beta_2x_i^2 + Z_i$ & $\beta_0$ & \num{0.305} \\
+                                                                   & $\beta_1$ & \num{0.141} \\
+                                                                   & $\beta_2$ & \num{0.303} \\
+             \end{tabular}
+         \end{table}
+
+         Da mir gerade nicht klar ist, wozu das \lstinline{log(...)} in dem
+         letzten Aufruf dient, sind nun noch einmal die entsprechenden Werte
+         für den folgenden Aufruf angegeben:
+         \lstinline{summary(lm(data$Volumen~data$Sonnentage+I(data$Sonnentage^2)))}
+         Dieses Modell passt jedoch auch nicht besser.
+         \begin{table}[h]
+             \centering
+             \begin{tabular}{l|r|l}
+                 Modell & Koeffizient & $p$-Wert \\ \hline
+                 $Y_i = a x_i + b + Z_i$ & $a$ & \num{0.000445} \\ \hline
+                 $Y_i = \beta_0 + \beta_1x_i + \beta_2x_i^2 + Z_i$ & $\beta_0$ & \num{0.299} \\
+                                                                   & $\beta_1$ & \num{0.509} \\
+                                                                   & $\beta_2$ & \num{0.273} \\
+             \end{tabular}
+         \end{table}
     \end{enumerate}
 \end{enumerate}
 
