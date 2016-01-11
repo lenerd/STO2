@@ -68,22 +68,85 @@
 \maketitle
 
 \begin{enumerate}[label=\bfseries \blattnr.\arabic*]
-    \item %.1
-        \begin{enumerate}
-            \item
+  \item %.1
+    \begin{enumerate}
+     \item %.1.a
+         Wie in der Vorlesung besprochen gilt:
+         $$Var\left[T_n^{(1)}\right] = \frac{(b-a)cI - I^2}{n}$$
+         
+         Weiterhin sagt das Skript aus, dass $\frac{T_n^{(1)}}{(b-a)c}$ 
+         binominalverteilt ist, 
+         \\ mit den Parametern $n$ und $p=\frac I{(b-a)c}$.
+         
+         Ferner ergibt sich für den Erwartungswert:
+         \begin{equation*}
+	  \begin{split}
+	    \mathbb{E}\left[T_n^{(1)}\right] 
+	    &= \mathbb{E}\left[ \frac{(b-a)c}n \sum_{i=1}^n 1_{[0,g(X_i)}(Y_i) \right] \\
+	    &= \frac{(b-a)c}n \sum_{i=1}^n \mathbb{E}\left[1_{[0,g(X_i)}(Y_i) \right] \\
+	    &= \frac{(b-a)c}n \cdot \mathbb{P}(Y_i\leq X_1) \\
+	    &= \frac{(b-a)c}n \cdot \frac{I}{(b-a)c} \\
+	    &= \frac{I}n
+	  \end{split}
+         \end{equation*}
+	 
+	 Somit ist die Varianz als auch die Konstruktion des Konfidenzintervalls 
+	 über die Binominalverteilung von $c$ abhängig, 
+	 der Erwartungswert jedoch nicht. 
+	 
+	 Dies deckt sich mit der Intuition, da 
+	 schließlich das zu schätzende Integral nicht davon beeinflusst wird, 
+	 wie groß die Fläche ist, aus der Stichproben entnommen werden -- die 
+	 Genauigkeit jedoch abnimmt, wenn bei gleichbleibender Stichprobenanzahl
+	 die betrachtete Fläche steigt.
+     
+     \item %.1.b
+	 Idealerweise ist c der maximale Wert der Funktion g(x) im Intervall 
+	 [a,b], um die Varianz möglichst gering, beziehungsweise das 
+	 Konfidenzintervall möglichst schmal zu halten.
+     
+    \end{enumerate}
+  \item %.2
+    \begin{enumerate}
+     \item %.2.a
+         \lstinputlisting{aufgabe-11.2.a.r}
+         
+         Ergebnisse:
+         
+         N = 100 $\Rightarrow \frac\pi4 \approx 0.71 \Rightarrow \pi \approx 2.84$, \\
+         bei dem Konfidenzintervall [0,6262716 ; 0,7841203].
+         
+         N = 1000 $\Rightarrow \frac\pi4 \approx 0.76 \Rightarrow \pi \approx 3.04$, \\
+         bei dem Konfidenzintervall [0,7367320 ; 0,7821266].
+         
+         Es ist bereits eine deutliche Annäherung zu sehen. Diese wird mit steigender 
+         Stichprobenanzahl um so deutlicher. Da die Verwendung von $runinf(n,min,max)$ 
+         allerdings dazu führt, dass das Intervall [0,1] statt [0,1) verwendet wird,
+         kann dies zu Störungen führen. Eine bessere Darstellung des Intervalls haben 
+         wir bisher nicht gefunden.
+     
+     \pagebreak
+     \item %.2.b
+	 \lstinputlisting{aufgabe-11.2.b.r}
+         
+         Ergebnisse:
+         
+         N = 100 $\Rightarrow \frac\pi4 \approx 0.73 \Rightarrow \pi \approx 2.92$, \\
+         bei dem Konfidenzintervall [0,6473847 ;  0,8020751].
+         
+         N = 1000 $\Rightarrow \frac\pi4 \approx 0.799 \Rightarrow \pi \approx 3.196$, \\
+         bei dem Konfidenzintervall [0,777012 ; 0,819673].
+         
+         Hier ist bereits eine bessere Annäherung zu sehen und die Konfidenzintervalle 
+         sind weniger breit. Dies fügt sich in das Bild aus der Vorlesung, dass für diesen 
+         Schätzer bei gleicher Anzahl von Daten bessere Ergebnisse erzielt werden, zu lasten 
+         der Rechenzeit.
+         
+         Die Verwendung von $runinf(n,min,max)$ könnte auch hier Störungen verursacht haben,
+         analog zur Aufgabe 11.2.a.
+    \end{enumerate}
 
-            \item
-
-        \end{enumerate}
-
-    \item %.2
-        \begin{enumerate}
-            \item
-
-            \item
-
-        \end{enumerate}
-
+    \pagebreak
     \item %.3
         Die Verteilungsfunktion $F\colon \mathbb{R} \to [0,1]$ einer mit den
         Parametern $k > 0$ und $x_0 > 0$ Paretor-verteilten Zufallsvariable 
@@ -205,7 +268,6 @@
                 \end{proof}
 
         \end{enumerate}
-
 \end{enumerate}
 
 \end{document}
