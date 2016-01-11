@@ -72,24 +72,29 @@
     \begin{enumerate}
      \item %.1.a
          Wie in der Vorlesung besprochen gilt:
-         $$Var\left[T_n^{(1)}\right] = \frac{(b-a)cI - I^2}{n}$$
-         
-         Weiterhin sagt das Skript aus, dass $\frac{T_n^{(1)}}{(b-a)c}$ 
-         binominalverteilt ist, 
-         \\ mit den Parametern $n$ und $p=\frac I{(b-a)c}$.
-         
-         Ferner ergibt sich für den Erwartungswert:
          \begin{equation*}
-	  \begin{split}
-	    \mathbb{E}\left[T_n^{(1)}\right] 
-	    &= \mathbb{E}\left[ \frac{(b-a)c}n \sum_{i=1}^n 1_{[0,g(X_i)}(Y_i) \right] \\
-	    &= \frac{(b-a)c}n \sum_{i=1}^n \mathbb{E}\left[1_{[0,g(X_i)}(Y_i) \right] \\
-	    &= \frac{(b-a)c}n \cdot \mathbb{P}(Y_i\leq X_1) \\
-	    &= \frac{(b-a)c}n \cdot \frac{I}{(b-a)c} \\
-	    &= \frac{I}n
-	  \end{split}
+             \var\left[T_n^{(1)}\right] = \frac{(b-a)cI - I^2}{n}
          \end{equation*}
-	 
+         Die Varianz steigt also mit $c$.
+         
+         % Weiterhin sagt das Skript aus, dass $\frac{T_n^{(1)}}{(b-a)c}$ 
+         % binominalverteilt ist, 
+         % \\ mit den Parametern $n$ und $p=\frac I{(b-a)c}$.
+         % Wird nicht benutzt und ist merkwürdig.
+         
+         Da $T_n^{(1)}$ ein erwartungstreuer Schätzer für $I$ ist, ist der
+         Erwartungswert unabhängig von $c$.
+         \begin{equation*}
+             \begin{split}
+                 \e\left[T_n^{(1)}\right]
+                 &= \e \left[ \frac{(b-a)c}{n} \sum_{i=1}^n \mathbf{1}_{[0,g(X_i)]}(Y_i) \right] \\
+                 &= (b-a)c \cdot \e \left[ \frac{1}{n} \sum_{i=1}^n \mathbf{1}_{[0,g(X_i)]}(Y_i) \right] \\
+                 &= (b-a)c \cdot \prob(Y_1 \leq g(X_1)) \\
+                 &= (b-a)c \cdot \frac{I}{(b-a)c} \\
+                 &= I
+             \end{split}
+         \end{equation*}
+         
 	 Somit ist die Varianz als auch die Konstruktion des Konfidenzintervalls 
 	 über die Binominalverteilung von $c$ abhängig, 
 	 der Erwartungswert jedoch nicht. 
@@ -101,8 +106,8 @@
 	 die betrachtete Fläche steigt.
      
      \item %.1.b
-	 Idealerweise ist c der maximale Wert der Funktion g(x) im Intervall 
-	 [a,b], um die Varianz möglichst gering, beziehungsweise das 
+	 Idealerweise ist $c$ der maximale Wert der Funktion $g(x)$ im Intervall 
+	 $[a,b]$, um die Varianz möglichst gering, beziehungsweise das 
 	 Konfidenzintervall möglichst schmal zu halten.
      
     \end{enumerate}
