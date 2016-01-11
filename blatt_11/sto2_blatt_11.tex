@@ -149,7 +149,7 @@
     \pagebreak
     \item %.3
         Die Verteilungsfunktion $F\colon \mathbb{R} \to [0,1]$ einer mit den
-        Parametern $k > 0$ und $x_0 > 0$ Paretor-verteilten Zufallsvariable 
+        Parametern $k > 0$ und $x_0 > 0$ Pareto-verteilten Zufallsvariable 
         ist gegeben durch
         \begin{equation*}
             F(x) =
@@ -180,10 +180,8 @@
                     \begin{equation*}
                         \lim_{x \to x_0-} F(x)
                         = 0
-                        = F(0)
-                        = 0
                         = 1 - \left( \frac{x_0}{x_0} \right)^k
-                        = \lim_{x \to x_0+} F(x)
+                        = F(x_0)
                         \text{ .}
                     \end{equation*}
                     Somit ist $F$ auf dem Definitionsbereich stetig.
@@ -225,7 +223,10 @@
                         = \inf \{ x \in \mathbb{R} : F(x) \geq y \}
                         \text{ .}
                     \end{equation*}
-                    Da $F$ eine stetige Funktion ist, gilt sogar
+                    Da im zu betrachtenden Intervall (0,1) stets 
+                    der Fall $x>x_0$ eintritt, ist $F$ sogar stetig und 
+                    streng monoton steigend, sodass die Umkehrfunktion 
+                    verwendet werden kann.
                     \begin{equation*}
                         F^{-1}(y) = x
                         \gdw
@@ -245,24 +246,31 @@
 
             \item
                 Es sei $X \sim \mathrm{Pareto}_{k,x_0}$ eine mit den Parametern
-                $k$ und $x_0$ Pareto-verteile Zufallsvariable.
+                $k$ und $x_0$ Pareto-verteilte Zufallsvariable.
                 \begin{behaupt}
                     Der Erwartungswert von $X$ beträgt
                     \begin{equation*}
-                        \e[X] = \frac{k}{k-1} \cdot x_0
+                        \e[X] = \begin{cases}
+				  \frac{k}{k-1} \cdot x_0 &, k>1 \\
+				 \infty &, k\leq 1
+				\end{cases}
                     \end{equation*}
                 \end{behaupt}
                 \begin{proof}
-                    TODO: Konvergenz der Integrals
                     \begin{equation*}
                         \begin{split}
                             \e[X]
                             &= \int_{-\infty}^\infty t \cdot f(t) \dif t \\
                             &= \int_{x_0}^\infty t \cdot k \cdot \frac{x_0^k}{t^{k+1}} \dif t \\
                             &= \int_{x_0}^\infty k \cdot \frac{x_0^k}{t^k} \dif t \\
-                            &= \left[ -\frac{k}{k-1} \cdot \frac{x_0^k}{t^{k-1}} \right]_{x_0}^\infty \\
-                            &= \lim_{t \to \infty} \left( -\frac{k}{k-1} \cdot \frac{x_0^k}{t^{k-1}} \right) - \left( -\frac{k}{k-1} \cdot \frac{x_0^k}{x_0^{k-1}} \right) \\
-                            &= \frac{k}{k-1} \cdot x_0
+                            &= \lim_{a \to \infty} \left[ -\frac{k}{k-1} \cdot \frac{x_0^k}{t^{k-1}} \right]_{x_0}^a \\
+                            &= \lim_{a \to \infty} \left( -\frac{k}{k-1} \cdot \frac{x_0^k}{a^{k-1}} \right) - \left( -\frac{k}{k-1} \cdot \frac{x_0^k}{x_0^{k-1}} \right) \\
+                            &= \frac{k}{k-1} \cdot \frac{x_0^k}{x_0^{k-1}} -\frac{k}{k-1} \lim_{a \to \infty} \left(\frac{x_0^k}{a^{k-1}} \right) \\    
+                            &= \frac{k}{k-1} \left(x_0 -\lim_{a \to \infty} \left(\frac{x_0^k}{a^{k-1}} \right)\right) \\    
+			    &= \begin{cases}
+				  \frac{k}{k-1} \cdot x_0 &, k>1 \\
+				 \infty &, k\leq 1
+				\end{cases}
                         \end{split}
                     \end{equation*}
                 \end{proof}
