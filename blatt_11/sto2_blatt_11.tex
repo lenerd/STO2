@@ -76,12 +76,12 @@
              \var\left[T_n^{(1)}\right] = \frac{(b-a)cI - I^2}{n}
          \end{equation*}
          Die Varianz steigt also mit $c$.
-         
+
          % Weiterhin sagt das Skript aus, dass $\frac{T_n^{(1)}}{(b-a)c}$ 
          % binominalverteilt ist, 
          % \\ mit den Parametern $n$ und $p=\frac I{(b-a)c}$.
          % Wird nicht benutzt und ist merkwürdig.
-         
+
          Da $T_n^{(1)}$ ein erwartungstreuer Schätzer für $I$ ist, ist der
          Erwartungswert unabhängig von $c$.
          \begin{equation*}
@@ -94,47 +94,47 @@
                  &= I
              \end{split}
          \end{equation*}
-         
-	 Somit ist die Varianz als auch die Konstruktion des Konfidenzintervalls 
-	 über die Binominalverteilung von $c$ abhängig, 
-	 der Erwartungswert jedoch nicht. 
-	 
-	 Dies deckt sich mit der Intuition, da 
-	 schließlich das zu schätzende Integral nicht davon beeinflusst wird, 
-	 wie groß die Fläche ist, aus der Stichproben entnommen werden -- die 
-	 Genauigkeit jedoch abnimmt, wenn bei gleichbleibender Stichprobenanzahl
-	 die betrachtete Fläche steigt.
-     
+
+     Somit ist die Varianz als auch die Konstruktion des Konfidenzintervalls 
+     über die Binominalverteilung von $c$ abhängig, 
+     der Erwartungswert jedoch nicht. 
+
+     Dies deckt sich mit der Intuition, da 
+     schließlich das zu schätzende Integral nicht davon beeinflusst wird, 
+     wie groß die Fläche ist, aus der Stichproben entnommen werden -- die 
+     Genauigkeit jedoch abnimmt, wenn bei gleichbleibender Stichprobenanzahl
+     die betrachtete Fläche steigt.
+
      \item %.1.b
-	 Idealerweise ist $c$ der maximale Wert der Funktion $g(x)$ im Intervall 
-	 $[a,b]$, um die Varianz möglichst gering, beziehungsweise das 
-	 Konfidenzintervall möglichst schmal zu halten.
-     
+     Idealerweise ist $c$ der maximale Wert der Funktion $g(x)$ im Intervall 
+     $[a,b]$, um die Varianz möglichst gering, beziehungsweise das 
+     Konfidenzintervall möglichst schmal zu halten.
+
     \end{enumerate}
   \item %.2
     \begin{enumerate}
      \item %.2.a
          \lstinputlisting{aufgabe-11.2.a.r}
-         
+
          Ergebnisse:
-         
+
          $N = 100 \Rightarrow \frac\pi4 \approx \num{0.77} \Rightarrow \pi \approx \num{3.08}$, \\
          bei dem Konfidenzintervall $[\num{0.6901664} ;\ \num{0.8374091}]$.
-         
+
          $N = 1000 \Rightarrow \frac\pi4 \approx \num{0.788} \Rightarrow \pi \approx \num{3.152}$, \\
          bei dem Konfidenzintervall $[\num{0.7656225} ;\ \num{0.8091116}]$.
 
          $N = \num{100000} \Rightarrow \frac\pi4 \approx \num{0.78478} \Rightarrow \pi \approx \num{3.13912}$, \\
          bei dem Konfidenzintervall $[\num{0.7826312} ;\ \num{0.7869166}]$.
-         
+
          Es ist bereits eine deutliche Annäherung zu sehen. Diese wird mit steigender 
-         Stichprobenanzahl um so deutlicher.     
+         Stichprobenanzahl um so deutlicher.
      \pagebreak
      \item %.2.b
-	 \lstinputlisting{aufgabe-11.2.b.r}
-         
+     \lstinputlisting{aufgabe-11.2.b.r}
+
          Ergebnisse:
-         
+
          $N = 100 \Rightarrow \frac\pi4 \approx \num{0.8052303} \Rightarrow \pi \approx \num{3.152}$, \\
          bei dem Konfidenzintervall $[\num{0.7700752} ;\ \num{0.8403854}]$.
 
@@ -143,7 +143,7 @@
 
          $N = \num{100000} \Rightarrow \frac\pi4 \approx \num{0.7846705} \Rightarrow \pi \approx \num{3.138682}$, \\
          bei dem Konfidenzintervall $[\num{0.7835070} ;\ \num{0.7858339}]$.
-         
+
          Hier ist bereits eine schnellere Annäherung zu sehen und die Konfidenzintervalle 
          sind weniger breit. Dies fügt sich in das Bild aus der Vorlesung, dass für diesen 
          Schätzer bei gleicher Anzahl von Daten bessere Ergebnisse erzielt werden, zu lasten 
@@ -255,12 +255,13 @@
                     Der Erwartungswert von $X$ beträgt
                     \begin{equation*}
                         \e[X] = \begin{cases}
-				  \frac{k}{k-1} \cdot x_0 &, k>1 \\
-				 \infty &, k\leq 1
-				\end{cases}
+                            \frac{k}{k-1} \cdot x_0 &, k>1 \\
+                            \infty &, k\leq 1
+                        \end{cases}
                     \end{equation*}
                 \end{behaupt}
                 \begin{proof}
+                    Sei zunächst $k \neq 1$.
                     \begin{equation*}
                         \begin{split}
                             \e[X]
@@ -270,13 +271,33 @@
                             &= \lim_{a \to \infty} \left[ -\frac{k}{k-1} \cdot \frac{x_0^k}{t^{k-1}} \right]_{x_0}^a \\
                             &= \lim_{a \to \infty} \left( -\frac{k}{k-1} \cdot \frac{x_0^k}{a^{k-1}} \right) - \left( -\frac{k}{k-1} \cdot \frac{x_0^k}{x_0^{k-1}} \right) \\
                             &= \frac{k}{k-1} \cdot \frac{x_0^k}{x_0^{k-1}} -\frac{k}{k-1} \lim_{a \to \infty} \left(\frac{x_0^k}{a^{k-1}} \right) \\    
-                            &= \frac{k}{k-1} \left(x_0 -\lim_{a \to \infty} \left(\frac{x_0^k}{a^{k-1}} \right)\right) \\    
-			    &= \begin{cases}
-				  \frac{k}{k-1} \cdot x_0 &, k>1 \\
-				 \infty &, k\leq 1
-				\end{cases}
+                            &= \frac{k}{k-1} \left(x_0 - x_0^k \lim_{a \to \infty} \left(\frac{1}{a^{k-1}} \right) \right) \\
+                            &= \begin{cases}
+                                \frac{k}{k-1} \cdot x_0 &, k > 1 \\
+                                \infty &, k < 1
+                            \end{cases}
                         \end{split}
                     \end{equation*}
+                    Nun betrachten wir den Fall $k = 1$.
+                    \begin{equation*}
+                        \begin{split}
+                            \e[X]
+                            &= \int_{-\infty}^\infty t \cdot f(t) \dif t \\
+                            &= \int_{x_0}^\infty t \cdot k \cdot \frac{x_0^k}{t^{k+1}} \dif t \\
+                            &= \int_{x_0}^\infty \frac{x_0}{t} \dif t \\
+                            &= \lim_{a \to \infty} \Big[ x_0 \cdot \ln(t) \Big]_{x_0}^a \\
+                            &= \lim_{a \to \infty} \Big( x_0 \cdot \ln(a) \Big) - \Big( x_0 \cdot \ln(x_0) \Big) \\
+                            &= \infty
+                        \end{split}
+                    \end{equation*}
+                    Damit ist gezeigt, dass der Erwartungswert wie behauptet
+                    \begin{equation*}
+                        \e[X] = \begin{cases}
+                            \frac{k}{k-1} \cdot x_0 &, k>1 \\
+                            \infty &, k\leq 1
+                        \end{cases}
+                    \end{equation*}
+                    beträgt.
                 \end{proof}
 
         \end{enumerate}
