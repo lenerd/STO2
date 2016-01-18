@@ -63,12 +63,31 @@
     Sascha Schulz (6434677)
 }
 \date{zum 19. Januar 2016}
+\usepackage{pdfpages} 
 
 \begin{document}
 \maketitle
 
 \begin{enumerate}[label=\bfseries \blattnr.\arabic*]
     \item %.1
+       Im Fall von k=0.5 scheint die Breite der Konfidenzintervalle bei 
+       steigendem n und konstantem Konfidenzniveau monoton zu fallen.
+       
+       Bei k=1.5 und k=2.5 ist diese Monotonie nur bedingt zu beobachten, es 
+       kommt zu Sprungstellen, in denen einzelne (seltene) extreme 
+       Werte dazu führen, dass das Konfidenzintervalle sprungartig wieder sehr 
+       viel breiter wird.
+       
+
+	  \includegraphics[width=.33\textwidth, page=1]{Rplots.pdf}
+	  \includegraphics[width=.33\textwidth, page=2]{Rplots.pdf}
+	  \includegraphics[width=.33\textwidth, page=3]{Rplots.pdf}
+       
+       Anmerkung: Die x-Achse repräsentiert Anzahl der ersten n berücksichtigten 
+       Samples mit $2\leq n \leq 1000$, die y-Achse repräsentiert die Breite 
+       der Konfidenzintervalle. Die konkrete Darstellung ist stark von der 
+       zufälligen Eingabe abhängig, lediglich das oben beschriebene Grundmuster
+       lässt sich bei wiederholter Ausführung erkennen.
 
     \item %.2
         \begin{enumerate}
