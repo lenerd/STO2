@@ -73,8 +73,29 @@
     \item %.2
         \begin{enumerate}
             \item
-
+              Die Inversionsmethode kann angewendet werden, da die $U_i$ iid auf 
+              [0,1) und gleichverteilt sind. Außerdem ist F rechtsseitig stetig 
+              sodass stets \\$\mathbb{P}(U\leqF(x))=F(x)$.
+              
+	      \begin{equation*}
+		F^{-1}(y) = \begin{cases}
+			      1 &, y \in \left[0,\frac16 \right) \\
+			      2 &, y \in \left[\frac16, \frac26 \right)\\
+			      3 &, y \in \left[\frac26,\frac36 \right)\\
+			      4 &, y \in \left[\frac36,\frac46 \right)\\
+			      5 &, y \in \left[\frac46,\frac56 \right)\\
+			      6 &, y \in \left[\frac56,1 \right)
+		            \end{cases}
+	      \end{equation*}
+	      
             \item
+	      \begin{tabular}{c|c|c|c|c|c}
+	       $i$ & 1 & 2 & 3 & 4 & 5 \\
+	       \hline
+	       $u_i$ & 0.1 & 0.32 & 0.88 & 0.02 & 0.7 \\
+	       \hline
+	       $x_i$ & 1 & 2 & 9 & 1 & 8
+	      \end{tabular}
 
             \item
 
