@@ -81,12 +81,76 @@
         \end{enumerate}
 
     \item %.3
+        Es seien die Dichten $f_X$ und $f_Z$ wie folgt gegeben.
+        \begin{equation*}
+            f_X(x) =
+            \begin{cases}
+                \frac{3}{4} (1-x^2), & |x| \leq 1 \\
+                0,                   & |x| > 1    \\
+            \end{cases}
+            \qquad\qquad
+            f_Z(x) =
+            \begin{cases}
+                1 - |x|, & |x| \leq 1 \\
+                0,       & |x| > 1    \\
+            \end{cases}
+        \end{equation*}
+        Weiterhin steht eine Möglichkeit zur Generierung von uniform verteilten
+        Zufallszahlen auf $[0,1)$ zur Verfügung.
         \begin{enumerate}
             \item
+                Die Dichten $f_X$ und $f_Z$ werden durch $g_X$ und $g_Z$ nach
+                oben beschränkt:
+                \begin{equation*}
+                    f_X(x)
+                    \leq g_X(x)
+                    = \frac{3}{2} \cdot f_Y(x)
+                    \qquad\qquad
+                    f_Z(x)
+                    \leq g_Z(x)
+                    = 2 \cdot f_Y(x)
+                \end{equation*}
+                Der Faktor $c$ wird hier so gewählt, dass die Dichte $f_Y$ (im
+                Intervall $[-1,1]$ gleich $\frac{1}{2}$) auf das Maximum von
+                $f_X$ bzw. $f_Z$ scaliert wird. Dieses beträgt $\frac{3}{4}$
+                bzw. $1$.
+
+                Dabei sei $f_Y$ die Dichte einer Gleichverteilung auf $[-1,1)$.
+                Seien $y'_i$ Zufallszahlen, die gemäß einer Gleichverteilung
+                aus $[0,1)$ gezogen wurden. Dann sind $y_i = 2y'_i - 1$
+                gleichverteilte Zufallszahlen aus $[-1,1)$.
+
+                Um mit der Acceptance-Rejection-Methode Zufallszahlen gemäß der
+                Dichte $f_X$ bzw. $f_Z$ zu erzeugen, wird wie folgt vorgegangen:
+                \begin{enumerate}
+                    \item
+                        Generiere eine Zufallszahl $y$ gemäß $f_Y$.
+
+                    \item
+                        Generiere eine Zufallszahl $u$ gemäß einer
+                        Gleichverteilung auf $[0,1)$.
+
+                    \item
+                        Falls $u \leq \frac{f_X(y)}{g_X(y)}$ bzw. $u \leq
+                        \frac{f_Z(y)}{g_Z(y)}$ gebe $y$ zurück, sonst beginne
+                        wieder mit Schritt i.
+
+                \end{enumerate}
+                Die zurückgegebene Zahl $y$ ist gemäßt $f_X$ bzw. $f_Y$
+                verteilt.
 
             \item
+                Für $c \to \infty$ gilt $\frac{f_X(y)}{g_X(y)} =
+                \frac{f_X(y)}{c \cdot f_Y(y)} \to 0$. Je größer $c$ ist, desto
+                kleiner ist also der Bereich, in dem die Zufallszahl abgelehnt
+                wird. Man sollte $c$ also möglichst klein wählen, um weniger
+                Zufallszahlen zu verschwenden.
 
             \item
+                Würden die gleichen Zufallszahlen zum Erzeugen einer
+                Realisierung von $X_{2n-1}$ und $Z_{2n}$ verwendet werden, so
+                wären $X_{2n-1}$ und $Z_{2n}$ nicht länger stochastisch
+                voneinander unabhängig.
 
         \end{enumerate}
 
