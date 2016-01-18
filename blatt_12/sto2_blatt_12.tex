@@ -70,24 +70,41 @@
 
 \begin{enumerate}[label=\bfseries \blattnr.\arabic*]
     \item %.1
-       Im Fall von k=0.5 scheint die Breite der Konfidenzintervalle bei 
-       steigendem n und konstantem Konfidenzniveau monoton zu fallen.
-       
-       Bei k=1.5 und k=2.5 ist diese Monotonie nur bedingt zu beobachten, es 
-       kommt zu Sprungstellen, in denen einzelne (seltene) extreme 
-       Werte dazu führen, dass das Konfidenzintervalle sprungartig wieder sehr 
-       viel breiter wird.
-       
+        % Im Fall von k=0.5 scheint die Breite der Konfidenzintervalle bei
+        % steigendem n und konstantem Konfidenzniveau monoton zu fallen.
+        % 
+        % Bei k=1.5 und k=2.5 ist diese Monotonie nur bedingt zu beobachten, es
+        % kommt zu Sprungstellen, in denen einzelne (seltene) extreme Werte
+        % dazu führen, dass das Konfidenzintervalle sprungartig wieder sehr
+        % viel breiter wird.
+        %
+        % Habe vor allem beobachtet, dass die Ausreißer bei k=0.5 wesentlich
+        % mehr Einfluss auf die Breite des Konfidenzintervals haben.
 
-	  \includegraphics[width=.33\textwidth, page=1]{Rplots.pdf}
-	  \includegraphics[width=.33\textwidth, page=2]{Rplots.pdf}
-	  \includegraphics[width=.33\textwidth, page=3]{Rplots.pdf}
-       
-       Anmerkung: Die x-Achse repräsentiert Anzahl der ersten n berücksichtigten 
-       Samples mit $2\leq n \leq 1000$, die y-Achse repräsentiert die Breite 
-       der Konfidenzintervalle. Die konkrete Darstellung ist stark von der 
-       zufälligen Eingabe abhängig, lediglich das oben beschriebene Grundmuster
-       lässt sich bei wiederholter Ausführung erkennen.
+
+       Bei $k=\num{0,5}$ nehmen die Ausreißer besonders hohe Werte an. Diese
+       sorgen dafür, dass die Konfidenzintervalle ab diesem Punkt breiter
+       werden. Dies passt zu dem Erwartungswert von $\infty$.
+       Die Sprünge fallen bei $k=\num{1,5}$ und $k=\num{2,5}$ und endlichem
+       Erwartungswert kleiner aus.
+       Bei ersterem ist die Varianz deutlich größer ($\infty$), die
+       Realisierungen sind also weiter um den Erwartungswert gestreut, was für
+       die (kleineren) Ausreißer sorgt.
+       \begin{figure}[H]
+           \centering
+	       \includegraphics[width=.3\textwidth, page=1]{Rplots.pdf}
+	       \includegraphics[width=.3\textwidth, page=2]{Rplots.pdf}
+	       \includegraphics[width=.3\textwidth, page=3]{Rplots.pdf}
+           \caption{Breiten der Konfidenzintervalle}
+       \end{figure}
+       Anmerkung: Die $x$-Achse repräsentiert Anzahl der ersten n
+       berücksichtigten Samples mit $2\leq n \leq 1000$, die $y$-Achse
+       repräsentiert die Breite der Konfidenzintervalle. Die konkrete
+       Darstellung ist stark von der zufälligen Eingabe abhängig.
+
+       \newpage
+       \lstinputlisting{aufgabe-12.1.R}
+
 
     \item %.2
         \begin{enumerate}
