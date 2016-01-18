@@ -92,32 +92,62 @@
     \item %.2
         \begin{enumerate}
             \item
-              Die Inversionsmethode kann angewendet werden, da die $U_i$ iid auf 
-              [0,1) und gleichverteilt sind. Außerdem ist F rechtsseitig stetig 
-              sodass stets \\ 
-              $\mathbb{P}(U\leq F(x))=F(x)$.
-              
-	      \begin{equation*}
-		F^{-1}(y) = \begin{cases}
-			      1 &, y \in \left[0,\frac16 \right) \\
-			      2 &, y \in \left[\frac16, \frac26 \right)\\
-			      3 &, y \in \left[\frac26,\frac36 \right)\\
-			      4 &, y \in \left[\frac36,\frac46 \right)\\
-			      5 &, y \in \left[\frac46,\frac56 \right)\\
-			      6 &, y \in \left[\frac56,1 \right)
-		            \end{cases}
-	      \end{equation*}
-	      
-            \item
-	      \begin{tabular}{c|c|c|c|c|c}
-	       $i$ & 1 & 2 & 3 & 4 & 5 \\
-	       \hline
-	       $u_i$ & 0.1 & 0.32 & 0.88 & 0.02 & 0.7 \\
-	       \hline
-	       $x_i$ & 1 & 2 & 9 & 1 & 8
-	      \end{tabular}
+                Die Inversionsmethode kann angewendet werden, da die
+                Verteilungsfunktion explizit vorliegt.
+                \begin{equation*}
+                    F(x) =
+                    \begin{cases}
+                        0          , & x < 1        \\
+                        \frac{1}{6}, & 1 \leq x < 2 \\
+                        \frac{2}{6}, & 2 \leq x < 3 \\
+                        \frac{3}{6}, & 3 \leq x < 4 \\
+                        \frac{4}{6}, & 4 \leq x < 5 \\
+                        \frac{5}{6}, & 5 \leq x < 6 \\
+                        1          , & 6 \leq x     \\
+                    \end{cases}
+                \end{equation*}
+                Auch die Pseudoinverse $F^{-1}$ kann explizit angegeben werden.
+                \begin{equation*}
+                    F^{-1}\colon (0,1) \to \mathbb{R}
+                    \qquad
+                    F^{-1} =
+                    \begin{cases}
+                        1,  & y \leq \frac{1}{6}               \\
+                        2,  & \frac{1}{6} < y \leq \frac{2}{6} \\
+                        3,  & \frac{2}{6} < y \leq \frac{3}{6} \\
+                        4,  & \frac{3}{6} < y \leq \frac{4}{6} \\
+                        5,  & \frac{4}{6} < y \leq \frac{5}{6} \\
+                        6,  & \frac{5}{6} < y                  \\
+                    \end{cases}
+                \end{equation*}
 
             \item
+                Die ersten fünf Werte gemäß der Inversionsmethode sind in der
+                folgenden Tabelle aufgetragen.
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{c|l|l|l|l|l}
+                        $i$   & 1 & 2 & 3 & 4 & 5 \\ \hline
+                        $u_i$ & \num{0.1} & \num{0.32} & \num{0.88} & \num{0.02} & \num{0.7} \\ \hline
+                        $x_i$ & 1 & 2 & 6 & 1 & 5 \\
+                    \end{tabular}
+                \end{table}
+
+            \item
+                Sei $p_k = \prob(X_1 = k)$ die reale und $p_k^{(0)} = \prob(X_1
+                = k) = \frac{1}{6}$ die gewünschte Wahrscheinlichkeit für $k
+                \in \{1, \dotsc, 6\}$.
+                Da wir die Behauptung unserer Kollegin belegen wollen, testen
+                wir $H_0\colon p_k = p_k^{(0)}$ gegen $H_1\colon p_k \neq
+                p_k^{(0)}$.
+                Dazu verwenden wir den $\chi^2$-Test.
+                \lstinputlisting{aufgabe-12.2.R}
+                \lstinputlisting{aufgabe-12.2.Rout}
+                Da der berechnete $p$-Wert \num{0.01363} kleiner als $\alpha =
+                \num{0,05}$. Daher wird $H_0$ abgelehnt und die Aussage der
+                Kollegin auf einem Signifikanzniveau von \num{0,05} belegt.
+                Wir gehen daher davon aus, dass die gelieferten Zufallszahlen
+                $u_1, \dotsc, u_{720}$ nicht auf $[0,1)$ gleichverteilt sind.
 
         \end{enumerate}
 
